@@ -1,0 +1,198 @@
+@charset "UTF-8";
+body{
+    background-color: #e0ce91;
+}
+
+#Oatkylosaurus{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+@keyframes wiggle{
+
+}
+
+#age{
+    left: 20px;
+}
+#cash{
+    left: 200px;
+}
+
+.stat{
+    position: absolute;;
+    font-size: 20px;
+    font-weight: bold;
+    color: #091472;
+    top: 100px;
+}
+
+.bar{
+    left: 10px;
+}
+#hunger{
+    width: 100px;
+    height: 10px;
+    position: absolute;
+    background-color: #3bce60;
+    border-radius: 8px;
+    top: 180px;
+}
+#energy{
+    width: 100px;
+    height: 10px;
+    position: absolute;
+    background-color: #3bce60;
+    border-radius: 8px;
+    top: 280px;
+}
+#happy{
+    width: 100px;
+    height: 10px;
+    position: absolute;
+    background-color: #3bce60;
+    border-radius: 8px;
+    top: 380px;
+}
+#sleep{
+    width: 100px;
+    height: 10px;
+    position: absolute;
+    background-color: #3bce60;
+    border-radius: 8px;
+    top: 480px;
+}
+#bored{
+    width: 100px;
+    height: 10px;
+    position: absolute;
+    background-color: #3bce60;
+    border-radius: 8px;
+    top: 580px;
+}
+
+.bgBar{
+    left: 9px;
+}
+#bar1{
+    position: absolute;
+    width: 101px;
+    height: 12px;
+    background-color: #000000;
+    top: 180px;
+    border-radius: 6px;
+    z-index: -1;
+}
+#bar2{
+    position: absolute;
+    width: 101px;
+    height: 12px;
+    background-color: #000000;
+    top: 280px;
+    border-radius: 6px;
+    z-index: -1;
+}
+#bar3{
+    position: absolute;
+    width: 101px;
+    height: 12px;
+    background-color: #000000;
+    top: 380px;
+    border-radius: 6px;
+    z-index: -1;
+}
+#bar4{
+    position: absolute;
+    width: 101px;
+    height: 12px;
+    background-color: #000000;
+    top: 480px;
+    border-radius: 6px;
+    z-index: -1;
+}
+#bar5{
+    position: absolute;
+    width: 101px;
+    height: 12px;
+    background-color: #000000;
+    top: 580px;
+    border-radius: 6px;
+    z-index: -1;
+}
+
+.UI{
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    bottom: 20px;
+    cursor: pointer;
+}
+#dodgeBall{
+    position: absolute;
+    display: none;
+    top: 500px;
+    left: 350px;
+}
+@keyframes bounce{
+    0%{
+        top: 350px;
+        left: 500px;
+    }
+    100%{
+        top: 0px;
+        left: 0px;
+    }
+}
+#startShift{
+    z-index: 7;
+}
+
+#shiftBG{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    display: none;
+    left: 100px;
+    top: 400px;
+    border: solid 2px black;
+    z-index: 2;
+}
+#station{
+    position: absolute;
+    width: 898px;
+    height: 300px;
+    background-color: brown;
+    display: none;
+    top: 600px;
+    left: 101px;
+    z-index: 3;
+}
+#hammer{
+    position: absolute;
+    display: none;
+    pointer-events: none;
+    left: 300px;
+    top: 300px;
+    z-index: 6;
+    transform: rotate(0deg);
+}
+#oat{
+    position: absolute;
+    display: none;
+    cursor: pointer;
+    left: 400px;
+    top: 650px;
+    z-index: 4;
+}
+#debris{
+    position: absolute;
+    display: none;
+    cursor: pointer;
+    left: 400px;
+    top: 650px;
+    z-index: 5;
+}
