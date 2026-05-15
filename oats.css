@@ -7,6 +7,8 @@ body{
     position: absolute;
     left: 50%;
     top: 50%;
+    display: flex;
+    justify-content: center;
     height: auto;
     width: 10%;
 }
@@ -34,9 +36,12 @@ body{
 
 #age{
     left: 20px;
+    z-index: 2;
+    font-weight: bold;
 }
 #cash{
     left: 200px;
+    z-index: 2;
 }
 
 .stat{
@@ -54,9 +59,10 @@ body{
     width: 100px;
     height: 10px;
     position: absolute;
-    background-color: #3bce60;
+    background-color: #e26931;
     border-radius: 8px;
     top: 180px;
+    z-index: 3;
 }
 #energy{
     width: 100px;
@@ -65,6 +71,7 @@ body{
     background-color: #3bce60;
     border-radius: 8px;
     top: 280px;
+    z-index: 3;
 }
 #happy{
     width: 100px;
@@ -73,22 +80,25 @@ body{
     background-color: #3bce60;
     border-radius: 8px;
     top: 380px;
+    z-index: 3;
 }
 #sleep{
     width: 100px;
     height: 10px;
     position: absolute;
-    background-color: #3bce60;
+    background-color: #3c4ac4;
     border-radius: 8px;
     top: 480px;
+    z-index: 3;
 }
 #bored{
     width: 100px;
     height: 10px;
     position: absolute;
-    background-color: #3bce60;
+    background-color: #e26931;
     border-radius: 8px;
     top: 580px;
+    z-index: 3;
 }
 
 .bgBar{
@@ -101,7 +111,7 @@ body{
     background-color: #000000;
     top: 180px;
     border-radius: 6px;
-    z-index: -1;
+    z-index: 2;
 }
 #bar2{
     position: absolute;
@@ -110,7 +120,7 @@ body{
     background-color: #000000;
     top: 280px;
     border-radius: 6px;
-    z-index: -1;
+    z-index: 2;
 }
 #bar3{
     position: absolute;
@@ -119,7 +129,7 @@ body{
     background-color: #000000;
     top: 380px;
     border-radius: 6px;
-    z-index: -1;
+    z-index: 2;
 }
 #bar4{
     position: absolute;
@@ -128,7 +138,7 @@ body{
     background-color: #000000;
     top: 480px;
     border-radius: 6px;
-    z-index: -1;
+    z-index: 2;
 }
 #bar5{
     position: absolute;
@@ -137,7 +147,7 @@ body{
     background-color: #000000;
     top: 580px;
     border-radius: 6px;
-    z-index: -1;
+    z-index: 2;
 }
 
 .UI{
@@ -146,9 +156,20 @@ body{
     gap: 20px;
     font-size: 20px;
     font-weight: bold;
-    bottom: 20px;
+    left: 280px;
+    bottom: 0px;
     cursor: pointer;
+    color: #0c051a;
+    z-index: 2;
 }
+p{
+    position: absolute;
+    top: 56px;
+    color: rgb(228, 223, 253);
+    font-size: 24px;
+    z-index: -1;
+}
+
 #dodgeBall{
     top: 300px;
     left: 500px;
@@ -335,54 +356,68 @@ body{
 }
 
 #startShift{
-    z-index: 7;
+    z-index: 8;
 }
 
 #shiftBG{
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 898px;
+    height: 480px;
     background-color: gray;
     display: none;
-    left: 100px;
+    right: 100px;
     top: 400px;
     border: solid 2px black;
-    z-index: 2;
+    z-index: 4;
 }
 #station{
     position: absolute;
     width: 898px;
-    height: 300px;
+    height: 280px;
     background-color: brown;
     display: none;
     top: 600px;
-    left: 101px;
-    z-index: 3;
+    right: 101px;
+    z-index: 5;
+}
+#RolledBin{
+    position: absolute;
+    display: none;
+    right: 650px;
+    bottom: 0px;
+    z-index: 9;
+}
+#QuickBin{
+    position: absolute;
+    display: none;
+    right: 200px;
+    bottom: 0px;
+    z-index: 9;
 }
 #hammer{
     position: absolute;
     display: none;
     pointer-events: none;
-    left: 300px;
-    top: 300px;
-    z-index: 6;
+    right: 220px;
+    top: 330px;
+    z-index: 8;
     transform: rotate(0deg);
 }
 #oat{
     position: absolute;
     display: none;
     cursor: pointer;
-    left: 400px;
+    right: 520px;
     top: 650px;
-    z-index: 4;
+    z-index: 6;
 }
 #debris{
     position: absolute;
     display: none;
-    cursor: pointer;
-    left: 400px;
+    pointer-events: none;
+    right: 520px;
     top: 650px;
-    z-index: 5;
+    z-index: 7;
 }
 @keyframes flew{
     0%{

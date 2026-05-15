@@ -1,10 +1,13 @@
 let energy = 20;
+document.getElementById("energy").style.width = energy + "px";
 let hunger = 50;
+document.getElementById("hunger").style.width = hunger + "px";
 let happiness = 80;
+document.getElementById("happy").style.width = happiness + "px";
 let boredom = 10;
 document.getElementById("bored").style.width = boredom + "px";
 let sleepiness = 100;
-document.getElementById("bored").style.width = boredom;
+document.getElementById("sleep").style.width = sleepiness + "px";
 console.log("boredom is currently " + boredom);
 let sleep = false;
 let wiggles = 0;
@@ -99,6 +102,8 @@ start.addEventListener("click", () =>{
         shift = true;
         document.getElementById("shiftBG").style.display = "block";
         document.getElementById("station").style.display = "block";
+        document.getElementById("RolledBin").style.display = "block";
+        document.getElementById("QuickBin").style.display = "block";
         document.getElementById("hammer").style.display = "block";
         document.getElementById("oat").style.display = "block";
         document.getElementById("debris").style.display = "block";
@@ -109,6 +114,8 @@ start.addEventListener("click", () =>{
         wiggle();
         document.getElementById("shiftBG").style.display = "none";
         document.getElementById("station").style.display = "none";
+        document.getElementById("RolledBin").style.display = "none";
+        document.getElementById("QuickBin").style.display = "none";
         document.getElementById("hammer").style.display = "none";
         document.getElementById("oat").style.display = "none";
         document.getElementById("debris").style.display = "none";
@@ -116,7 +123,8 @@ start.addEventListener("click", () =>{
 });
 
 //shell the oat.
-const shell = document.getElementById("debris");
+let sorty = false;//unshelled oat
+const shell = document.getElementById("oat");
 shell.addEventListener("click", () =>{
     document.getElementById("hammer").style.transform = "rotate(315deg)";
     tonk.currentTime = 0;
@@ -125,5 +133,17 @@ shell.addEventListener("click", () =>{
     setTimeout(() => {
         document.getElementById("hammer").style.transform = "rotate(0deg)";
     }, 500);
+    //punish hammer spam
+    //sorty upon clicking, unless a 200ms timer procs. if so, we stall longer and are still sorty, then the oat animation leads to the Quick container, giving less money.
+    //defaults to storing the rolled oat into the Rolled container.
+    /*
+    if(!sorty){
+        document.getElementById("oat").innerHTML = "";
+        document.getElementById("oat").style.animation = "sort 1s"
+    }
+    else{
+
+    }
+        */
 });
 
