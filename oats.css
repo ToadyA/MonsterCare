@@ -5,33 +5,12 @@ body{
 
 #Oatkylosaurus{
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 48%;
+    top: 40%;
     display: flex;
     justify-content: center;
     height: auto;
     width: 10%;
-}
-@keyframes wiggle{
-    0%{
-        transform: rotate(0deg);
-    }
-    20%{
-        transform: rotate(15deg);
-    }
-    40%{
-        transform: rotate(-15deg);
-    }
-    60%{
-        transform: rotate(15deg);
-    }
-    80%{
-        transform: rotate(-15deg);
-    }
-    100%{
-        transform: rotate(0deg);
-    }
-
 }
 
 #age{
@@ -170,191 +149,6 @@ p{
     z-index: -1;
 }
 
-#dodgeBall{
-    top: 300px;
-    left: 500px;
-}
-@keyframes bounce0{
-    0%{
-        background-color: red;
-        transform: translate(50%, 300px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 300px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 580px);
-    }
-}
-@keyframes bounce1{
-    0%{
-        background-color: red;
-        transform: translate(50%, 269px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 269px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 540px);
-    }
-}
-@keyframes bounce2{
-    0%{
-        background-color: red;
-        transform: translate(50%, 238px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 238px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 540px);
-    }
-}
-@keyframes bounce3{
-    0%{
-        background-color: red;
-        transform: translate(50%, 207px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 207px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 540px);
-    }
-}
-@keyframes bounce4{
-    0%{
-        background-color: red;
-        transform: translate(50%, 175px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 175px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 540px);
-    }
-}
-@keyframes bounce5{
-    0%{
-        background-color: red;
-        transform: translate(50%, 144px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 144px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 540px);
-    }
-}
-@keyframes bounce6{
-    0%{
-        background-color: red;
-        transform: translate(50%, 113px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 113px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 540px);
-    }
-}
-@keyframes bounce7{
-    0%{
-        background-color: red;
-        transform: translate(50%, 82px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 82px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 540px);
-    }
-}
-@keyframes bounce8{
-    0%{
-        background-color: red;
-        transform: translate(50%, 51px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 51px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 540px);
-    }
-}
-@keyframes bounce9{
-    0%{
-        background-color: red;
-        transform: translate(50%, 20px);
-    }
-    40%{
-        background-color: blue;
-        transform: translate(30%, 0px);
-    }
-    80%{
-        background-color: green;
-        transform: translate(10%, 20px);
-    }
-    100%{
-        background-color: fuchsia;
-        transform: translate(0%, 540px);
-    }
-}
-
 #startShift{
     z-index: 8;
 }
@@ -394,6 +188,7 @@ p{
     bottom: 0px;
     z-index: 9;
 }
+
 #hammer{
     position: absolute;
     display: none;
@@ -419,11 +214,4 @@ p{
     top: 650px;
     z-index: 7;
 }
-@keyframes flew{
-    0%{
-        transform: translate(400px, 650px);
-    }
-    100%{
-        transform: translate(-100px, 700px);
-    }
-}
+

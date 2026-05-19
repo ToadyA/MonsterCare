@@ -12,15 +12,27 @@ console.log("boredom is currently " + boredom);
 let sleep = false;
 let wiggles = 0;
 let year = 0;
+
 const ballBounce = new Audio("audio/dodgeball.mp3");
 const tonk = new Audio("audio/tink.mp3");
 
+//egg wiggle animation
+let billy = new KeyframeEffect(
+    document.getElementById("Oatkylosaurus"), [
+        {transform: "rotate(-15deg)"},
+        {transform: "rotate(15deg)"},
+    ], {
+        duration: (500 - (wiggles * 10)),
+        direction: "alternate",
+        iterations: (wiggles + 6),
+    }, );
+let goodMorning = new Animation(billy, document.timeline);
+
 //Pertains to age. Every 9 wiggles is one year, and every shift completed is one wiggle. He matures at age 4 and again at age 9.
-//Sadly setting .style.width = tall + "px" (where tall = 40 and is iterated by 62 per year and caps at 600px) does not work. I have opted to set each of 9 heights manually.
 function wiggle(){
     console.log("wiggle number: " + wiggles);
     if(wiggles < 9){
-        document.getElementById("Oatkylosaurus").style.animation = "wiggle 1s";
+        goodMorning.play();
         console.log("wiggle wiggle!");
     }
     if(wiggles % 4 == 0){
@@ -34,25 +46,20 @@ function wiggle(){
         if(wiggles % 9 == 0 && wiggles != 0){
             year ++;
             if(year < 10){
-                bound ++;
-                if(wiggles == 9)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='102px' width='102px'>";
-                else if(wiggles == 18)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='164px' width='164px'>";
-                else if(wiggles == 27)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='226px' width='226px'>";
-                else if(wiggles == 36)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='289px' width='289px'>";
-                else if(wiggles == 45)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='351px' width='351px'>";
-                else if(wiggles == 54)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='413px' width='413px'>";
-                else if(wiggles == 63)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='475px' width='475px'>";
-                else if(wiggles == 72)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='537px' width='537px'>";
-                else if(wiggles == 81)
+                if(wiggles == 9){
+                    document.getElementById("Oatkylosaurus").style.top = "35%";
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
+                }
+                else if(wiggles == 36){
+                    document.getElementById("Oatkylosaurus").style.top = "28%";
+                    document.getElementById("Oatkylosaurus").style.left = "48%";
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+                }
+                else if(wiggles == 81){
+                    document.getElementById("Oatkylosaurus").style.top = "20%";
+                    document.getElementById("Oatkylosaurus").style.left = "47%";
                     document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+                }
             }
             document.getElementById("age").innerHTML = "Age: " + year;
         }
@@ -75,25 +82,45 @@ function haveFun(n){
     document.getElementById("bored").style.width = boredom + "px";
     console.log("boredom is currently " + boredom);
 }
+            //fix the ball animation. Why is it like this?
+let boing = new KeyframeEffect(
+    document.getElementById("dodgeball"), [
+        {transform: "translate(0%, 0%)"},
+        {transform: "translate(-100%, -30%)"},
+        {transform: "translate(-200%, 0%)"},
+        {transform: "translate(-300%, 200%)"},
+    ], {
+        duration: 1000,
+        iterations: 45,
+    }, );
+let ricochet = new Animation(boing, document.timeline);
 
 //play with the boy by hitting him with a ball. He doesn't seem to like it much...
 const ball = document.getElementById("playBall");
-let bound = 0;
 ball.addEventListener("click", () =>{
     haveFun(1);
-    const dodgeball = document.createElement("div");
-    document.getElementById("dodgeball").style.display = "block";
-    document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' width='100px' height='100px' style=\"display: block\">";
-    document.getElementById("dodgeball").style.animation =  "bounce" + bound + " 1.05s";
+    if(wiggles >= 81)
+        document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_hit.png' height='600px' width='600px'>";
+    else if(wiggles >= 36)
+        document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloYow.png' height='400px' width='400px'>";
+    else if(wiggles >= 9)
+        document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyHit.png' height='250px' width='250px'>";
+    document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' width='100px' height='100px' style=\"display: block; z-index: 15; position: absolute; left: 50%; top: 30%;\">";
     setTimeout(() => {
-        document.getElementById("dodgeball").style.display = "none";
-        document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' width='100px' height='100px' style=\"display: none\">";
-    }, 1000);
+        if(wiggles >= 81)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+        else if(wiggles >= 36)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+        else if(wiggles >= 9)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
+        //document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' width='100px' height='100px' style=\"display: none; z-index: 15; position: absolute; left: 50%; top: 30%;\">";
+    }, 950);
     ballBounce.currentTime = 13.5;
     ballBounce.play();
+    ricochet.play();
 });
 
-//do work to earn money, and to pass the time.
+//do work to earn money, and to pass the time. This toggles everyting on or off, by a click of the punch card, which also advances the day by 1 Wiggle for every 2 clicks (9 Wiggles per Age).
 let shift = false;
 const start = document.getElementById("startShift");
 start.addEventListener("click", () =>{
@@ -122,28 +149,87 @@ start.addEventListener("click", () =>{
     }
 });
 
-//shell the oat.
-let sorty = false;//unshelled oat
+///Shell the oat.
+let sorty = false;  //the state of pending sorting, provided you stop mashing the hammer!
+let punish = 0;     //you mashed the hammer too much. You must wait.
 const shell = document.getElementById("oat");
+//shelling animations:
+let discard = new KeyframeEffect(
+    document.getElementById("debris"), [
+        {transform: "translate(0%, 0%)"},
+        {transform: "translate(-10000%, -150%)"},
+    ], {
+        duration: 1000,
+    }, );
+let flew = new Animation(discard, document.timeline);
+
+let quickly = new KeyframeEffect(
+    document.getElementById("oat"), [
+        {transform: "translate(0%, 0%)"},
+        {transform: "translate(400%, 20%)"},
+        {transform: "translate(500%, 350%)"},
+    ], {
+        duration: 500,
+    }, );
+let quickSort = new Animation(quickly, document.timeline);
+
+let rolly = new KeyframeEffect(
+    document.getElementById("oat"), [
+        {transform: "translate(0%, 0%)"},
+        {transform: "translate(-300%, 20%)"},
+        {transform: "translate(-400%, 350%)"},
+    ], {
+        duration: 500,
+    }, );
+let rollSort = new Animation(rolly, document.timeline);
+
+//click the oat
 shell.addEventListener("click", () =>{
+    setTimeout(() => {
+        document.getElementById("debris").style.display = "none";
+    }, 999);
+    if(sorty){
+        punish ++;
+        document.getElementById("oat").innerHTML = "<img src='images/work/QuickOat.png' width='50px' height='50px'>";
+        console.log("Clicked too much. Punish: " + punish);
+    }
+    sorty = true;
     document.getElementById("hammer").style.transform = "rotate(315deg)";
     tonk.currentTime = 0;
     tonk.play();
-    document.getElementById("debris").style.animation = "flew 1s";
+    flew.play();
     setTimeout(() => {
         document.getElementById("hammer").style.transform = "rotate(0deg)";
     }, 500);
-    //punish hammer spam
-    //sorty upon clicking, unless a 200ms timer procs. if so, we stall longer and are still sorty, then the oat animation leads to the Quick container, giving less money.
-    //defaults to storing the rolled oat into the Rolled container.
-    /*
-    if(!sorty){
-        document.getElementById("oat").innerHTML = "";
-        document.getElementById("oat").style.animation = "sort 1s"
+    //punish hammer spam: when you click too fast, you must wait 200ms after the last click before the oat is submitted.
+    if(punish > 0){
+        setTimeout(() => {
+            punish ++;
+            console.log("You've done it this time. Punish: " + punish);
+            setTimeout(() => {
+                punish -= 2;
+                console.log("Okay, that's long enough. Punish: " + punish);
+                if(punish == 0){
+                    console.log("submitting the oat to the Quick Bin!");
+                    quickSort.play();
+                }
+            }, 100);
+        }, 100);
     }
-    else{
-
-    }
-        */
+    if(punish < 0)
+        punish = 0;
+    //let's check your behavior.
+    setTimeout(() => {
+        if(punish <= 0){
+            rollSort.play();
+            document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
+            sorty = false;
+            document.getElementById("debris").style.display = "block";
+            console.log("Sorty restored to false and debris has returned.");
+        }
+        else
+            console.log("You disappoint me, soldier. Punish: " + punish);
+    }, 1000);
+    
 });
 
