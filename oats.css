@@ -14,12 +14,16 @@ body{
 }
 
 #age{
-    left: 20px;
+    position: absolute;
+    left: 0%;
+    top: 15%;
     z-index: 2;
     font-weight: bold;
 }
 #cash{
-    left: 200px;
+    position: absolute;
+    left: 0%;
+    top: 0%;
     z-index: 2;
 }
 
@@ -135,8 +139,8 @@ body{
     gap: 20px;
     font-size: 20px;
     font-weight: bold;
-    left: 280px;
-    bottom: 0px;
+    left: 350px;
+    bottom: -25px;
     cursor: pointer;
     color: #0c051a;
     z-index: 2;
@@ -144,9 +148,152 @@ body{
 p{
     position: absolute;
     top: 56px;
-    color: rgb(228, 223, 253);
+    color: #e5d9ec;
     font-size: 24px;
     z-index: -1;
+}
+
+#plasBowl{
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    display: none;
+    top: 320px;
+    left: 240px;
+    background-color: #3ba395;
+    border: solid 2px #06675a;
+    z-index: 5;
+}
+#iceBank{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    display: none;
+    top: 320px;
+    left: 540px;
+    background-color: #f4f4f4;
+    border: solid 2px #000000;
+    z-index: 4;
+}
+#Oatmeal img{
+    position: absolute;
+    top: 350px;
+    left: 380px;
+    width: 8%;
+    height: 10%;
+    z-index: 5;
+}
+#Pepper img{
+    position: absolute;
+    top: 350px;
+    left: 240px;
+    width: 8%;
+    height: 10%;
+    z-index: 5;
+}
+#Ice img{
+    position: absolute;
+    top: 350px;
+    left: 545px;
+    width: 8%;
+    height: 10%;
+    z-index: 5;
+}
+#Oatmeal{
+    cursor: pointer;
+    display: none;
+}
+#Pepper{
+    cursor: pointer;
+    display: none;
+}
+#Ice{
+    cursor: pointer;
+    display: none;
+}
+
+#woodShelf{
+    position: absolute;
+    width: 320px;
+    height: 260px;
+    display: none;
+    top: 490px;
+    left: 210px;
+    background-color: #553489;
+    border: solid 2px #7b7b7b;
+    z-index: 4;
+}
+#Book1 img{
+    position: absolute;
+    top: 700px;
+    left: 225px;
+    width: 15%;
+    height: 5%;
+    z-index: 5;
+}
+#Book2 img{
+    position: absolute;
+    top: 660px;
+    left: 225px;
+    width: 15%;
+    height: 5%;
+    z-index: 5;
+}
+#Book3 img{
+    position: absolute;
+    top: 620px;
+    left: 225px;
+    width: 15%;
+    height: 5%;
+    z-index: 5;
+}
+#Book4 img{
+    position: absolute;
+    top: 580px;
+    left: 225px;
+    width: 15%;
+    height: 5%;
+    z-index: 5;
+}
+#Book5 img{
+    position: absolute;
+    top: 540px;
+    left: 225px;
+    width: 15%;
+    height: 5%;
+    z-index: 5;
+}
+#Book6 img{
+    position: absolute;
+    top: 500px;
+    left: 225px;
+    width: 15%;
+    height: 5%;
+    z-index: 5;
+}
+#Book1{
+    cursor: pointer;
+    display: none;
+}
+#Book2{
+    cursor: pointer;
+    display: none;
+}
+#Book3{
+    cursor: pointer;
+    display: none;
+}
+#Book4{
+    cursor: pointer;
+    display: none;
+}
+#Book5{
+    cursor: pointer;
+    display: none;
+}
+#Book6{
+    cursor: pointer;
+    display: none;
 }
 
 #startShift{
@@ -213,5 +360,109 @@ p{
     right: 520px;
     top: 650px;
     z-index: 7;
+}
+
+#Bookcase img{
+    position: absolute;
+    left: 20%;
+    top: 12%;
+    width: 10%;
+}
+#BookA img{
+    position: absolute;
+    left: 21%;
+    top: 28%;
+    width: 8%;
+    z-index: 1;
+}
+#BookB img{
+    position: absolute;
+    left: 21%;
+    top: 26%;
+    width: 8%;
+    z-index: 1;
+}
+#BookC img{
+    position: absolute;
+    left: 21%;
+    top: 24%;
+    width: 8%;
+    z-index: 1;
+}
+#BookD img{
+    position: absolute;
+    left: 21%;
+    top: 19%;
+    width: 8%;
+    z-index: 1;
+}
+#BookE img{
+    position: absolute;
+    left: 21%;
+    top: 17%;
+    width: 8%;
+    z-index: 1;
+}
+#BookF img{
+    position: absolute;
+    left: 21%;
+    top: 15%;
+    width: 8%;
+    z-index: 1;
+}
+#Fan img{
+    position: absolute;
+    left: 40%;
+    top: 6%;
+    width: 10%;
+}
+#DogHouse img{
+    position: absolute;
+    right: 10%;
+    top: 45%;
+    width: 10%;
+}
+#Smoke img{
+    position: absolute;
+    right: 15%;
+    top: 35%;
+    width: 5%;
+}
+#Freezer img{
+    position: absolute;
+    left: 14%;
+    top: 41%;
+    width: 10%;
+}
+#Shirt img{
+    position: absolute;
+    right: 26%;
+    top: 8%;
+    width: 10%;
+    rotate: 15deg;
+}
+#Jug img{
+    position: absolute;
+    left: 28%;
+    top: 58%;
+    width: 10%;
+}
+#Herbs img{
+    position: absolute;
+    right: 34%;
+    top: 61%;
+    width: 7%;
+}
+
+#pasLeather{
+    position: absolute;
+    width: 1200px;
+    height: 250px;
+    display: none;
+    top: 50px;
+    left: 400px;
+    background-color: #512a0e;
+    border: solid 2px #260606;
+    z-index: 4;
 }
 

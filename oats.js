@@ -82,7 +82,7 @@ function haveFun(n){
     document.getElementById("bored").style.width = boredom + "px";
     console.log("boredom is currently " + boredom);
 }
-            //fix the ball animation. Why is it like this?
+                                                            //fix the ball animation. Why is it like this?
 let boing = new KeyframeEffect(
     document.getElementById("dodgeball"), [
         {transform: "translate(0%, 0%)"},
@@ -119,6 +119,69 @@ ball.addEventListener("click", () =>{
     ballBounce.play();
     ricochet.play();
 });
+
+let peeky = false;
+const bag = document.getElementById("Bag");
+bag.addEventListener("click", () =>{
+    if(!peeky){
+        console.log("oh memories.");
+        peeky = true;
+        document.getElementById("pasLeather").style.display = "block";
+    }
+    else{
+        peeky = false;
+        document.getElementById("pasLeather").style.display = "none";
+    }
+});
+
+let peckish = false;
+const oatmeal = document.getElementById("Food");
+oatmeal.addEventListener("click", () =>{
+    if(!peckish){
+        console.log("I wonder what's for Dinner?");
+        peckish = true;
+        document.getElementById("plasBowl").style.display = "block";
+        document.getElementById("iceBank").style.display = "block";
+        document.getElementById("Oatmeal").style.display = "block";
+        document.getElementById("Pepper").style.display = "block";
+        document.getElementById("Ice").style.display = "block";
+    }
+    else{
+        peckish = false;
+        document.getElementById("plasBowl").style.display = "none";
+        document.getElementById("iceBank").style.display = "none";
+        document.getElementById("Oatmeal").style.display = "none";
+        document.getElementById("Pepper").style.display = "none";
+        document.getElementById("Ice").style.display = "none";
+    }
+});
+
+let booksy = false;
+const bookShelf = document.getElementById("Books");
+bookShelf.addEventListener("click", () =>{
+    if(!booksy){
+        console.log("what's reading?");
+        booksy = true;
+        document.getElementById("woodShelf").style.display = "block";
+        document.getElementById("Book1").style.display = "block";
+        document.getElementById("Book2").style.display = "block";
+        document.getElementById("Book3").style.display = "block";
+        document.getElementById("Book4").style.display = "block";
+        document.getElementById("Book5").style.display = "block";
+        document.getElementById("Book6").style.display = "block";
+    }
+    else{
+        booksy = false;
+        document.getElementById("woodShelf").style.display = "none";
+        document.getElementById("Book1").style.display = "none";
+        document.getElementById("Book2").style.display = "none";
+        document.getElementById("Book3").style.display = "none";
+        document.getElementById("Book4").style.display = "none";
+        document.getElementById("Book5").style.display = "none";
+        document.getElementById("Book6").style.display = "none";
+    }
+});
+
 
 //do work to earn money, and to pass the time. This toggles everyting on or off, by a click of the punch card, which also advances the day by 1 Wiggle for every 2 clicks (9 Wiggles per Age).
 let shift = false;
