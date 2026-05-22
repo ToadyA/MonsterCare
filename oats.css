@@ -32,7 +32,14 @@ body{
     font-size: 20px;
     font-weight: bold;
     color: #091472;
-    top: 100px;
+}
+#cash{
+    left: 92%;
+    top: 29%;
+}
+#age{
+    left: 92%;
+    top: 39%;
 }
 
 .bar{
@@ -367,48 +374,43 @@ p{
     left: 20%;
     top: 12%;
     width: 10%;
+    z-index: -1;
 }
 #BookA img{
     position: absolute;
     left: 21%;
     top: 28%;
     width: 8%;
-    z-index: 1;
 }
 #BookB img{
     position: absolute;
     left: 21%;
     top: 26%;
     width: 8%;
-    z-index: 1;
 }
 #BookC img{
     position: absolute;
     left: 21%;
     top: 24%;
     width: 8%;
-    z-index: 1;
 }
 #BookD img{
     position: absolute;
     left: 21%;
     top: 19%;
     width: 8%;
-    z-index: 1;
 }
 #BookE img{
     position: absolute;
     left: 21%;
     top: 17%;
     width: 8%;
-    z-index: 1;
 }
 #BookF img{
     position: absolute;
     left: 21%;
     top: 15%;
     width: 8%;
-    z-index: 1;
 }
 #Fan img{
     position: absolute;
@@ -453,6 +455,49 @@ p{
     top: 61%;
     width: 7%;
 }
+#Bookcase{
+    display: none;
+}
+#BookA{
+    display: none;
+}
+#BookB{
+    display: none;
+}
+#BookC{
+    display: none;
+}
+#BookD{
+    display: none;
+}
+#BookE{
+    display: none;
+}
+#BookF{
+    display: none;
+}
+#Fan{
+    display: none;
+}
+#DogHouse{
+    display: none;
+}
+#Smoke{
+    display: none;
+}
+#Freezer{
+    display: none;
+}
+#Shirt{
+    display: none;
+}
+#Jug{
+    display: none;
+}
+#Herbs{
+    display: none;
+}
+
 
 #pasLeather{
     position: absolute;
@@ -465,4 +510,195 @@ p{
     border: solid 2px #260606;
     z-index: 4;
 }
+
+
+#mart{
+    position: absolute;
+    width: 900px;
+    height: 540px;
+    display: none;
+    top: 240px;
+    left: 140px;
+    background-color: #c8cfc9;
+    border: solid 2px #ca2e2e;
+    z-index: 15;
+}
+#BookcaseX img{
+    position: absolute;
+    left: 8%;
+    top: 28%;
+    width: 5%;
+    z-index: 16;
+}
+#BookAX img{
+    position: absolute;
+    left: 8%;
+    top: 78%;
+    width: 5%;
+    z-index: 16;
+}
+#BookBX img{
+    position: absolute;
+    left: 8%;
+    top: 71%;
+    width: 5%;
+    z-index: 16;
+}
+#BookCX img{
+    position: absolute;
+    left: 8%;
+    top: 64%;
+    width: 5%;
+    z-index: 16;
+}
+#BookDX img{
+    position: absolute;
+    left: 8%;
+    top: 57%;
+    width: 5%;
+    z-index: 16;
+}
+#BookEX img{
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    width: 5%;
+    z-index: 16;
+}
+#BookFX img{
+    position: absolute;
+    left: 8%;
+    top: 43%;
+    width: 5%;
+    z-index: 16;
+}
+#OatmealX img{
+    position: absolute;
+    left: 14%;
+    top: 28%;
+    width: 5%;
+    z-index: 16;
+}
+#PepperX img{
+    position: absolute;
+    left: 14%;
+    top: 42%;
+    width: 5%;
+    z-index: 16;
+}
+#FreezerX img{
+    position: absolute;
+    left: 14%;
+    top: 57%;
+    width: 5%;
+    z-index: 16;
+}
+#IceX img{
+    position: absolute;
+    left: 14%;
+    top: 70%;
+    width: 5%;
+    z-index: 16;
+}
+#FanX img{
+    position: absolute;
+    left: 20%;
+    top: 28%;
+    width: 5%;
+    z-index: 16;
+}
+#DogHouseX img{
+    position: absolute;
+    left: 20%;
+    top: 42%;
+    width: 5%;
+    z-index: 16;
+}
+#ShirtX img{
+    position: absolute;
+    left: 26%;
+    top: 28%;
+    width: 5%;
+    z-index: 16;
+}
+#JugX img{
+    position: absolute;
+    left: 20%;
+    top: 57%;
+    width: 5%;
+    z-index: 16;
+}
+#HerbsX img{
+    position: absolute;
+    left: 26%;
+    top: 57%;
+    width: 5%;
+    z-index: 16;
+}
+
+#BookcaseX{
+    cursor: pointer;
+    display: none;
+}
+#BookAX{
+    cursor: pointer;
+    display: none;
+}
+#BookBX{
+    cursor: pointer;
+    display: none;
+}
+#BookCX{
+    cursor: pointer;
+    display: none;
+}
+#BookDX{
+    cursor: pointer;
+    display: none;
+}
+#BookEX{
+    cursor: pointer;
+    display: none;
+}
+#BookFX{
+    cursor: pointer;
+    display: none;
+}
+#OatmealX{
+    cursor: pointer;
+    display: none;
+}
+#PepperX{
+    cursor: pointer;
+    display: none;
+}
+#FreezerX{
+    cursor: pointer;
+    display: none;
+}
+#IceX{
+    cursor: pointer;
+    display: none;
+}
+#FanX{
+    cursor: pointer;
+    display: none;
+}
+#DogHouseX{
+    cursor: pointer;
+    display: none;
+}
+#ShirtX{
+    cursor: pointer;
+    display: none;
+}
+#JugX{
+    cursor: pointer;
+    display: none;
+}
+#HerbsX{
+    cursor: pointer;
+    display: none;
+}
+
 

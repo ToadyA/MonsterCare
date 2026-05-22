@@ -12,6 +12,10 @@ console.log("boredom is currently " + boredom);
 let sleep = false;
 let wiggles = 0;
 let year = 0;
+let moolah = 20.00;
+let oatStock = 10;
+let pepperStock = 0;
+let iceStock = 0;
 
 const ballBounce = new Audio("audio/dodgeball.mp3");
 const tonk = new Audio("audio/tink.mp3");
@@ -61,7 +65,7 @@ function wiggle(){
                     document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
                 }
             }
-            document.getElementById("age").innerHTML = "Age: " + year;
+            document.getElementById("age").innerHTML = "<h3>Age: " + year + "</h3>";
         }
     }
     if(wiggles % 5 == 0){
@@ -132,6 +136,372 @@ bag.addEventListener("click", () =>{
         peeky = false;
         document.getElementById("pasLeather").style.display = "none";
     }
+});
+
+let shopping = false;
+const shop = document.getElementById("Cart");
+shop.addEventListener("click", () =>{
+    if(!shopping){
+        console.log("oh memories.");
+        shopping = true;
+        document.getElementById("mart").style.display = "block";
+        if(!store[0])
+            document.getElementById("BookcaseX").style.display = "block";
+        if(!store[1])
+            document.getElementById("BookAX").style.display = "block";
+        if(!store[2])
+            document.getElementById("BookBX").style.display = "block";
+        if(!store[3])
+            document.getElementById("BookCX").style.display = "block";
+        if(!store[4])
+            document.getElementById("BookDX").style.display = "block";
+        if(!store[5])
+            document.getElementById("BookEX").style.display = "block";
+        if(!store[6])
+            document.getElementById("BookFX").style.display = "block";
+        if(!store[7])
+            document.getElementById("OatmealX").style.display = "block";
+        if(!store[8])
+            document.getElementById("PepperX").style.display = "block";
+        if(!store[9])
+            document.getElementById("FreezerX").style.display = "block";
+        if(!store[10])
+            document.getElementById("IceX").style.display = "block";
+        if(!store[11])
+            document.getElementById("FanX").style.display = "block";
+        if(!store[12])
+            document.getElementById("DogHouseX").style.display = "block";
+        if(!store[13])
+            document.getElementById("ShirtX").style.display = "block";
+        if(!store[14])
+            document.getElementById("JugX").style.display = "block";
+        if(!store[15])
+            document.getElementById("HerbsX").style.display = "block";
+    }
+    else{
+        shopping = false;
+        document.getElementById("mart").style.display = "none";
+        document.getElementById("BookcaseX").style.display = "none";
+        document.getElementById("BookAX").style.display = "none";
+        document.getElementById("BookBX").style.display = "none";
+        document.getElementById("BookCX").style.display = "none";
+        document.getElementById("BookDX").style.display = "none";
+        document.getElementById("BookEX").style.display = "none";
+        document.getElementById("BookFX").style.display = "none";
+        document.getElementById("OatmealX").style.display = "none";
+        document.getElementById("PepperX").style.display = "none";
+        document.getElementById("FreezerX").style.display = "none";
+        document.getElementById("IceX").style.display = "none";
+        document.getElementById("FanX").style.display = "none";
+        document.getElementById("DogHouseX").style.display = "none";
+        document.getElementById("ShirtX").style.display = "none";
+        document.getElementById("JugX").style.display = "none";
+        document.getElementById("HerbsX").style.display = "none";
+    }
+});
+//16 items to buy, length of 13 without foodstuffs. false means it's stocked, true means you've bought it.
+let store = [false,false,false,false,false,false,false,false,false,false,false,false,false];
+
+let shelved = false;
+const buyBookcase = document.getElementById("BookcaseX");
+buyBookcase.addEventListener("click", () =>{
+    if(store[0] == false && moolah >= 11.99){
+        shelved = true;
+        store[0] = true;
+        moolah -= 11.99;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("BookcaseX").style.display = "none";
+        document.getElementById("Bookcase").style.display = "block";
+        console.log("Thank you for your purchase of one Bookcase!");
+    }
+    else if(moolah < 11.99)
+        console.log("brokie. get lost.");
+});
+const buyBookA = document.getElementById("BookAX");
+buyBookA.addEventListener("click", () =>{
+    if(store[1] == false && shelved == true && moolah >= 1.49){
+        store[1] = true;
+        moolah -= 1.49;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("BookAX").style.display = "none";
+        document.getElementById("BookA").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"101 Uses For Oats\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 1.49)
+        console.log("brokie. get lost.");
+});
+const buyBookB = document.getElementById("BookBX");
+buyBookB.addEventListener("click", () =>{
+    if(store[2] == false && shelved == true && moolah >= 3.99){
+        store[2] = true;
+        moolah -= 3.99;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("BookBX").style.display = "none";
+        document.getElementById("BookB").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"Anna Karenina\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 3.99)
+        console.log("brokie. get lost.");
+});
+const buyBookC = document.getElementById("BookCX");
+buyBookC.addEventListener("click", () =>{
+    if(store[3] == false && shelved == true && moolah >= 2.49){
+        store[3] = true;
+        moolah -= 2.49;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("BookCX").style.display = "none";
+        document.getElementById("BookC").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"Treasure Island\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 2.49)
+        console.log("brokie. get lost.");
+});
+const buyBookD = document.getElementById("BookDX");
+buyBookD.addEventListener("click", () =>{
+    if(store[4] == false && shelved == true && moolah >= 1.99){
+        store[4] = true;
+        moolah -= 1.99;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("BookDX").style.display = "none";
+        document.getElementById("BookD").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"The Jungle\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 1.99)
+        console.log("brokie. get lost.");
+});
+const buyBookE = document.getElementById("BookEX");
+buyBookE.addEventListener("click", () =>{
+    if(store[5] == false && shelved == true && moolah >= 3.99){
+        store[5] = true;
+        moolah -= 3.99;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("BookEX").style.display = "none";
+        document.getElementById("BookE").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"The Anti-Ableist Manifesto\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 3.99)
+        console.log("brokie. get lost.");
+});
+const buyBookF = document.getElementById("BookFX");
+buyBookF.addEventListener("click", () =>{
+    if(store[6] == false && shelved == true && moolah >= 0.99){
+        store[6] = true;
+        moolah -= 0.99;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("BookFX").style.display = "none";
+        document.getElementById("BookF").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"Art of War\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 0.99)
+        console.log("brokie. get lost.");
+});
+const buyOatmeal = document.getElementById("OatmealX");
+buyOatmeal.addEventListener("click", () =>{
+    if(moolah >= 0.19){
+        moolah -= 0.19;
+        oatStock ++;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        console.log("Thank you for your purchase of one serving of oats!");
+    }
+    else
+        console.log("brokie. get lost.");
+    
+});
+const buyPepper = document.getElementById("PepperX");
+buyPepper.addEventListener("click", () =>{
+    if(moolah >= 0.99){
+        moolah -= 0.99;
+        pepperStock ++;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        console.log("Thank you for your purchase of one Orange Bell Pepper!");
+    }
+    else
+        console.log("brokie. get lost.");
+});
+let freezy = false;
+const buyIce = document.getElementById("IceX");
+buyIce.addEventListener("click", () =>{
+    if(freezy && moolah >= 0.01){
+        moolah -= 0.01;
+        iceStock += 10;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        console.log("Thank you for your purchase of a buncha ice chunks!");
+    }
+    else if (!freezy)
+        console.log("Where are you going to put all that ice? Think!");
+    else if(moolah < 0.01)
+        console.log("brokie. get lost.");
+});
+const buyFreezer = document.getElementById("FreezerX");
+buyFreezer.addEventListener("click", () =>{
+    if(store[7] == false && moolah >= 18.49){
+        freezy = true;
+        store[7] = true;
+        moolah -= 18.49;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("FreezerX").style.display = "none";
+        document.getElementById("Freezer").style.display = "block";
+        console.log("Thank you for your purchase of one Freezer!");
+    }
+    else if(moolah < 18.49)
+        console.log("brokie. get lost.");
+});
+const buyFan = document.getElementById("FanX");
+buyFan.addEventListener("click", () =>{
+    if(store[8] == false && moolah >= 8.99){
+        store[8] = true;
+        moolah -= 8.99;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("FanX").style.display = "none";
+        document.getElementById("Fan").style.display = "block";
+        console.log("Thank you for your purchase of one Ceiling Fan!");
+    }
+    else if(moolah < 8.99)
+        console.log("brokie. get lost.");
+});
+const buyDogHouse = document.getElementById("DogHouseX");
+buyDogHouse.addEventListener("click", () =>{
+    if(store[9] == false && moolah >= 39.99){
+        store[9] = true;
+        moolah -= 39.99;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("DogHouseX").style.display = "none";
+        document.getElementById("DogHouse").style.display = "block";
+        console.log("Thank you for your purchase of one Dog House Mk.2!");
+    }
+    else if(moolah < 39.99)
+        console.log("brokie. get lost.");
+});
+const buyShirt = document.getElementById("ShirtX");
+buyShirt.addEventListener("click", () =>{
+    if(store[10] == false && moolah >= 3.99){
+        store[10] = true;
+        moolah -= 3.99;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("ShirtX").style.display = "none";
+        document.getElementById("Shirt").style.display = "block";
+        console.log("Thank you for your purchase of one Cool Tee-Shirt!");
+    }
+    else if(moolah < 3.99)
+        console.log("brokie. get lost.");
+});
+const buyJug = document.getElementById("JugX");
+buyJug.addEventListener("click", () =>{
+    if(store[11] == false && moolah >= 15.99){
+        store[11] = true;
+        moolah -= 15.99;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("JugX").style.display = "none";
+        document.getElementById("Jug").style.display = "block";
+        console.log("Thank you for your purchase of one 5-Gallon Water Jug!");
+    }
+    else if(moolah < 15.99)
+        console.log("brokie. get lost.");
+});
+const buyHerbs = document.getElementById("HerbsX");
+buyHerbs.addEventListener("click", () =>{
+    if(store[12] == false && moolah >= 14.49){
+        store[12] = true;
+        moolah -= 14.49;
+        if(((moolah * 100) % 10) != 0){
+            moolah *= 100;
+            Math.round(moolah);
+            moolah /= 100;
+        }
+        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        document.getElementById("HerbsX").style.display = "none";
+        document.getElementById("Herbs").style.display = "block";
+        console.log("Thank you for your purchase of these Trimmed Herbs!");
+    }
+    else if(moolah < 14.49)
+        console.log("brokie. get lost.");
 });
 
 let peckish = false;
@@ -213,8 +583,9 @@ start.addEventListener("click", () =>{
 });
 
 ///Shell the oat.
-let sorty = false;  //the state of pending sorting, provided you stop mashing the hammer!
-let punish = 0;     //you mashed the hammer too much. You must wait.
+let sorty = false;      //the state of pending sorting, provided you stop mashing the hammer!
+let quickMan = false;    //remembers your mistake(s)
+let punish = 0;         //you mashed the hammer too much. You must wait.
 const shell = document.getElementById("oat");
 //shelling animations:
 let discard = new KeyframeEffect(
@@ -252,6 +623,7 @@ shell.addEventListener("click", () =>{
         document.getElementById("debris").style.display = "none";
     }, 999);
     if(sorty){
+        quickMan = true;
         punish ++;
         document.getElementById("oat").innerHTML = "<img src='images/work/QuickOat.png' width='50px' height='50px'>";
         console.log("Clicked too much. Punish: " + punish);
@@ -284,14 +656,41 @@ shell.addEventListener("click", () =>{
     //let's check your behavior.
     setTimeout(() => {
         if(punish <= 0){
-            rollSort.play();
-            document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
+            if(!quickMan){
+                rollSort.play();
+                document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
+                setTimeout(() => {
+                    moolah += 0.09;
+                    if(((moolah * 100) % 10) != 0){
+                        moolah *= 100;
+                        Math.round(moolah);
+                        moolah /= 100;
+                    }
+                    document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+                }, 490);
+            }
+            else{
+                quickSort.play();
+                document.getElementById("oat").innerHTML = "<img src='images/work/QuickOat.png' width='50px' height='50px'>";
+                setTimeout(() => {
+                    moolah += 0.02;
+                    if(((moolah * 100) % 10) != 0){
+                        moolah *= 100;
+                        Math.round(moolah);
+                        moolah /= 100;
+                    }
+                    document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>" ;
+                    document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
+                }, 490);
+            }
             sorty = false;
+            quickMan = false;
             document.getElementById("debris").style.display = "block";
             console.log("Sorty restored to false and debris has returned.");
         }
         else
             console.log("You disappoint me, soldier. Punish: " + punish);
+        
     }, 1000);
     
 });
