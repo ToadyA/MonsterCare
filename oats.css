@@ -13,19 +13,7 @@ body{
     width: 10%;
 }
 
-#age{
-    position: absolute;
-    left: 0%;
-    top: 15%;
-    z-index: 2;
-    font-weight: bold;
-}
-#cash{
-    position: absolute;
-    left: 1%;
-    top: 0%;
-    z-index: 2;
-}
+/*Two ostrasized stats who have nowhere convenient to go thanks to the fancy border art, and so are presently relegated to the right side of the screen*/
 
 .stat{
     position: absolute;;
@@ -34,13 +22,19 @@ body{
     color: #091472;
 }
 #cash{
+    position: absolute;
     left: 92%;
     top: 29%;
+    z-index: 2;
 }
 #age{
+    position: absolute;
     left: 92%;
     top: 39%;
+    z-index: 2;
 }
+
+/*The stat bars indicating the dino's health*/
 
 .bar{
     left: 10px;
@@ -140,6 +134,8 @@ body{
     z-index: 2;
 }
 
+/*Places the several icons such as [Playtime!] or [Work...] which presently line the bottom of the main scene*/
+
 .UI{
     position: absolute;
     display: flex;
@@ -152,13 +148,15 @@ body{
     color: #0c051a;
     z-index: 2;
 }
-p{
+.UI p{
     position: absolute;
     top: 56px;
     color: #e5d9ec;
     font-size: 24px;
     z-index: -1;
 }
+
+/*Contents of Mealtime (aquamarine background), where foodstuffs are held*/
 
 #plasBowl{
     position: absolute;
@@ -217,6 +215,8 @@ p{
     cursor: pointer;
     display: none;
 }
+
+/*Contents of Storytime (purple background), where accumulated books may be interacted with*/
 
 #woodShelf{
     position: absolute;
@@ -302,6 +302,8 @@ p{
     display: none;
 }
 
+/*Contents of Work (gray/red background), where hammering oats takes place and money is earned*/
+
 #startShift{
     z-index: 8;
 }
@@ -367,6 +369,8 @@ p{
     top: 650px;
     z-index: 7;
 }
+
+/*Contents of Furniture (main scene), with no suffix barring the books*/
 
 #Bookcase img{
     position: absolute;
@@ -497,19 +501,7 @@ p{
     display: none;
 }
 
-
-#pasLeather{
-    position: absolute;
-    width: 600px;
-    height: 250px;
-    display: none;
-    top: 8%;
-    left: 42%;
-    background-color: #512a0e;
-    border: solid 2px #260606;
-    z-index: 4;
-}
-
+/*Contents of Shopping (gray background), as denoted by suffix aX or AX*/
 
 #mart{
     position: absolute;
@@ -529,11 +521,41 @@ p{
     width: 5%;
     z-index: 5;
 }
+#BookcaseX h1{
+    position: absolute;
+    left: 8%;
+    top: 37%;
+    font-size: 18px;
+    z-index: 5;
+}
+#BookcaseX p{
+    position: absolute;
+    left: 8%;
+    top: 38.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
 #BookAX img{
     position: absolute;
     left: 8%;
     top: 78%;
     width: 5%;
+    z-index: 5;
+}
+#BookAX h1{
+    position: absolute;
+    left: 8%;
+    top: 79%;
+    font-size: 18px;
+    z-index: 5;
+}
+#BookAX p{
+    position: absolute;
+    left: 8%;
+    top: 80.5%;
+    font-size: 18px;
+    font-weight: bold;
     z-index: 5;
 }
 #BookBX img{
@@ -543,11 +565,41 @@ p{
     width: 5%;
     z-index: 5;
 }
+#BookBX h1{
+    position: absolute;
+    left: 8%;
+    top: 72%;
+    font-size: 18px;
+    z-index: 5;
+}
+#BookBX p{
+    position: absolute;
+    left: 8%;
+    top: 73.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
 #BookCX img{
     position: absolute;
     left: 8%;
     top: 64%;
     width: 5%;
+    z-index: 5;
+}
+#BookCX h1{
+    position: absolute;
+    left: 8%;
+    top: 65%;
+    font-size: 18px;
+    z-index: 5;
+}
+#BookCX p{
+    position: absolute;
+    left: 8%;
+    top: 66.5%;
+    font-size: 18px;
+    font-weight: bold;
     z-index: 5;
 }
 #BookDX img{
@@ -557,11 +609,41 @@ p{
     width: 5%;
     z-index: 5;
 }
+#BookDX h1{
+    position: absolute;
+    left: 8%;
+    top: 58%;
+    font-size: 18px;
+    z-index: 5;
+}
+#BookDX p{
+    position: absolute;
+    left: 8%;
+    top: 59.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
 #BookEX img{
     position: absolute;
     left: 8%;
     top: 50%;
     width: 5%;
+    z-index: 5;
+}
+#BookEX h1{
+    position: absolute;
+    left: 8%;
+    top: 51%;
+    font-size: 18px;
+    z-index: 5;
+}
+#BookEX p{
+    position: absolute;
+    left: 8%;
+    top: 52.5%;
+    font-size: 18px;
+    font-weight: bold;
     z-index: 5;
 }
 #BookFX img{
@@ -571,11 +653,41 @@ p{
     width: 5%;
     z-index: 5;
 }
+#BookFX h1{
+    position: absolute;
+    left: 8%;
+    top: 44%;
+    font-size: 18px;
+    z-index: 5;
+}
+#BookFX p{
+    position: absolute;
+    left: 8%;
+    top: 45.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
 #OatmealX img{
     position: absolute;
     left: 14%;
     top: 28%;
     width: 5%;
+    z-index: 5;
+}
+#OatmealX h1{
+    position: absolute;
+    left: 14%;
+    top: 35%;
+    font-size: 18px;
+    z-index: 5;
+}
+#OatmealX p{
+    position: absolute;
+    left: 14%;
+    top: 36.5%;
+    font-size: 18px;
+    font-weight: bold;
     z-index: 5;
 }
 #PepperX img{
@@ -585,11 +697,41 @@ p{
     width: 5%;
     z-index: 5;
 }
+#PepperX h1{
+    position: absolute;
+    left: 14%;
+    top: 50%;
+    font-size: 18px;
+    z-index: 5;
+}
+#PepperX p{
+    position: absolute;
+    left: 14%;
+    top: 51.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
 #FreezerX img{
     position: absolute;
     left: 14%;
     top: 57%;
     width: 5%;
+    z-index: 5;
+}
+#FreezerX h1{
+    position: absolute;
+    left: 14%;
+    top: 66%;
+    font-size: 18px;
+    z-index: 5;
+}
+#FreezerX p{
+    position: absolute;
+    left: 14%;
+    top: 67.5%;
+    font-size: 18px;
+    font-weight: bold;
     z-index: 5;
 }
 #IceX img{
@@ -599,11 +741,41 @@ p{
     width: 5%;
     z-index: 5;
 }
+#IceX h1{
+    position: absolute;
+    left: 14%;
+    top: 79%;
+    font-size: 18px;
+    z-index: 5;
+}
+#IceX p{
+    position: absolute;
+    left: 14%;
+    top: 80.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
 #FanX img{
     position: absolute;
     left: 20%;
     top: 28%;
     width: 5%;
+    z-index: 5;
+}
+#FanX h1{
+    position: absolute;
+    left: 20%;
+    top: 36.5%;
+    font-size: 18px;
+    z-index: 5;
+}
+#FanX p{
+    position: absolute;
+    left: 20%;
+    top: 38%;
+    font-size: 18px;
+    font-weight: bold;
     z-index: 5;
 }
 #DogHouseX img{
@@ -613,11 +785,42 @@ p{
     width: 5%;
     z-index: 5;
 }
+#DogHouseX h1{
+    position: absolute;
+    left: 20%;
+    top: 51%;
+    font-size: 18px;
+    z-index: 5;
+}
+#DogHouseX p{
+    position: absolute;
+    left: 20%;
+    top: 52.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
 #ShirtX img{
     position: absolute;
     left: 26%;
     top: 28%;
     width: 5%;
+    z-index: 5;
+}
+#ShirtX h1{
+    position: absolute;
+    left: 26%;
+    top: 36.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
+#ShirtX p{
+    position: absolute;
+    left: 26%;
+    top: 38%;
+    font-size: 18px;
+    font-weight: bold;
     z-index: 5;
 }
 #JugX img{
@@ -627,11 +830,41 @@ p{
     width: 5%;
     z-index: 5;
 }
+#JugX h1{
+    position: absolute;
+    left: 20%;
+    top: 66%;
+    font-size: 18px;
+    z-index: 5;
+}
+#JugX p{
+    position: absolute;
+    left: 20%;
+    top: 67.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 5;
+}
 #HerbsX img{
     position: absolute;
     left: 26%;
-    top: 57%;
+    top: 56%;
     width: 5%;
+    z-index: 5;
+}
+#HerbsX h1{
+    position: absolute;
+    left: 25.75%;
+    top: 66%;
+    font-size: 18px;
+    z-index: 5;
+}
+#HerbsX p{
+    position: absolute;
+    left: 26%;
+    top: 67.5%;
+    font-size: 18px;
+    font-weight: bold;
     z-index: 5;
 }
 
@@ -700,4 +933,94 @@ p{
     display: none;
 }
 
+/*Contents of Stuff (brown background), as denoted by suffix aB or Ab*/
+
+#pasLeather{
+    position: absolute;
+    width: 600px;
+    height: 250px;
+    display: none;
+    top: 8%;
+    left: 42%;
+    background-color: #512a0e;
+    border: solid 2px #260606;
+    z-index: 4;
+}
+#BookcaseB img{
+    position: absolute;
+    left: 43%;
+    top: 10%;
+    width: 5%;
+    z-index: 5;
+}
+#BookcaseB{
+    cursor: pointer;
+    display: none;
+}
+#BookAb img{
+    position: absolute;
+    left: 43%;
+    top: 33%;
+    width: 5%;
+    z-index: 5;
+}
+#BookAb{
+    cursor: pointer;
+    display: none;
+}
+#BookBb img{
+    position: absolute;
+    left: 43%;
+    top: 31%;
+    width: 5%;
+    z-index: 5;
+}
+#BookBb{
+    cursor: pointer;
+    display: none;
+}
+#BookCb img{
+    position: absolute;
+    left: 43%;
+    top: 29%;
+    width: 5%;
+    z-index: 5;
+}
+#BookCb{
+    cursor: pointer;
+    display: none;
+}
+#BookDb img{
+    position: absolute;
+    left: 43%;
+    top: 27%;
+    width: 5%;
+    z-index: 5;
+}
+#BookDb{
+    cursor: pointer;
+    display: none;
+}
+#BookEb img{
+    position: absolute;
+    left: 43%;
+    top: 25%;
+    width: 5%;
+    z-index: 5;
+}
+#BookEb{
+    cursor: pointer;
+    display: none;
+}
+#BookFb img{
+    position: absolute;
+    left: 43%;
+    top: 23%;
+    width: 5%;
+    z-index: 5;
+}
+#BookFb{
+    cursor: pointer;
+    display: none;
+}
 
