@@ -124,6 +124,16 @@ ball.addEventListener("click", () =>{
     ricochet.play();
 });
 
+function grub(m){
+    moolah += m;
+    if(((moolah * 100) % 10) != 0){
+        moolah *= 100;
+        Math.round(moolah);
+        moolah /= 100;
+    }
+    document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+}
+
 let peeky = false;
 const bag = document.getElementById("Bag");
 bag.addEventListener("click", () =>{
@@ -137,6 +147,8 @@ bag.addEventListener("click", () =>{
         document.getElementById("pasLeather").style.display = "none";
     }
 });
+
+///Store
 
 let shopping = false;
 const shop = document.getElementById("Cart");
@@ -200,48 +212,37 @@ shop.addEventListener("click", () =>{
     }
 });
 //16 items to buy, length of 13 without foodstuffs. false means it's stocked, true means you've bought it.
-let store = [false,false,false,false,false,false,false,false,false,false,false,false,false];
+let store = [11.99,1.49,0,0,0,0,0,0,0,0,0,0,0];
 
-let shelved = false;
+let shelved = false;     //you cannot buy books without a bookshelf
 const buyBookcase = document.getElementById("BookcaseX");
 buyBookcase.addEventListener("click", () =>{
-    if(store[0] == false && moolah >= 11.99){
+    if((store[0] > 0) && (moolah >= store[0])){
         shelved = true;
-        store[0] = true;
-        moolah -= 11.99;
-        if(((moolah * 100) % 10) != 0){
-            moolah *= 100;
-            Math.round(moolah);
-            moolah /= 100;
-        }
-        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        store[0] = 0;
+        grub(store[0]);
         document.getElementById("BookcaseX").style.display = "none";
         document.getElementById("Bookcase").style.display = "block";
         console.log("Thank you for your purchase of one Bookcase!");
     }
-    else if(moolah < 11.99)
+    else if(moolah < store[0])
         console.log("brokie. get lost.");
 });
 const buyBookA = document.getElementById("BookAX");
 buyBookA.addEventListener("click", () =>{
-    if(store[1] == false && shelved == true && moolah >= 1.49){
-        store[1] = true;
-        moolah -= 1.49;
-        if(((moolah * 100) % 10) != 0){
-            moolah *= 100;
-            Math.round(moolah);
-            moolah /= 100;
-        }
-        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+    if((store[1] > 0) && (shelved == true) && (moolah >= store[1])){
+        store[1] = 0;
+        grub(store[1]);
         document.getElementById("BookAX").style.display = "none";
         document.getElementById("BookA").style.display = "block";
         console.log("Thank you for your purchase of one copy of \"101 Uses For Oats\"!");
     }
     else if(shelved == false)
         console.log("You need a shelf for your books. Duh.");
-    else if(moolah < 1.49)
+    else if(moolah < store[1])
         console.log("brokie. get lost.");
 });
+/*
 const buyBookB = document.getElementById("BookBX");
 buyBookB.addEventListener("click", () =>{
     if(store[2] == false && shelved == true && moolah >= 3.99){
@@ -375,18 +376,11 @@ buyPepper.addEventListener("click", () =>{
     else
         console.log("brokie. get lost.");
 });
-let freezy = false;
+let freezy = false;     //you cannot buy ice without a freezer
 const buyIce = document.getElementById("IceX");
 buyIce.addEventListener("click", () =>{
     if(freezy && moolah >= 0.01){
-        moolah -= 0.01;
-        iceStock += 10;
-        if(((moolah * 100) % 10) != 0){
-            moolah *= 100;
-            Math.round(moolah);
-            moolah /= 100;
-        }
-        document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+        grub(-0.01);
         console.log("Thank you for your purchase of a buncha ice chunks!");
     }
     else if (!freezy)
@@ -503,6 +497,8 @@ buyHerbs.addEventListener("click", () =>{
     else if(moolah < 14.49)
         console.log("brokie. get lost.");
 });
+*/
+///Fridge/Freezer storage
 
 let peckish = false;
 const oatmeal = document.getElementById("Food");
@@ -525,6 +521,8 @@ oatmeal.addEventListener("click", () =>{
         document.getElementById("Ice").style.display = "none";
     }
 });
+
+///Bookshelf
 
 let booksy = false;
 const bookShelf = document.getElementById("Books");
@@ -554,6 +552,7 @@ bookShelf.addEventListener("click", () =>{
 
 
 //do work to earn money, and to pass the time. This toggles everyting on or off, by a click of the punch card, which also advances the day by 1 Wiggle for every 2 clicks (9 Wiggles per Age).
+
 let shift = false;
 const start = document.getElementById("startShift");
 start.addEventListener("click", () =>{
@@ -582,10 +581,11 @@ start.addEventListener("click", () =>{
     }
 });
 
-///Shell the oat.
-let sorty = false;      //the state of pending sorting, provided you stop mashing the hammer!
-let quickMan = false;    //remembers your mistake(s)
-let punish = 0;         //you mashed the hammer too much. You must wait.
+//Shell the oat.
+let sorty = false;          //the state of pending sorting, provided you stop mashing the hammer!
+let quickMan = false;       //remembers your mistake(s)
+let punish = 0;             //you mashed the hammer too much. You must wait.
+let unresolved = 0;         //keep track of the unresolved timers so that only one animation plays at a time and only one oat gives money.
 const shell = document.getElementById("oat");
 //shelling animations:
 let discard = new KeyframeEffect(
@@ -635,7 +635,7 @@ shell.addEventListener("click", () =>{
     flew.play();
     setTimeout(() => {
         document.getElementById("hammer").style.transform = "rotate(0deg)";
-    }, 500);
+    }, 200);
     //punish hammer spam: when you click too fast, you must wait 200ms after the last click before the oat is submitted.
     if(punish > 0){
         setTimeout(() => {
@@ -660,26 +660,14 @@ shell.addEventListener("click", () =>{
                 rollSort.play();
                 document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
                 setTimeout(() => {
-                    moolah += 0.09;
-                    if(((moolah * 100) % 10) != 0){
-                        moolah *= 100;
-                        Math.round(moolah);
-                        moolah /= 100;
-                    }
-                    document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>";
+                    grub(0.09);
                 }, 490);
             }
             else{
                 quickSort.play();
                 document.getElementById("oat").innerHTML = "<img src='images/work/QuickOat.png' width='50px' height='50px'>";
                 setTimeout(() => {
-                    moolah += 0.02;
-                    if(((moolah * 100) % 10) != 0){
-                        moolah *= 100;
-                        Math.round(moolah);
-                        moolah /= 100;
-                    }
-                    document.getElementById("cash").innerHTML = "<img src='images/icon/Wage.png'><h3>Cash: $"+ moolah + "</h3>" ;
+                    grub(0.02);
                     document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
                 }, 490);
             }

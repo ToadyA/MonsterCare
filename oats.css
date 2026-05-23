@@ -22,7 +22,7 @@ body{
 }
 #cash{
     position: absolute;
-    left: 0%;
+    left: 1%;
     top: 0%;
     z-index: 2;
 }
@@ -146,8 +146,8 @@ body{
     gap: 20px;
     font-size: 20px;
     font-weight: bold;
-    left: 350px;
-    bottom: -25px;
+    left: 14%;
+    bottom: 1%;
     cursor: pointer;
     color: #0c051a;
     z-index: 2;
@@ -162,11 +162,11 @@ p{
 
 #plasBowl{
     position: absolute;
-    width: 300px;
-    height: 150px;
+    width: 230px;
+    height: 120px;
     display: none;
-    top: 320px;
-    left: 240px;
+    top: 8%;
+    left: 10%;
     background-color: #3ba395;
     border: solid 2px #06675a;
     z-index: 5;
@@ -174,35 +174,34 @@ p{
 #iceBank{
     position: absolute;
     width: 150px;
-    height: 150px;
+    height: 120px;
     display: none;
-    top: 320px;
-    left: 540px;
+    top: 8%;
+    left: 20%;
     background-color: #f4f4f4;
     border: solid 2px #000000;
     z-index: 4;
 }
 #Oatmeal img{
     position: absolute;
-    top: 350px;
-    left: 380px;
-    width: 8%;
+    top: 9%;
+    left: 16%;
+    width: 5%;
     height: 10%;
     z-index: 5;
 }
 #Pepper img{
     position: absolute;
-    top: 350px;
-    left: 240px;
-    width: 8%;
-    height: 10%;
+    top: 9%;
+    left: 10.5%;
+    width: 5%;
     z-index: 5;
 }
 #Ice img{
     position: absolute;
-    top: 350px;
-    left: 545px;
-    width: 8%;
+    top: 8.5%;
+    left: 22.5%;
+    width: 5%;
     height: 10%;
     z-index: 5;
 }
@@ -501,11 +500,11 @@ p{
 
 #pasLeather{
     position: absolute;
-    width: 1200px;
+    width: 600px;
     height: 250px;
     display: none;
-    top: 50px;
-    left: 400px;
+    top: 8%;
+    left: 42%;
     background-color: #512a0e;
     border: solid 2px #260606;
     z-index: 4;
@@ -514,126 +513,126 @@ p{
 
 #mart{
     position: absolute;
-    width: 900px;
+    width: 470px;
     height: 540px;
     display: none;
     top: 240px;
     left: 140px;
     background-color: #c8cfc9;
     border: solid 2px #ca2e2e;
-    z-index: 15;
+    z-index: 4;
 }
 #BookcaseX img{
     position: absolute;
     left: 8%;
     top: 28%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #BookAX img{
     position: absolute;
     left: 8%;
     top: 78%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #BookBX img{
     position: absolute;
     left: 8%;
     top: 71%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #BookCX img{
     position: absolute;
     left: 8%;
     top: 64%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #BookDX img{
     position: absolute;
     left: 8%;
     top: 57%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #BookEX img{
     position: absolute;
     left: 8%;
     top: 50%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #BookFX img{
     position: absolute;
     left: 8%;
     top: 43%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #OatmealX img{
     position: absolute;
     left: 14%;
     top: 28%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #PepperX img{
     position: absolute;
     left: 14%;
     top: 42%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #FreezerX img{
     position: absolute;
     left: 14%;
     top: 57%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #IceX img{
     position: absolute;
     left: 14%;
     top: 70%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #FanX img{
     position: absolute;
     left: 20%;
     top: 28%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #DogHouseX img{
     position: absolute;
     left: 20%;
     top: 42%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #ShirtX img{
     position: absolute;
     left: 26%;
     top: 28%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #JugX img{
     position: absolute;
     left: 20%;
     top: 57%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 #HerbsX img{
     position: absolute;
     left: 26%;
     top: 57%;
     width: 5%;
-    z-index: 16;
+    z-index: 5;
 }
 
 #BookcaseX{
