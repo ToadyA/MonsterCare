@@ -12,6 +12,26 @@ body{
     height: auto;
     width: 10%;
 }
+#speechBubble{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    display: none;
+    background-color: #e8f1fa;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    z-index: 12;
+}
+#speechBubble p{
+    position: absolute;
+    display: none;
+    color: #0a0a0a;
+    left: 10%;
+    z-index: 13;
+    font-size: 200px;
+    font-weight: bold;
+}
 
 /*Two ostrasized stats who have nowhere convenient to go thanks to the fancy border art, and so are presently relegated to the right side of the screen*/
 
@@ -142,8 +162,8 @@ body{
     gap: 20px;
     font-size: 20px;
     font-weight: bold;
-    left: 14%;
-    bottom: 1%;
+    left: 23%;
+    bottom: 0%;
     cursor: pointer;
     color: #0c051a;
     z-index: 2;
@@ -154,6 +174,17 @@ body{
     color: #e5d9ec;
     font-size: 24px;
     z-index: -1;
+}
+
+#dodgeball img{
+    position: absolute;
+    left: 50%;
+    top: 31%;
+    width: 5%;
+    z-index: 8;
+}
+#dodgeball{
+    display: block;
 }
 
 /*Contents of Mealtime (aquamarine background), where foodstuffs are held*/
@@ -212,92 +243,6 @@ body{
     display: none;
 }
 #Ice{
-    cursor: pointer;
-    display: none;
-}
-
-/*Contents of Storytime (purple background), where accumulated books may be interacted with*/
-
-#woodShelf{
-    position: absolute;
-    width: 320px;
-    height: 260px;
-    display: none;
-    top: 490px;
-    left: 210px;
-    background-color: #553489;
-    border: solid 2px #7b7b7b;
-    z-index: 4;
-}
-#Book1 img{
-    position: absolute;
-    top: 700px;
-    left: 225px;
-    width: 15%;
-    height: 5%;
-    z-index: 5;
-}
-#Book2 img{
-    position: absolute;
-    top: 660px;
-    left: 225px;
-    width: 15%;
-    height: 5%;
-    z-index: 5;
-}
-#Book3 img{
-    position: absolute;
-    top: 620px;
-    left: 225px;
-    width: 15%;
-    height: 5%;
-    z-index: 5;
-}
-#Book4 img{
-    position: absolute;
-    top: 580px;
-    left: 225px;
-    width: 15%;
-    height: 5%;
-    z-index: 5;
-}
-#Book5 img{
-    position: absolute;
-    top: 540px;
-    left: 225px;
-    width: 15%;
-    height: 5%;
-    z-index: 5;
-}
-#Book6 img{
-    position: absolute;
-    top: 500px;
-    left: 225px;
-    width: 15%;
-    height: 5%;
-    z-index: 5;
-}
-#Book1{
-    cursor: pointer;
-    display: none;
-}
-#Book2{
-    cursor: pointer;
-    display: none;
-}
-#Book3{
-    cursor: pointer;
-    display: none;
-}
-#Book4{
-    cursor: pointer;
-    display: none;
-}
-#Book5{
-    cursor: pointer;
-    display: none;
-}
-#Book6{
     cursor: pointer;
     display: none;
 }
@@ -463,27 +408,35 @@ body{
 }
 #BookA{
     display: none;
+    cursor: pointer;
 }
 #BookB{
     display: none;
+    cursor: pointer;
 }
 #BookC{
     display: none;
+    cursor: pointer;
 }
 #BookD{
     display: none;
+    cursor: pointer;
 }
 #BookE{
     display: none;
+    cursor: pointer;
 }
 #BookF{
     display: none;
+    cursor: pointer;
 }
 #Fan{
     display: none;
+    cursor: pointer;
 }
 #DogHouse{
     display: none;
+    cursor: pointer;
 }
 #Smoke{
     display: none;
@@ -496,6 +449,7 @@ body{
 }
 #Jug{
     display: none;
+    cursor: pointer;
 }
 #Herbs{
     display: none;
@@ -929,97 +883,6 @@ body{
     display: none;
 }
 #HerbsX{
-    cursor: pointer;
-    display: none;
-}
-
-/*Contents of Stuff (brown background), as denoted by suffix aB or Ab*/
-
-#pasLeather{
-    position: absolute;
-    width: 600px;
-    height: 250px;
-    display: none;
-    top: 8%;
-    left: 42%;
-    background-color: #512a0e;
-    border: solid 2px #260606;
-    z-index: 4;
-}
-#BookcaseB img{
-    position: absolute;
-    left: 43%;
-    top: 10%;
-    width: 5%;
-    z-index: 5;
-}
-#BookcaseB{
-    cursor: pointer;
-    display: none;
-}
-#BookAb img{
-    position: absolute;
-    left: 43%;
-    top: 33%;
-    width: 5%;
-    z-index: 5;
-}
-#BookAb{
-    cursor: pointer;
-    display: none;
-}
-#BookBb img{
-    position: absolute;
-    left: 43%;
-    top: 31%;
-    width: 5%;
-    z-index: 5;
-}
-#BookBb{
-    cursor: pointer;
-    display: none;
-}
-#BookCb img{
-    position: absolute;
-    left: 43%;
-    top: 29%;
-    width: 5%;
-    z-index: 5;
-}
-#BookCb{
-    cursor: pointer;
-    display: none;
-}
-#BookDb img{
-    position: absolute;
-    left: 43%;
-    top: 27%;
-    width: 5%;
-    z-index: 5;
-}
-#BookDb{
-    cursor: pointer;
-    display: none;
-}
-#BookEb img{
-    position: absolute;
-    left: 43%;
-    top: 25%;
-    width: 5%;
-    z-index: 5;
-}
-#BookEb{
-    cursor: pointer;
-    display: none;
-}
-#BookFb img{
-    position: absolute;
-    left: 43%;
-    top: 23%;
-    width: 5%;
-    z-index: 5;
-}
-#BookFb{
     cursor: pointer;
     display: none;
 }
