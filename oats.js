@@ -375,6 +375,7 @@ buyOatmeal.addEventListener("click", () =>{
     if(moolah >= 19){
         grub(-19);
         oatStock ++;
+        document.getElementById("Oatmeal").innerHTML="<img src='images/Bowl.png'><h1>x" + oatStock + "</h1>";
         console.log("Thank you for your purchase of one serving of oats!");
     }
     else
@@ -385,6 +386,7 @@ buyPepper.addEventListener("click", () =>{
     if(moolah >= 99){
         grub(-99);
         pepperStock ++;
+        document.getElementById("Pepper").innerHTML="<img src='images/BellPepper.png'><h1>x" + pepperStock + "</h1>";
         console.log("Thank you for your purchase of one Orange Bell Pepper!");
     }
     else
@@ -396,12 +398,13 @@ buyIce.addEventListener("click", () =>{
     if(freezy && moolah >= 1){
         grub(-1);
         iceStock += 10;
+        document.getElementById("Ice").innerHTML="<img src='images/IceTray.png'><h1>x" + iceStock + "</h1>";
         console.log("Thank you for your purchase of a buncha ice chunks!");
     }
     else if (!freezy)
         console.log("Where are you going to put all that ice? Think!");
     else if(moolah < 1)
-        console.log("MEGA brokie! Wow! I feel bad for you! But... no ice for you. get lost.");
+        console.log("MEGA brokie! Wow! You seriously don't have ONE PENNY?! get lost.");
 });
 const buyFreezer = document.getElementById("FreezerX");
 buyFreezer.addEventListener("click", () =>{
@@ -422,7 +425,8 @@ buyFan.addEventListener("click", () =>{
         store[8] = true;
         grub(-899);
         document.getElementById("FanX").style.display = "none";
-        document.getElementById("Fan").style.display = "block";
+        document.getElementById("MainFan").style.display = "block";
+        document.getElementById("FanCord").style.display = "block";
         console.log("Thank you for your purchase of one Ceiling Fan!");
     }
     else if(moolah < 899)
@@ -608,7 +612,7 @@ start.addEventListener("click", () =>{
 
 //Shell the oat.
 let sorty = false;          //the state of pending sorting, provided you stop mashing the hammer!
-let quickMan = false;       //remembers your mistake(s)
+let quickMan = 0;       //remembers your mistake(s)
 let punish = 0;             //you mashed the hammer too much. You must wait.
 let unresolved = 0;         //keep track of the unresolved timers so that only one animation plays at a time and only one oat gives money.
 const shell = document.getElementById("oat");
@@ -643,13 +647,41 @@ let rolly = new KeyframeEffect(
 let rollSort = new Animation(rolly, document.timeline);
 
 //click the oat
+function purgOatory(){
+    setTimeout(() => {
+        punish -= 1;
+        if(punish <= 0){
+            console.log("you've done your time. quickMan is " + quickMan);
+            punish = 0;
+            quickMan = 0;
+            quickSort.play();
+            setTimeout(() => {
+                grub(2);
+                document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
+                sorty = false;
+                document.getElementById("debris").style.display = "block";
+                console.log("quick oat submission. quickMan should be 0: " + quickMan);
+            }, 490);
+        }
+        else{
+            console.log("here we oat again...");
+            purgOatory();
+        }
+    }, 1);
+}
+
 shell.addEventListener("click", () =>{
     setTimeout(() => {
         document.getElementById("debris").style.display = "none";
     }, 990);
     if(sorty){
-        quickMan = true;
-        punish ++;
+        if(quickMan == 0){
+            quickMan = 1;
+            console.log("You big oaf. quickMan is " + quickMan);
+        }
+        punish += 250;
+        if(punish >= 600)
+            punish = 600;
         document.getElementById("oat").innerHTML = "<img src='images/work/QuickOat.png' width='50px' height='50px'>";
         console.log("Clicked too much. Punish: " + punish);
     }
@@ -662,50 +694,31 @@ shell.addEventListener("click", () =>{
         document.getElementById("hammer").style.transform = "rotate(0deg)";
     }, 200);
     //punish hammer spam: when you click too fast, you must wait 200ms after the last click before the oat is submitted.
-    if(punish > 0){
-        setTimeout(() => {
-            punish ++;
-            console.log("You've done it this time. Punish: " + punish);
-            setTimeout(() => {
-                punish -= 2;
-                console.log("Okay, that's long enough. Punish: " + punish);
-                if(punish == 0){
-                    console.log("submitting the oat to the Quick Bin!");
-                    quickSort.play();
-                }
-            }, 100);
-        }, 100);
+    if(quickMan == 1){
+        quickMan = 2;
+        console.log("you've done done it this time, bucko. quickMan is " + quickMan);
+        purgOatory();
     }
-    if(punish < 0)
+    if(punish < 1)
         punish = 0;
     //let's check your behavior.
-    setTimeout(() => {
-        if(punish <= 0){
-            if(!quickMan){
+    if(quickMan == 0){
+        console.log("quickman should be 0, and it's: " + quickMan);
+        setTimeout(() => {
+            console.log("empty your pockets, chump.");
+            console.log("quickman is " + quickMan);
+            if(quickMan == 0){
                 rollSort.play();
                 document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
                 setTimeout(() => {
                     grub(9);
+                    sorty = false;
+                    document.getElementById("debris").style.display = "block";
                 }, 490);
             }
-            else{
-                quickSort.play();
-                document.getElementById("oat").innerHTML = "<img src='images/work/QuickOat.png' width='50px' height='50px'>";
-                setTimeout(() => {
-                    grub(2);
-                    document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
-                }, 490);
-            }
-            sorty = false;
-            quickMan = false;
-            document.getElementById("debris").style.display = "block";
-            console.log("Sorty restored to false and debris has returned.");
-        }
-        else
-            console.log("You disappoint me, soldier. Punish: " + punish);
-        
-    }, 1000);
-    
+            console.log("rear guard.");
+        }, 590);
+    }
 });
 
 //Pressing Esc closes all exising windows (Shopping, Mealtime, Work).

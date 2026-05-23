@@ -14,22 +14,21 @@ body{
 }
 #speechBubble{
     position: absolute;
-    left: 50%;
+    left: 40%;
     top: 30%;
     display: none;
     background-color: #e8f1fa;
-    border-radius: 20px;
-    width: 100px;
-    height: 100px;
+    border-radius: 50px;
+    width: 280px;
+    height: 120px;
     z-index: 12;
 }
 #speechBubble p{
     position: absolute;
-    display: none;
     color: #0a0a0a;
     left: 10%;
     z-index: 13;
-    font-size: 200px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -219,11 +218,23 @@ body{
     height: 10%;
     z-index: 5;
 }
+#Oatmeal h1{
+    position: absolute;
+    top: 15%;
+    left: 16%;
+    z-index: 5;
+}
 #Pepper img{
     position: absolute;
     top: 9%;
     left: 10.5%;
     width: 5%;
+    z-index: 5;
+}
+#Pepper h1{
+    position: absolute;
+    top: 15%;
+    left: 10.5%;
     z-index: 5;
 }
 #Ice img{
@@ -232,6 +243,12 @@ body{
     left: 22.5%;
     width: 5%;
     height: 10%;
+    z-index: 5;
+}
+#Ice h1{
+    position: absolute;
+    top: 15%;
+    left: 22.5%;
     z-index: 5;
 }
 #Oatmeal{
@@ -360,10 +377,16 @@ body{
     top: 15%;
     width: 8%;
 }
-#Fan img{
+#MainFan img{
     position: absolute;
     left: 40%;
-    top: 6%;
+    top: 15%;
+    width: 10%;
+}
+#FanCord img{
+    position: absolute;
+    left: 40%;
+    top: 5%;
     width: 10%;
 }
 #DogHouse img{
@@ -430,9 +453,12 @@ body{
     display: none;
     cursor: pointer;
 }
-#Fan{
+#MainFan{
     display: none;
     cursor: pointer;
+}
+#FanCord{
+    display: none;
 }
 #DogHouse{
     display: none;
