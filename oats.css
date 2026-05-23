@@ -186,6 +186,67 @@ body{
     display: block;
 }
 
+#eyebeam1 img{
+    position: absolute;
+    left: 49.5%;
+    top: 44%;
+    width: 2%;
+    z-index: 1;
+}
+#eyebeam1{
+    display: none;
+}
+#eyebeam2 img{
+    position: absolute;
+    left: 47.5%;
+    top: 45%;
+    width: 2%;
+    z-index: 1;
+}
+#eyebeam2{
+    display: none;
+}
+#eyebeam3 img{
+    position: absolute;
+    left: 45.5%;
+    top: 53%;
+    width: 2%;
+    z-index: 1;
+}
+#eyebeam3{
+    display: none;
+}
+#eyebeam4 img{
+    position: absolute;
+    left: 43.5%;
+    top: 54%;
+    width: 2%;
+    z-index: 1;
+}
+#eyebeam4{
+    display: none;
+}
+#eyebeam5 img{
+    position: absolute;
+    left: 42%;
+    top: 62%;
+    width: 2%;
+    z-index: 1;
+}
+#eyebeam5{
+    display: none;
+}
+#eyebeam6 img{
+    position: absolute;
+    left: 40%;
+    top: 63%;
+    width: 2%;
+    z-index: 1;
+}
+#eyebeam6{
+    display: none;
+}
+
 /*Contents of Mealtime (aquamarine background), where foodstuffs are held*/
 
 #plasBowl{
@@ -416,7 +477,7 @@ body{
 }
 #Jug img{
     position: absolute;
-    left: 28%;
+    left: 32%;
     top: 58%;
     width: 10%;
 }

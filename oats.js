@@ -17,8 +17,9 @@ let oatStock = 10;      //starter supply of foodstuffs; if you change these valu
 let pepperStock = 0;
 let iceStock = 0;
 
-const ballBounce = new Audio("audio/dodgeball.mp3");
-const tonk = new Audio("audio/tink.mp3");
+let ballBounce = new Audio("audio/dodgeball.mp3");
+let tonk = new Audio("audio/tink.mp3");
+let xylophone = new Audio("audio/xylophone.mp3");
 
 //egg wiggle animation
 let billy = new KeyframeEffect(
@@ -205,7 +206,57 @@ mark2.addEventListener("click", () =>{
 });
 //fan animation
 //shirt animation
+
 //jug animation
+let coolIdea = false;   //whether the dino is looking at the water jug, contemplating a certified Cool Idea.
+const jugalo = document.getElementById("Jug");
+jugalo.addEventListener("click", () =>{
+    if(!coolIdea){
+        coolIdea = true;
+        if(wiggles >= 81)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_intrigue.png' height='600px' width='600px'>";
+        else if(wiggles >= 36)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloWater.png' height='400px' width='400px'>";
+        xylophone.currentTime = 36.5;
+        xylophone.play();
+        setTimeout(() =>{
+            xylophone.currentTime = 45.5;
+            setTimeout(() =>{
+                xylophone.currentTime = 54.3;
+                setTimeout(() =>{
+                    xylophone.currentTime = 103;
+                    setTimeout(() =>{
+                        document.getElementById("eyebeam1").style.display = "none";
+                        document.getElementById("eyebeam2").style.display = "none";
+                        document.getElementById("eyebeam3").style.display = "none";
+                        document.getElementById("eyebeam4").style.display = "none";
+                        document.getElementById("eyebeam5").style.display = "none";
+                        document.getElementById("eyebeam6").style.display = "none";
+                        coolIdea = false;
+                        if(wiggles >= 81)
+                            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+                        else if(wiggles >= 36)
+                            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+                    }, 700);
+                }, 700);
+                setTimeout(() =>{
+                    document.getElementById("eyebeam5").style.display = "block";
+                    document.getElementById("eyebeam6").style.display = "block";
+                }, 400);
+            }, 800);
+            setTimeout(() =>{
+                document.getElementById("eyebeam3").style.display = "block";
+                document.getElementById("eyebeam4").style.display = "block";
+            }, 400);
+        }, 800);
+        setTimeout(() =>{
+            document.getElementById("eyebeam1").style.display = "block";
+            document.getElementById("eyebeam2").style.display = "block";
+        }, 400);
+    }
+    
+});
+
 
 ///Store
 
@@ -519,6 +570,22 @@ funnyDino.addEventListener("contextmenu", (e) => {
         talking = true;
     }
 });
+const book1 = document.getElementById("BookA");
+book1.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookAPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
 function dinoPhrase(){
     console.log("fetching a quote at index " + dinoFlavor);
     const dinoWisdom = [
@@ -651,7 +718,6 @@ function purgOatory(){
     setTimeout(() => {
         punish -= 1;
         if(punish <= 0){
-            console.log("you've done your time. quickMan is " + quickMan);
             punish = 0;
             quickMan = 0;
             quickSort.play();
@@ -660,13 +726,10 @@ function purgOatory(){
                 document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
                 sorty = false;
                 document.getElementById("debris").style.display = "block";
-                console.log("quick oat submission. quickMan should be 0: " + quickMan);
             }, 490);
         }
-        else{
-            console.log("here we oat again...");
+        else
             purgOatory();
-        }
     }, 1);
 }
 
@@ -675,15 +738,12 @@ shell.addEventListener("click", () =>{
         document.getElementById("debris").style.display = "none";
     }, 990);
     if(sorty){
-        if(quickMan == 0){
+        if(quickMan == 0)
             quickMan = 1;
-            console.log("You big oaf. quickMan is " + quickMan);
-        }
         punish += 250;
         if(punish >= 600)
             punish = 600;
         document.getElementById("oat").innerHTML = "<img src='images/work/QuickOat.png' width='50px' height='50px'>";
-        console.log("Clicked too much. Punish: " + punish);
     }
     sorty = true;
     document.getElementById("hammer").style.transform = "rotate(315deg)";
@@ -696,17 +756,13 @@ shell.addEventListener("click", () =>{
     //punish hammer spam: when you click too fast, you must wait 200ms after the last click before the oat is submitted.
     if(quickMan == 1){
         quickMan = 2;
-        console.log("you've done done it this time, bucko. quickMan is " + quickMan);
         purgOatory();
     }
     if(punish < 1)
         punish = 0;
     //let's check your behavior.
     if(quickMan == 0){
-        console.log("quickman should be 0, and it's: " + quickMan);
         setTimeout(() => {
-            console.log("empty your pockets, chump.");
-            console.log("quickman is " + quickMan);
             if(quickMan == 0){
                 rollSort.play();
                 document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
@@ -716,7 +772,6 @@ shell.addEventListener("click", () =>{
                     document.getElementById("debris").style.display = "block";
                 }, 490);
             }
-            console.log("rear guard.");
         }, 590);
     }
 });
