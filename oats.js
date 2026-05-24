@@ -257,368 +257,6 @@ jugalo.addEventListener("click", () =>{
     
 });
 
-
-///Store
-
-//16 items to buy, length of 13 without foodstuffs. false means it's stocked, true means you've bought it.
-let store = [false,false,false,false,false,false,false,false,false,false,false,false,false];
-
-let shopping = false;
-const shop = document.getElementById("Cart");
-shop.addEventListener("click", () =>{
-    if(!shopping){
-        console.log("oh memories.");
-        shopping = true;
-        document.getElementById("mart").style.display = "block";
-        if(!store[0])
-            document.getElementById("BookcaseX").style.display = "block";
-        if(!store[1])
-            document.getElementById("BookAX").style.display = "block";
-        if(!store[2])
-            document.getElementById("BookBX").style.display = "block";
-        if(!store[3])
-            document.getElementById("BookCX").style.display = "block";
-        if(!store[4])
-            document.getElementById("BookDX").style.display = "block";
-        if(!store[5])
-            document.getElementById("BookEX").style.display = "block";
-        if(!store[6])
-            document.getElementById("BookFX").style.display = "block";
-        document.getElementById("OatmealX").style.display = "block";
-        document.getElementById("PepperX").style.display = "block";
-        if(!store[7])
-            document.getElementById("FreezerX").style.display = "block";
-        if(store[7])
-            document.getElementById("IceX").style.display = "block";
-        if(!store[8])
-            document.getElementById("FanX").style.display = "block";
-        if(!store[9])
-            document.getElementById("DogHouseX").style.display = "block";
-        if(!store[10])
-            document.getElementById("ShirtX").style.display = "block";
-        if(!store[11])
-            document.getElementById("JugX").style.display = "block";
-        if(!store[12])
-            document.getElementById("HerbsX").style.display = "block";
-    }
-    else{
-        shopping = false;
-        document.getElementById("mart").style.display = "none";
-        document.getElementById("BookcaseX").style.display = "none";
-        document.getElementById("BookAX").style.display = "none";
-        document.getElementById("BookBX").style.display = "none";
-        document.getElementById("BookCX").style.display = "none";
-        document.getElementById("BookDX").style.display = "none";
-        document.getElementById("BookEX").style.display = "none";
-        document.getElementById("BookFX").style.display = "none";
-        document.getElementById("OatmealX").style.display = "none";
-        document.getElementById("PepperX").style.display = "none";
-        document.getElementById("FreezerX").style.display = "none";
-        document.getElementById("IceX").style.display = "none";
-        document.getElementById("FanX").style.display = "none";
-        document.getElementById("DogHouseX").style.display = "none";
-        document.getElementById("ShirtX").style.display = "none";
-        document.getElementById("JugX").style.display = "none";
-        document.getElementById("HerbsX").style.display = "none";
-    }
-});
-
-let shelved = false;     //you cannot buy books without a bookshelf
-const buyBookcase = document.getElementById("BookcaseX");
-buyBookcase.addEventListener("click", () =>{
-    if(store[0] == false && moolah >= 1199){
-        shelved = true;
-        store[0] = true;
-        grub(-1199);
-        document.getElementById("BookcaseX").style.display = "none";
-        document.getElementById("Bookcase").style.display = "block";
-        console.log("Thank you for your purchase of one Bookcase!");
-    }
-    else if(moolah < 1199)
-        console.log("brokie. get lost.");
-});
-const buyBookA = document.getElementById("BookAX");
-buyBookA.addEventListener("click", () =>{
-    if(store[1] == false && shelved == true && moolah >= 149){
-        store[1] = true;
-        grub(-149);
-        document.getElementById("BookAX").style.display = "none";
-        document.getElementById("BookA").style.display = "block";
-        console.log("Thank you for your purchase of one copy of \"101 Uses For Oats\"!");
-    }
-    else if(shelved == false)
-        console.log("You need a shelf for your books. Duh.");
-    else if(moolah < 149)
-        console.log("brokie. get lost.");
-});
-const buyBookB = document.getElementById("BookBX");
-buyBookB.addEventListener("click", () =>{
-    if(store[2] == false && shelved == true && moolah >= 399){
-        store[2] = true;
-        grub(-399);
-        document.getElementById("BookBX").style.display = "none";
-        document.getElementById("BookB").style.display = "block";
-        console.log("Thank you for your purchase of one copy of \"Anna Karenina\"!");
-    }
-    else if(shelved == false)
-        console.log("You need a shelf for your books. Duh.");
-    else if(moolah < 399)
-        console.log("brokie. get lost.");
-});
-const buyBookC = document.getElementById("BookCX");
-buyBookC.addEventListener("click", () =>{
-    if(store[3] == false && shelved == true && moolah >= 249){
-        store[3] = true;
-        grub(-249);
-        document.getElementById("BookCX").style.display = "none";
-        document.getElementById("BookC").style.display = "block";
-        console.log("Thank you for your purchase of one copy of \"Treasure Island\"!");
-    }
-    else if(shelved == false)
-        console.log("You need a shelf for your books. Duh.");
-    else if(moolah < 249)
-        console.log("brokie. get lost.");
-});
-const buyBookD = document.getElementById("BookDX");
-buyBookD.addEventListener("click", () =>{
-    if(store[4] == false && shelved == true && moolah >= 199){
-        store[4] = true;
-        grub(-199);
-        document.getElementById("BookDX").style.display = "none";
-        document.getElementById("BookD").style.display = "block";
-        console.log("Thank you for your purchase of one copy of \"The Jungle\"!");
-    }
-    else if(shelved == false)
-        console.log("You need a shelf for your books. Duh.");
-    else if(moolah < 199)
-        console.log("brokie. get lost.");
-});
-const buyBookE = document.getElementById("BookEX");
-buyBookE.addEventListener("click", () =>{
-    if(store[5] == false && shelved == true && moolah >= 399){
-        store[5] = true;
-        grub(-399);
-        document.getElementById("BookEX").style.display = "none";
-        document.getElementById("BookE").style.display = "block";
-        console.log("Thank you for your purchase of one copy of \"The Anti-Ableist Manifesto\"!");
-    }
-    else if(shelved == false)
-        console.log("You need a shelf for your books. Duh.");
-    else if(moolah < 399)
-        console.log("brokie. get lost.");
-});
-const buyBookF = document.getElementById("BookFX");
-buyBookF.addEventListener("click", () =>{
-    if(store[6] == false && shelved == true && moolah >= 99){
-        store[6] = true;
-        grub(-99);
-        document.getElementById("BookFX").style.display = "none";
-        document.getElementById("BookF").style.display = "block";
-        console.log("Thank you for your purchase of one copy of \"Art of War\"!");
-    }
-    else if(shelved == false)
-        console.log("You need a shelf for your books. Duh.");
-    else if(moolah < 99)
-        console.log("brokie. get lost.");
-});
-const buyOatmeal = document.getElementById("OatmealX");
-buyOatmeal.addEventListener("click", () =>{
-    if(moolah >= 19){
-        grub(-19);
-        oatStock ++;
-        document.getElementById("Oatmeal").innerHTML="<img src='images/Bowl.png'><h1>x" + oatStock + "</h1>";
-        console.log("Thank you for your purchase of one serving of oats!");
-    }
-    else
-        console.log("brokie. get lost.");
-});
-const buyPepper = document.getElementById("PepperX");
-buyPepper.addEventListener("click", () =>{
-    if(moolah >= 99){
-        grub(-99);
-        pepperStock ++;
-        document.getElementById("Pepper").innerHTML="<img src='images/BellPepper.png'><h1>x" + pepperStock + "</h1>";
-        console.log("Thank you for your purchase of one Orange Bell Pepper!");
-    }
-    else
-        console.log("brokie. get lost.");
-});
-let freezy = false;     //you cannot buy ice without a freezer
-const buyIce = document.getElementById("IceX");
-buyIce.addEventListener("click", () =>{
-    if(freezy && moolah >= 1){
-        grub(-1);
-        iceStock += 10;
-        document.getElementById("Ice").innerHTML="<img src='images/IceTray.png'><h1>x" + iceStock + "</h1>";
-        console.log("Thank you for your purchase of a buncha ice chunks!");
-    }
-    else if (!freezy)
-        console.log("Where are you going to put all that ice? Think!");
-    else if(moolah < 1)
-        console.log("MEGA brokie! Wow! You seriously don't have ONE PENNY?! get lost.");
-});
-const buyFreezer = document.getElementById("FreezerX");
-buyFreezer.addEventListener("click", () =>{
-    if(store[7] == false && moolah >= 1849){
-        freezy = true;
-        store[7] = true;
-        grub(-1849);
-        document.getElementById("FreezerX").style.display = "none";
-        document.getElementById("Freezer").style.display = "block";
-        console.log("Thank you for your purchase of one Freezer!");
-    }
-    else if(moolah < 1849)
-        console.log("brokie. get lost.");
-});
-const buyFan = document.getElementById("FanX");
-buyFan.addEventListener("click", () =>{
-    if(store[8] == false && moolah >= 899){
-        store[8] = true;
-        grub(-899);
-        document.getElementById("FanX").style.display = "none";
-        document.getElementById("MainFan").style.display = "block";
-        document.getElementById("FanCord").style.display = "block";
-        console.log("Thank you for your purchase of one Ceiling Fan!");
-    }
-    else if(moolah < 899)
-        console.log("brokie. get lost.");
-});
-const buyDogHouse = document.getElementById("DogHouseX");
-buyDogHouse.addEventListener("click", () =>{
-    if(store[9] == false && moolah >= 3999){
-        store[9] = true;
-        grub(-3999);
-        document.getElementById("DogHouseX").style.display = "none";
-        document.getElementById("DogHouse").style.display = "block";
-        document.getElementById("Smoke").style.display = "block";
-        console.log("Thank you for your purchase of one Dog House Mk.2!");
-    }
-    else if(moolah < 3999)
-        console.log("brokie. get lost.");
-});
-const buyShirt = document.getElementById("ShirtX");
-buyShirt.addEventListener("click", () =>{
-    if(store[10] == false && moolah >= 399){
-        store[10] = true;
-        grub(-399);
-        document.getElementById("ShirtX").style.display = "none";
-        document.getElementById("Shirt").style.display = "block";
-        console.log("Thank you for your purchase of one Cool Tee-Shirt!");
-    }
-    else if(moolah < 399)
-        console.log("brokie. get lost.");
-});
-const buyJug = document.getElementById("JugX");
-buyJug.addEventListener("click", () =>{
-    if(store[11] == false && moolah >= 1599){
-        store[11] = true;
-        grub(-1599);
-        document.getElementById("JugX").style.display = "none";
-        document.getElementById("Jug").style.display = "block";
-        console.log("Thank you for your purchase of one 5-Gallon Water Jug!");
-    }
-    else if(moolah < 1599)
-        console.log("brokie. get lost.");
-});
-const buyHerbs = document.getElementById("HerbsX");
-buyHerbs.addEventListener("click", () =>{
-    if(store[12] == false && moolah >= 1449){
-        store[12] = true;
-        grub(-1449);
-        document.getElementById("HerbsX").style.display = "none";
-        document.getElementById("Herbs").style.display = "block";
-        console.log("Thank you for your purchase of these Trimmed Herbs!");
-    }
-    else if(moolah < 1449)
-        console.log("brokie. get lost.");
-});
-
-///Right-Clicking the Furniture
-let dinoQuote = "Yeah, I default-texted you. What of it?"
-let dinoFlavor = 0;
-let bookshelfFlavor = 0;
-let bookAFlavor = 0;
-let bookBFlavor = 0;
-let bookCFlavor = 0;
-let bookDFlavor = 0;
-let bookEFlavor = 0;
-let bookFFlavor = 0;
-let oatmealFlavor = 0;
-let pepperFlavor = 0;
-let freezerFlavor = 0;
-let iceFlavor = 0;
-let doghouseFlavor = 0;
-let jugFlavor = 0;
-let shirtFlavor = 0;
-let herbsFlavor = 0;
-let ballFlavor = 0;
-
-let talking = false;
-const funnyDino = document.getElementById("Oatkylosaurus");
-funnyDino.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
-    }
-    else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about himself again. Big shocker.");
-        dinoPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
-    }
-});
-const book1 = document.getElementById("BookA");
-book1.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
-    }
-    else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        bookAPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
-    }
-});
-function dinoPhrase(){
-    console.log("fetching a quote at index " + dinoFlavor);
-    const dinoWisdom = [
-        "This is my first non-default quote.",
-        "Haha, one!",
-        "I don't particularly care for having a ball pelted at me.",
-        "Spiders.",
-        "Spiders?",
-        "Spiders!!",
-        "Huh? Did I say something strange?",
-        "This is the last quote in sequence.",
-    ];
-    dinoQuote = dinoWisdom[dinoFlavor];
-    console.log("the quote: " + dinoWisdom[dinoFlavor]);
-    dinoFlavor ++;
-    if(dinoFlavor >= dinoWisdom.length)
-        dinoFlavor = 0;
-    console.log("dinoFlavor updated: " + dinoFlavor);
-}
-function bookAPhrase(){
-    const dinoWisdom = [
-        "Book A...",
-        "It's the oats book.",
-        "...",
-        "That's all I have to say about that.",
-        "What? I need to read more of it to form an opinion.",
-    ];
-    dinoQuote = dinoWisdom[bookAFlavor];
-    bookAFlavor ++;
-    if(bookAFlavor >= dinoWisdom.length)
-        bookAFlavor = 0;
-}
-
 ///Fridge/Freezer storage
 
 let peckish = false;
@@ -647,8 +285,9 @@ pantry.addEventListener("click", () =>{
     }
 });
 
-//do work to earn money, and to pass the time. This toggles everyting on or off, by a click of the punch card, which also advances the day by 1 Wiggle for every 2 clicks (9 Wiggles per Age).
+///Work
 
+//do work to earn money, and to pass the time. This toggles everyting on or off, by a click of the punch card, which also advances the day by 1 Wiggle for every 2 clicks (9 Wiggles per Age).
 let shift = false;
 const start = document.getElementById("startShift");
 start.addEventListener("click", () =>{
@@ -821,3 +460,1148 @@ document.addEventListener('keydown', (e) =>{
         }
     }
 });
+
+///Store
+
+//16 items to buy, length of 13 without foodstuffs. false means it's stocked, true means you've bought it.
+let store = [false,false,false,false,false,false,false,false,false,false,false,false,false];
+
+let shopping = false;
+const shop = document.getElementById("Cart");
+shop.addEventListener("click", () =>{
+    if(!shopping){
+        console.log("oh memories.");
+        shopping = true;
+        document.getElementById("mart").style.display = "block";
+        if(!store[0])
+            document.getElementById("BookcaseX").style.display = "block";
+        if(!store[1])
+            document.getElementById("BookAX").style.display = "block";
+        if(!store[2])
+            document.getElementById("BookBX").style.display = "block";
+        if(!store[3])
+            document.getElementById("BookCX").style.display = "block";
+        if(!store[4])
+            document.getElementById("BookDX").style.display = "block";
+        if(!store[5])
+            document.getElementById("BookEX").style.display = "block";
+        if(!store[6])
+            document.getElementById("BookFX").style.display = "block";
+        document.getElementById("OatmealX").style.display = "block";
+        document.getElementById("PepperX").style.display = "block";
+        if(!store[7])
+            document.getElementById("FreezerX").style.display = "block";
+        if(store[7])
+            document.getElementById("IceX").style.display = "block";
+        if(!store[8])
+            document.getElementById("FanX").style.display = "block";
+        if(!store[9])
+            document.getElementById("DogHouseX").style.display = "block";
+        if(!store[10])
+            document.getElementById("ShirtX").style.display = "block";
+        if(!store[11])
+            document.getElementById("JugX").style.display = "block";
+        if(!store[12])
+            document.getElementById("HerbsX").style.display = "block";
+    }
+    else{
+        shopping = false;
+        document.getElementById("mart").style.display = "none";
+        document.getElementById("BookcaseX").style.display = "none";
+        document.getElementById("BookAX").style.display = "none";
+        document.getElementById("BookBX").style.display = "none";
+        document.getElementById("BookCX").style.display = "none";
+        document.getElementById("BookDX").style.display = "none";
+        document.getElementById("BookEX").style.display = "none";
+        document.getElementById("BookFX").style.display = "none";
+        document.getElementById("OatmealX").style.display = "none";
+        document.getElementById("PepperX").style.display = "none";
+        document.getElementById("FreezerX").style.display = "none";
+        document.getElementById("IceX").style.display = "none";
+        document.getElementById("FanX").style.display = "none";
+        document.getElementById("DogHouseX").style.display = "none";
+        document.getElementById("ShirtX").style.display = "none";
+        document.getElementById("JugX").style.display = "none";
+        document.getElementById("HerbsX").style.display = "none";
+    }
+});
+
+let shelved = false;     //you cannot buy books without a bookshelf
+const buyBookcase = document.getElementById("BookcaseX");
+buyBookcase.addEventListener("click", () =>{
+    if(store[0] == false && moolah >= 1199){
+        shelved = true;
+        store[0] = true;
+        grub(-1199);
+        document.getElementById("BookcaseX").style.display = "none";
+        document.getElementById("Bookcase").style.display = "block";
+        console.log("Thank you for your purchase of one Bookcase!");
+    }
+    else if(moolah < 1199)
+        console.log("brokie. get lost.");
+});
+buyBookcase.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookcasePhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyBookA = document.getElementById("BookAX");
+buyBookA.addEventListener("click", () =>{
+    if(store[1] == false && shelved == true && moolah >= 149){
+        store[1] = true;
+        grub(-149);
+        document.getElementById("BookAX").style.display = "none";
+        document.getElementById("BookA").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"101 Uses For Oats\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 149)
+        console.log("brokie. get lost.");
+});
+buyBookA.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookAPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyBookB = document.getElementById("BookBX");
+buyBookB.addEventListener("click", () =>{
+    if(store[2] == false && shelved == true && moolah >= 399){
+        store[2] = true;
+        grub(-399);
+        document.getElementById("BookBX").style.display = "none";
+        document.getElementById("BookB").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"Anna Karenina\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 399)
+        console.log("brokie. get lost.");
+});
+buyBookB.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookBPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyBookC = document.getElementById("BookCX");
+buyBookC.addEventListener("click", () =>{
+    if(store[3] == false && shelved == true && moolah >= 249){
+        store[3] = true;
+        grub(-249);
+        document.getElementById("BookCX").style.display = "none";
+        document.getElementById("BookC").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"Treasure Island\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 249)
+        console.log("brokie. get lost.");
+});
+buyBookC.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookCPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyBookD = document.getElementById("BookDX");
+buyBookD.addEventListener("click", () =>{
+    if(store[4] == false && shelved == true && moolah >= 199){
+        store[4] = true;
+        grub(-199);
+        document.getElementById("BookDX").style.display = "none";
+        document.getElementById("BookD").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"The Jungle\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 199)
+        console.log("brokie. get lost.");
+});
+buyBookD.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookDPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyBookE = document.getElementById("BookEX");
+buyBookE.addEventListener("click", () =>{
+    if(store[5] == false && shelved == true && moolah >= 399){
+        store[5] = true;
+        grub(-399);
+        document.getElementById("BookEX").style.display = "none";
+        document.getElementById("BookE").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"The Anti-Ableist Manifesto\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 399)
+        console.log("brokie. get lost.");
+});
+buyBookE.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookEPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyBookF = document.getElementById("BookFX");
+buyBookF.addEventListener("click", () =>{
+    if(store[6] == false && shelved == true && moolah >= 99){
+        store[6] = true;
+        grub(-99);
+        document.getElementById("BookFX").style.display = "none";
+        document.getElementById("BookF").style.display = "block";
+        console.log("Thank you for your purchase of one copy of \"Art of War\"!");
+    }
+    else if(shelved == false)
+        console.log("You need a shelf for your books. Duh.");
+    else if(moolah < 99)
+        console.log("brokie. get lost.");
+});
+buyBookF.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookFPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyOatmeal = document.getElementById("OatmealX");
+buyOatmeal.addEventListener("click", () =>{
+    if(moolah >= 19){
+        grub(-19);
+        oatStock ++;
+        document.getElementById("Oatmeal").innerHTML="<img src='images/Bowl.png'><h1>x" + oatStock + "</h1>";
+        console.log("Thank you for your purchase of one serving of oats!");
+    }
+    else
+        console.log("brokie. get lost.");
+});
+buyOatmeal.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        oatmealPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyPepper = document.getElementById("PepperX");
+buyPepper.addEventListener("click", () =>{
+    if(moolah >= 99){
+        grub(-99);
+        pepperStock ++;
+        document.getElementById("Pepper").innerHTML="<img src='images/BellPepper.png'><h1>x" + pepperStock + "</h1>";
+        console.log("Thank you for your purchase of one Orange Bell Pepper!");
+    }
+    else
+        console.log("brokie. get lost.");
+});
+buyPepper.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        pepperPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+let freezy = false;     //you cannot buy ice without a freezer
+const buyIce = document.getElementById("IceX");
+buyIce.addEventListener("click", () =>{
+    if(freezy && moolah >= 1){
+        grub(-1);
+        iceStock += 10;
+        document.getElementById("Ice").innerHTML="<img src='images/IceTray.png'><h1>x" + iceStock + "</h1>";
+        console.log("Thank you for your purchase of a buncha ice chunks!");
+    }
+    else if (!freezy)
+        console.log("Where are you going to put all that ice? Think!");
+    else if(moolah < 1)
+        console.log("MEGA brokie! Wow! You seriously don't have ONE PENNY?! get lost.");
+});
+buyIce.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        freezerPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyFreezer = document.getElementById("FreezerX");
+buyFreezer.addEventListener("click", () =>{
+    if(store[7] == false && moolah >= 1849){
+        freezy = true;
+        store[7] = true;
+        grub(-1849);
+        document.getElementById("FreezerX").style.display = "none";
+        document.getElementById("Freezer").style.display = "block";
+        console.log("Thank you for your purchase of one Freezer!");
+    }
+    else if(moolah < 1849)
+        console.log("brokie. get lost.");
+});
+buyFreezer.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        icePhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyFan = document.getElementById("FanX");
+buyFan.addEventListener("click", () =>{
+    if(store[8] == false && moolah >= 899){
+        store[8] = true;
+        grub(-899);
+        document.getElementById("FanX").style.display = "none";
+        document.getElementById("MainFan").style.display = "block";
+        document.getElementById("FanCord").style.display = "block";
+        console.log("Thank you for your purchase of one Ceiling Fan!");
+    }
+    else if(moolah < 899)
+        console.log("brokie. get lost.");
+});
+buyFan.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        fanPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyDogHouse = document.getElementById("DogHouseX");
+buyDogHouse.addEventListener("click", () =>{
+    if(store[9] == false && moolah >= 3999){
+        store[9] = true;
+        grub(-3999);
+        document.getElementById("DogHouseX").style.display = "none";
+        document.getElementById("DogHouse").style.display = "block";
+        document.getElementById("Smoke").style.display = "block";
+        console.log("Thank you for your purchase of one Dog House Mk.2!");
+    }
+    else if(moolah < 3999)
+        console.log("brokie. get lost.");
+});
+buyDogHouse.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        doghousePhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyShirt = document.getElementById("ShirtX");
+buyShirt.addEventListener("click", () =>{
+    if(store[10] == false && moolah >= 399){
+        store[10] = true;
+        grub(-399);
+        document.getElementById("ShirtX").style.display = "none";
+        document.getElementById("Shirt").style.display = "block";
+        console.log("Thank you for your purchase of one Cool Tee-Shirt!");
+    }
+    else if(moolah < 399)
+        console.log("brokie. get lost.");
+});
+buyShirt.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        shirtPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyJug = document.getElementById("JugX");
+buyJug.addEventListener("click", () =>{
+    if(store[11] == false && moolah >= 1599){
+        store[11] = true;
+        grub(-1599);
+        document.getElementById("JugX").style.display = "none";
+        document.getElementById("Jug").style.display = "block";
+        console.log("Thank you for your purchase of one 5-Gallon Water Jug!");
+    }
+    else if(moolah < 1599)
+        console.log("brokie. get lost.");
+});
+buyJug.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        jugPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const buyHerbs = document.getElementById("HerbsX");
+buyHerbs.addEventListener("click", () =>{
+    if(store[12] == false && moolah >= 1449){
+        store[12] = true;
+        grub(-1449);
+        document.getElementById("HerbsX").style.display = "none";
+        document.getElementById("Herbs").style.display = "block";
+        console.log("Thank you for your purchase of these Trimmed Herbs!");
+    }
+    else if(moolah < 1449)
+        console.log("brokie. get lost.");
+});
+buyHerbs.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        herbsPhraseX();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+
+///Right-Clicks
+
+document.addEventListener("contextmenu", (e) => {
+    event.preventDefault();
+});
+let dinoQuote = "Yeah, I default-texted you. What of it?"
+
+///Right-Clicking the shop wares
+
+let bookcaseFlavorX = 0;
+let bookAFlavorX = 0;
+let bookBFlavorX = 0;
+let bookCFlavorX = 0;
+let bookDFlavorX = 0;
+let bookEFlavorX = 0;
+let bookFFlavorX = 0;
+let oatmealFlavorX = 0;
+let pepperFlavorX = 0;
+let freezerFlavorX = 0;
+let iceFlavorX = 0;
+let fanFlavorX = 0;
+let doghouseFlavorX = 0;
+let jugFlavorX = 0;
+let shirtFlavorX = 0;
+let herbsFlavorX = 0;
+
+///Right-Clicking the Furniture
+
+let dinoFlavor = 0;
+let bookcaseFlavor = 0;
+let bookAFlavor = 0;
+let bookBFlavor = 0;
+let bookCFlavor = 0;
+let bookDFlavor = 0;
+let bookEFlavor = 0;
+let bookFFlavor = 0;
+let oatmealFlavor = 0;
+let pepperFlavor = 0;
+let freezerFlavor = 0;
+let iceFlavor = 0;
+let fanFlavor = 0;
+let doghouseFlavor = 0;
+let jugFlavor = 0;
+let shirtFlavor = 0;
+let herbsFlavor = 0;
+
+//assign clickable objects
+let talking = false;
+const funnyDino = document.getElementById("Oatkylosaurus");
+funnyDino.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about himself again. Big shocker.");
+        dinoPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const bookshelf = document.getElementById("Bookcase");
+bookshelf.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookcasePhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const book1 = document.getElementById("BookA");
+book1.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookAPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const book2 = document.getElementById("BookB");
+book2.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookBPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const book3 = document.getElementById("BookC");
+book3.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookCPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const book4 = document.getElementById("BookD");
+book4.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookDPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const book5 = document.getElementById("BookE");
+book5.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookEPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const book6 = document.getElementById("BookF");
+book6.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        bookFPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const oatBowl = document.getElementById("Oatmeal");
+oatBowl.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        oatmealPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const bellPepper = document.getElementById("Pepper");
+bellPepper.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        pepperPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const freezeBox = document.getElementById("Freezer");
+freezeBox.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        freezerPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const icy = document.getElementById("Ice");
+icy.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        icePhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const highFan = document.getElementById("MainFan");
+highFan.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        fanPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const doghouse2 = document.getElementById("DogHouse");
+doghouse2.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        doghousePhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const fiveGal = document.getElementById("Jug");
+fiveGal.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        jugPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const teeshirt = document.getElementById("Shirt");
+teeshirt.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        shirtPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+const trimmedHerbs = document.getElementById("Herbs");
+trimmedHerbs.addEventListener("contextmenu", (e) => {
+    if(talking){
+        talking = false;
+        document.getElementById("speechBubble").style.display = "none";
+        document.getElementById("speechBubble").innerHTML="<p></p>"
+        console.log("bubble cleared!");
+    }
+    else{
+        document.getElementById("speechBubble").style.display = "block";
+        console.log("talking about 101 Uses For Oats, that book he got for being good.");
+        herbsPhrase();
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        talking = true;
+    }
+});
+
+//phrase libraries
+
+function dinoPhrase(){
+    const dinoWisdom = [
+        "This is my first non-default quote.",
+        "Haha, one!",
+        "I don't particularly care for having a ball pelted at me.",
+        "Spiders.",
+        "Spiders?",
+        "Spiders!!",
+        "Huh? Did I say something strange?",
+        "This is the last quote in sequence.",
+    ];
+    dinoQuote = dinoWisdom[dinoFlavor];
+    dinoFlavor ++;
+    if(dinoFlavor >= dinoWisdom.length)
+        dinoFlavor = 0;
+}
+function bookcasePhrase(){
+    const dinoWisdom = [
+        "Bookcase",
+    ];
+    dinoQuote = dinoWisdom[bookcaseFlavor];
+    bookcaseFlavor ++;
+    if(bookcaseFlavor >= dinoWisdom.length)
+        bookcaseFlavor = 0;
+}
+function bookAPhrase(){
+    const dinoWisdom = [
+        "Book A",
+    ];
+    dinoQuote = dinoWisdom[bookAFlavor];
+    bookAFlavor ++;
+    if(bookAFlavor >= dinoWisdom.length)
+        bookAFlavor = 0;
+}
+function bookBPhrase(){
+    const dinoWisdom = [
+        "Book B",
+    ];
+    dinoQuote = dinoWisdom[bookBFlavor];
+    bookBFlavor ++;
+    if(bookBFlavor >= dinoWisdom.length)
+        bookBFlavor = 0;
+}
+function bookCPhrase(){
+    const dinoWisdom = [
+        "Book C",
+    ];
+    dinoQuote = dinoWisdom[bookCFlavor];
+    bookCFlavor ++;
+    if(bookCFlavor >= dinoWisdom.length)
+        bookCFlavor = 0;
+}
+function bookDPhrase(){
+    const dinoWisdom = [
+        "Book D",
+    ];
+    dinoQuote = dinoWisdom[bookDFlavor];
+    bookDFlavor ++;
+    if(bookDFlavor >= dinoWisdom.length)
+        bookDFlavor = 0;
+}
+function bookEPhrase(){
+    const dinoWisdom = [
+        "Book E",
+    ];
+    dinoQuote = dinoWisdom[bookEFlavor];
+    bookEFlavor ++;
+    if(bookEFlavor >= dinoWisdom.length)
+        bookEFlavor = 0;
+}
+function bookFPhrase(){
+    const dinoWisdom = [
+        "Book F",
+    ];
+    dinoQuote = dinoWisdom[bookFFlavor];
+    bookFFlavor ++;
+    if(bookFFlavor >= dinoWisdom.length)
+        bookFFlavor = 0;
+}
+function oatmealPhrase(){
+    const dinoWisdom = [
+        "oatmealFlavor",
+    ];
+    dinoQuote = dinoWisdom[oatmealFlavor];
+    oatmealFlavor ++;
+    if(oatmealFlavor >= dinoWisdom.length)
+        oatmealFlavor = 0;
+}
+function pepperPhrase(){
+    const dinoWisdom = [
+        "pepperFlavor",
+    ];
+    dinoQuote = dinoWisdom[pepperFlavor];
+    pepperFlavor ++;
+    if(pepperFlavor >= dinoWisdom.length)
+        pepperFlavor = 0;
+}
+function freezerPhrase(){
+    const dinoWisdom = [
+        "freezerFlavor",
+    ];
+    dinoQuote = dinoWisdom[freezerFlavor];
+    freezerFlavor ++;
+    if(freezerFlavor >= dinoWisdom.length)
+        freezerFlavor = 0;
+}
+function icePhrase(){
+    const dinoWisdom = [
+        "iceFlavor",
+    ];
+    dinoQuote = dinoWisdom[iceFlavor];
+    iceFlavor ++;
+    if(iceFlavor >= dinoWisdom.length)
+        iceFlavor = 0;
+}
+function fanPhrase(){
+    const dinoWisdom = [
+        "Fan",
+    ];
+    dinoQuote = dinoWisdom[fanFlavor];
+    fanFlavor ++;
+    if(fanFlavor >= dinoWisdom.length)
+        fanFlavor = 0;
+}
+function doghousePhrase(){
+    const dinoWisdom = [
+        "Bookcase",
+    ];
+    dinoQuote = dinoWisdom[bookcaseFlavor];
+    bookcaseFlavor ++;
+    if(bookcaseFlavor >= dinoWisdom.length)
+        bookcaseFlavor = 0;
+}
+function jugPhrase(){
+    const dinoWisdom = [
+        "jugFlavor",
+    ];
+    dinoQuote = dinoWisdom[jugFlavor];
+    jugFlavor ++;
+    if(jugFlavor >= dinoWisdom.length)
+        jugFlavor = 0;
+}
+function shirtPhrase(){
+    const dinoWisdom = [
+        "shirtFlavor",
+    ];
+    dinoQuote = dinoWisdom[shirtFlavor];
+    shirtFlavor ++;
+    if(shirtFlavor >= dinoWisdom.length)
+        shirtFlavor = 0;
+}
+function herbsPhrase(){
+    const dinoWisdom = [
+        "herbsFlavor",
+    ];
+    dinoQuote = dinoWisdom[herbsFlavor];
+    herbsFlavor ++;
+    if(herbsFlavor >= dinoWisdom.length)
+        herbsFlavor = 0;
+}
+
+
+function bookcasePhraseX(){
+    const dinoWisdom = [
+        "Bookcase",
+    ];
+    dinoQuote = dinoWisdom[bookcaseFlavorX];
+    bookcaseFlavorX ++;
+    if(bookcaseFlavorX >= dinoWisdom.length)
+        bookcaseFlavorX = 0;
+}
+function bookAPhraseX(){
+    const dinoWisdom = [
+        "Book A",
+    ];
+    dinoQuote = dinoWisdom[bookAFlavorX];
+    bookAFlavorX ++;
+    if(bookAFlavorX >= dinoWisdom.length)
+        bookAFlavorX = 0;
+}
+function bookBPhraseX(){
+    const dinoWisdom = [
+        "Book B",
+    ];
+    dinoQuote = dinoWisdom[bookBFlavorX];
+    bookBFlavorX ++;
+    if(bookBFlavorX >= dinoWisdom.length)
+        bookBFlavorX = 0;
+}
+function bookCPhraseX(){
+    const dinoWisdom = [
+        "Book C",
+    ];
+    dinoQuote = dinoWisdom[bookCFlavorX];
+    bookCFlavorX ++;
+    if(bookCFlavorX >= dinoWisdom.length)
+        bookCFlavorX = 0;
+}
+function bookDPhraseX(){
+    const dinoWisdom = [
+        "Book D",
+    ];
+    dinoQuote = dinoWisdom[bookDFlavorX];
+    bookDFlavorX ++;
+    if(bookDFlavorX >= dinoWisdom.length)
+        bookDFlavorX = 0;
+}
+function bookEPhraseX(){
+    const dinoWisdom = [
+        "Book E",
+    ];
+    dinoQuote = dinoWisdom[bookEFlavorX];
+    bookEFlavorX ++;
+    if(bookEFlavorX >= dinoWisdom.length)
+        bookEFlavorX = 0;
+}
+function bookFPhraseX(){
+    const dinoWisdom = [
+        "Book F",
+    ];
+    dinoQuote = dinoWisdom[bookFFlavorX];
+    bookFFlavorX ++;
+    if(bookFFlavorX >= dinoWisdom.length)
+        bookFFlavorX = 0;
+}
+function oatmealPhraseX(){
+    const dinoWisdom = [
+        "oatmealFlavorX",
+    ];
+    dinoQuote = dinoWisdom[oatmealFlavorX];
+    oatmealFlavorX ++;
+    if(oatmealFlavorX >= dinoWisdom.length)
+        oatmealFlavorX = 0;
+}
+function pepperPhraseX(){
+    const dinoWisdom = [
+        "pepperFlavorX",
+    ];
+    dinoQuote = dinoWisdom[pepperFlavorX];
+    pepperFlavorX ++;
+    if(pepperFlavorX >= dinoWisdom.length)
+        pepperFlavorX = 0;
+}
+function freezerPhraseX(){
+    const dinoWisdom = [
+        "freezerFlavorX",
+    ];
+    dinoQuote = dinoWisdom[freezerFlavorX];
+    freezerFlavorX ++;
+    if(freezerFlavorX >= dinoWisdom.length)
+        freezerFlavorX = 0;
+}
+function icePhraseX(){
+    const dinoWisdom = [
+        "iceFlavorX",
+    ];
+    dinoQuote = dinoWisdom[iceFlavorX];
+    iceFlavorX ++;
+    if(iceFlavorX >= dinoWisdom.length)
+        iceFlavorX = 0;
+}
+function fanPhraseX(){
+    const dinoWisdom = [
+        "iceFlavorX",
+    ];
+    dinoQuote = dinoWisdom[fanFlavorX];
+    fanFlavorX ++;
+    if(fanFlavorX >= dinoWisdom.length)
+        fanFlavorX = 0;
+}
+function doghousePhraseX(){
+    const dinoWisdom = [
+        "Bookcase",
+    ];
+    dinoQuote = dinoWisdom[bookcaseFlavorX];
+    bookcaseFlavorX ++;
+    if(bookcaseFlavorX >= dinoWisdom.length)
+        bookcaseFlavorX = 0;
+}
+function jugPhraseX(){
+    const dinoWisdom = [
+        "jugFlavorX",
+    ];
+    dinoQuote = dinoWisdom[jugFlavorX];
+    jugFlavorX ++;
+    if(jugFlavorX >= dinoWisdom.length)
+        jugFlavorX = 0;
+}
+function shirtPhraseX(){
+    const dinoWisdom = [
+        "shirtFlavorX",
+    ];
+    dinoQuote = dinoWisdom[shirtFlavorX];
+    shirtFlavorX ++;
+    if(shirtFlavorX >= dinoWisdom.length)
+        shirtFlavorX = 0;
+}
+function herbsPhraseX(){
+    const dinoWisdom = [
+        "herbsFlavorX",
+    ];
+    dinoQuote = dinoWisdom[herbsFlavorX];
+    herbsFlavorX ++;
+    if(herbsFlavorX >= dinoWisdom.length)
+        herbsFlavorX = 0;
+}
