@@ -440,9 +440,9 @@ body{
 }
 #MainFan img{
     position: absolute;
-    left: 375px;
-    top: 245px;
-    width: 10%;
+    left: 40%;
+    top: 15%;
+    
     transform-origin: 40% 40%;
 }
 #FanCord img{

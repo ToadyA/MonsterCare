@@ -257,17 +257,93 @@ mark2.addEventListener("click", () =>{
 //fan animation
 let blades = document.getElementById("MainFan");
 let bladeAngle = 15;
-let bladeDrop = 642;
+let quadrant = 0;
+let bladeDrop = blades.style.top;
+let bladeSlash = blades.style.left;
 function fanning(){
     setTimeout(() =>{
         if(cooly){
+            if(quadrant == 0){
+                console.log("quadrant: " + quadrant);
+                bladeDrop +=5;
+                bladeSlash -=5;
+            }
+            else if(quadrant == 1){
+                bladeDrop +=5;
+                bladeSlash +=5;
+                console.log("quadrant: " + quadrant);
+            }
+            else if(quadrant == 2){
+                bladeDrop +=5;
+                console.log("quadrant: " + quadrant);
+            }
+            else if(quadrant == 3){
+                bladeDrop +=5;
+                bladeSlash -=5;
+                console.log("quadrant: " + quadrant);
+            }
+            else if(quadrant == 4){
+                bladeSlash +=5;
+                console.log("quadrant: " + quadrant);
+            }
+            else if(quadrant == 5){
+                bladeDrop -=5;
+                bladeSlash +=5;
+                console.log("quadrant: " + quadrant);
+            }
+            else if(quadrant == 6){
+                bladeDrop -=5;
+                bladeSlash -=5;
+                console.log("quadrant: " + quadrant);
+            }
+            else if(quadrant == 7){
+                bladeDrop +=5;
+                bladeSlash -=5;
+                console.log("quadrant: " + quadrant);
+            }
             blades.style.rotate = bladeAngle + "deg";
             blades.style.top = bladeDrop + "px";
-            bladeAngle += 10;
-            bladeDrop +=2;
-            if(bladeAngle >= 360){
+            console.log("will it rise? " + bladeAngle);
+            bladeAngle += 5;
+            console.log("it went up! " + bladeAngle);
+            if(bladeAngle >= 30 && quadrant == 0){//move down and left (+top, -left)
+                quadrant ++;
+                console.log("advancing because of the angle! Angle: " + bladeAngle);
+            }
+            else if(bladeAngle >= 45 && quadrant == 1){//move down and right (+top, +left)
+                bladeAngle = 135;
+                console.log("reset the angle to 135, but at least we know the quadrant is 1, right? it is: " + quadrant);
+                bladeDrop += 100;
+                quadrant ++;
+                console.log("advancing because of the angle! Angle: " + bladeAngle + ", and the new quadrant according to ++ is: " + quadrant);
+            }
+            else if(bladeAngle >= 150 && quadrant == 2){//move super down and right (++top, +left)
+                quadrant ++;
+                console.log("advancing because of the angle! Angle: " + bladeAngle);
+            }
+            else if(bladeAngle >= 165 && quadrant == 3){//move super down and left (++top, -left)
+                bladeAngle = 195;
+                quadrant ++;
+                console.log("advancing because of the angle! Angle: " + bladeAngle);
+            }
+            else if((bladeAngle >= 210 || bladeAngle <= 0) && quadrant == 4){//move super down and super left (++top, --+left)
+                quadrant ++;
+                console.log("advancing because of the angle! Angle: " + bladeAngle);
+            }
+            else if(bladeAngle >= 225 && quadrant == 5){//move super down and super left (++top, --left)
                 bladeAngle = 0;
-                bladeDrop -= 48;
+                quadrant ++;
+                console.log("advancing because of the angle! Angle: " + bladeAngle);
+            }
+            else if(bladeAngle >= 240 && quadrant == 6){//move down and super left(+top, --left)
+                bladeAngle = 315;
+                quadrant ++;
+                console.log("advancing because of the angle! Angle: " + bladeAngle);
+            }
+            else if((bladeAngle >= 345 || bladeAngle <= 0) && quadrant == 7){//move down and super left (+top, --+left)
+                bladeAngle = 15;
+                quadrant = 0;
+                console.log("advancing because of the angle! Angle: " + bladeAngle);
             }
             fanning();
         }
