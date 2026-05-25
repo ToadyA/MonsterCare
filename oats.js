@@ -45,17 +45,29 @@ function wiggle(){
         if(year < 10){
             if(wiggles == 9){
                 document.getElementById("Oatkylosaurus").style.top = "35%";
-                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='250px' width='250px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
+                document.getElementById("speechBubble").style.top = "24%";
             }
             else if(wiggles == 36){
                 document.getElementById("Oatkylosaurus").style.top = "28%";
                 document.getElementById("Oatkylosaurus").style.left = "48%";
-                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+                document.getElementById("speechBubble").style.top = "22%";
             }
             else if(wiggles == 81){
                 document.getElementById("Oatkylosaurus").style.top = "20%";
                 document.getElementById("Oatkylosaurus").style.left = "47%";
-                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+                document.getElementById("speechBubble").style.top = "21%";
             }
         }
         document.getElementById("age").innerHTML = "<h3>Age: " + year + "</h3>";
@@ -91,6 +103,12 @@ function wiggle(){
             happiness = 90;
             document.getElementById("happy").style.width = happiness + "px";
         }
+        if(wiggles >= 81)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
+        else if(wiggles >= 36)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
+        else if(wiggles >= 9)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='250px' width='250px'>";
         document.getElementById("sleep").style.backgroundColor = "#0d1ebd";
     }
     if(sleepiness >= 100 && !sleep){
@@ -98,12 +116,24 @@ function wiggle(){
         sleepiness = 100;
         sleep = true;
         document.getElementById("sleep").style.backgroundColor = "#0d1ebd";
+        if(wiggles >= 81)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
+        else if(wiggles >= 36)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
+        else if(wiggles >= 9)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='250px' width='250px'>";
     }
     if(sleepiness <= 0 && sleep){
         console.log("UP AND AT 'EM! IT'S MORNING!");
         sleep = false;
         sleepiness = 0;
         document.getElementById("sleep").style.backgroundColor = "#3c4ac4";
+        if(wiggles >= 81)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+        else if(wiggles >= 36)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+        else if(wiggles >= 9)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
     }
     document.getElementById("sleep").style.width = sleepiness + "px";
     boredom += 60;
@@ -149,12 +179,24 @@ ball.addEventListener("click", () =>{
         document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyHit.png' height='250px' width='250px'>";
     document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' width='100px' height='100px' style=\"display: block; z-index: 15; position: absolute; left: 50%; top: 30%;\">";
     setTimeout(() => {
-        if(wiggles >= 81)
-            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
-        else if(wiggles >= 36)
-            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
-        else if(wiggles >= 9)
-            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
+        if(wiggles >= 81){
+            if(sleep)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
+            else
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+        }
+        else if(wiggles >= 36){
+            if(sleep)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
+            else
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+        }
+        else if(wiggles >= 9){
+            if(sleep)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='400px' width='400px'>";
+            else
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='400px' width='400px'>";
+        }
         //document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' width='100px' height='100px' style=\"display: none; z-index: 15; position: absolute; left: 50%; top: 30%;\">";
     }, 800);
     ballBounce.currentTime = 13.5;
@@ -211,7 +253,7 @@ mark2.addEventListener("click", () =>{
 let coolIdea = false;   //whether the dino is looking at the water jug, contemplating a certified Cool Idea.
 const jugalo = document.getElementById("Jug");
 jugalo.addEventListener("click", () =>{
-    if(!coolIdea){
+    if(!coolIdea && !sleep){
         coolIdea = true;
         if(wiggles >= 81)
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_intrigue.png' height='600px' width='600px'>";
@@ -284,7 +326,184 @@ pantry.addEventListener("click", () =>{
         document.getElementById("Ice").style.display = "none";
     }
 });
-
+const foodOatmeal = document.getElementById("Oatmeal");
+foodOatmeal.addEventListener("click", () => {
+    if(oatStock > 0 && hunger > 0){
+        oatStock --;
+        document.getElementById("Oatmeal").innerHTML="<img src='images/Bowl.png'><h1>x" + oatStock + "</h1>";
+        hunger -= 15;
+        if(hunger < 0)
+            hunger = 0;
+        document.getElementById("hunger").style.width = hunger + "px";
+        happiness += 10;
+        if(happiness > 100)
+            happiness = 100;
+        document.getElementById("happy").style.width = happiness + "px";
+        energy += 25;
+        if(energy > 105)
+            energy = 105;
+        document.getElementById("energy").style.width = energy + "px";
+        if(wiggles >= 81)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_grateful.png' height='600px' width='600px'>";
+        else if(wiggles >= 36)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloThanks.png' height='400px' width='400px'>";
+        else if(wiggles >= 9)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyYum.png' height='250px' width='250px'>";
+        setTimeout(() =>{
+            if(wiggles >= 81)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_chew.png' height='600px' width='600px'>";
+            else if(wiggles >= 36)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloChew.png' height='400px' width='400px'>";
+            else if(wiggles >= 9)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyChew.png' height='250px' width='250px'>";
+        }, 125);
+        setTimeout(() =>{
+            if(wiggles >= 81)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_grateful.png' height='600px' width='600px'>";
+            else if(wiggles >= 36)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloThanks.png' height='400px' width='400px'>";
+            else if(wiggles >= 9)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyYum.png' height='250px' width='250px'>";
+        }, 250);
+        setTimeout(() =>{
+            if(wiggles >= 81)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_chew.png' height='600px' width='600px'>";
+            else if(wiggles >= 36)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloChew.png' height='400px' width='400px'>";
+            else if(wiggles >= 9)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyChew.png' height='250px' width='250px'>";
+        }, 375);
+        setTimeout(() =>{
+            if(wiggles >= 81){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+            }
+            else if(wiggles >= 36){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+            }
+            else if(wiggles >= 9){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='250px' width='250px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
+            }
+        }, 500);
+    }
+});
+const foodPepper = document.getElementById("Pepper");
+foodPepper.addEventListener("click", () => {
+    if(pepperStock > 0 && hunger > 0){
+        pepperStock --;
+        document.getElementById("Pepper").innerHTML="<img src='images/BellPepper.png'><h1>x" + pepperStock + "</h1>";
+        hunger -= 40;
+        if(hunger < 0)
+            hunger = 0;
+        document.getElementById("hunger").style.width = hunger + "px";
+        happiness -= 5;
+        if(happiness < 0)
+            happiness = 0;
+        document.getElementById("happy").style.width = happiness + "px";
+        energy += 10;
+        if(energy > 105)
+            energy = 105;
+        document.getElementById("energy").style.width = energy + "px";
+        if(wiggles >= 81)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_hit.png' height='600px' width='600px'>";
+        else if(wiggles >= 36)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloEw.png' height='400px' width='400px'>";
+        else if(wiggles >= 9)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyPepper.png' height='250px' width='250px'>";
+        setTimeout(() =>{
+            if(wiggles >= 81){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+            }
+            else if(wiggles >= 36){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+            }
+            else if(wiggles >= 9){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='250px' width='250px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
+            }
+        }, 500);
+    }
+});
+const foodIce = document.getElementById("Ice");
+foodIce.addEventListener("click", () => {
+    if(iceStock > 0){
+        iceStock --;
+        document.getElementById("Ice").innerHTML="<img src='images/IceTray.png'><h1>x" + iceStock + "</h1>";
+        if(hunger >= 95)
+            hunger = 95;
+        document.getElementById("hunger").style.width = hunger + "px";
+        boredom -= 1;
+        if(boredom <= 0)
+            boredom = 0;
+        document.getElementById("bored").style.width = boredom + "px";
+        if(wiggles >= 81)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_grateful.png' height='600px' width='600px'>";
+        else if(wiggles >= 36)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloThanks.png' height='400px' width='400px'>";
+        else if(wiggles >= 9)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyYum.png' height='250px' width='250px'>";
+        setTimeout(() =>{
+            if(wiggles >= 81)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_chew.png' height='600px' width='600px'>";
+            else if(wiggles >= 36)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloChew.png' height='400px' width='400px'>";
+            else if(wiggles >= 9)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyChew.png' height='250px' width='250px'>";
+        }, 125);
+        setTimeout(() =>{
+            if(wiggles >= 81)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_grateful.png' height='600px' width='600px'>";
+            else if(wiggles >= 36)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloThanks.png' height='400px' width='400px'>";
+            else if(wiggles >= 9)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyYum.png' height='250px' width='250px'>";
+        }, 250);
+        setTimeout(() =>{
+            if(wiggles >= 81)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_chew.png' height='600px' width='600px'>";
+            else if(wiggles >= 36)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloChew.png' height='400px' width='400px'>";
+            else if(wiggles >= 9)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyChew.png' height='250px' width='250px'>";
+        }, 375);
+        setTimeout(() =>{
+            if(wiggles >= 81){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+            }
+            else if(wiggles >= 36){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+            }
+            else if(wiggles >= 9){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='250px' width='250px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
+            }
+        }, 500);
+    }
+});
 ///Work
 
 //do work to earn money, and to pass the time. This toggles everyting on or off, by a click of the punch card, which also advances the day by 1 Wiggle for every 2 clicks (9 Wiggles per Age).
@@ -380,8 +599,8 @@ shell.addEventListener("click", () =>{
         if(quickMan == 0)
             quickMan = 1;
         punish += 250;
-        if(punish >= 600)
-            punish = 600;
+        if(punish >= 300)
+            punish = 300;
         document.getElementById("oat").innerHTML = "<img src='images/work/QuickOat.png' width='50px' height='50px'>";
     }
     sorty = true;
@@ -1035,7 +1254,10 @@ funnyDino.addEventListener("contextmenu", (e) => {
     else{
         document.getElementById("speechBubble").style.display = "block";
         console.log("talking about himself again. Big shocker.");
-        dinoPhrase();
+        if(!sleep)
+            dinoPhrase();
+        else
+            sleepyPhrase();
         document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
         talking = true;
     }
@@ -1301,14 +1523,24 @@ trimmedHerbs.addEventListener("contextmenu", (e) => {
 
 function dinoPhrase(){
     const dinoWisdom = [
-        "This is my first non-default quote.",
         "Haha, one!",
         "I don't particularly care for having a ball pelted at me.",
-        "Spiders.",
+        "Huh? Did I say something strange?",
+        "My tail doubles as a bowl. Since I only put oats into it, I don't need to wash it, right?",
+        "Peppers taste bad. Who takes a bite out of a Bell Pepper?! Why is it me?!",
+    ];
+    dinoQuote = dinoWisdom[dinoFlavor];
+    dinoFlavor ++;
+    if(dinoFlavor >= dinoWisdom.length)
+        dinoFlavor = 0;
+}
+function sleepyPhrase(){
+    const dinoWisdom = [
+        "Spiders...",
         "Spiders?",
         "Spiders!!",
-        "Huh? Did I say something strange?",
-        "This is the last quote in sequence.",
+        "No! Don't throw the ball!!!",
+        "mmmmmmmmm hork hmmmmmmmmmm",
     ];
     dinoQuote = dinoWisdom[dinoFlavor];
     dinoFlavor ++;
@@ -1317,7 +1549,11 @@ function dinoPhrase(){
 }
 function bookcasePhrase(){
     const dinoWisdom = [
-        "Bookcase",
+        "That's my Bookcase. It can hold a whopping SIX books on it. Cool, huh?",
+        "It sure is a Bookcase.",
+        "I don't have a particular reason for stacking the books in that order.",
+        "I don't like selling my books. I get to brag about what I've read passively this way!",
+        "I can't put anything on top of this without exceeding its weight limit. Bummer, I know.",
     ];
     dinoQuote = dinoWisdom[bookcaseFlavor];
     bookcaseFlavor ++;
@@ -1326,7 +1562,11 @@ function bookcasePhrase(){
 }
 function bookAPhrase(){
     const dinoWisdom = [
-        "Book A",
+        "101 Uses For Oats by Unknown Author",
+        "You got me this book because you thought I'd like a book about oats. You were right.",
+        "Apparently Quick Oats cook faster and have the same fiber content. So why would anyone want Rolled Oats?",
+        "If you soak oats in milk and sweet things overnight, it becomes dessert for breakfast! Wow!",
+        "Chocolate oat clusters! What a wonderful idea!",
     ];
     dinoQuote = dinoWisdom[bookAFlavor];
     bookAFlavor ++;
@@ -1335,7 +1575,12 @@ function bookAPhrase(){
 }
 function bookBPhrase(){
     const dinoWisdom = [
-        "Book B",
+        "Anna Karenina by Leo Tolstoy",
+        "This might be my favorite book! Though the antisemitism and racism could be omitted with nothing lost.",
+        "I love it when we get a tangent about art appreciation, or crop-harvesting, or beekeeping, because the author was into that at the time!",
+        "The way characters absorb lessons and change, and how they stay the same anyway, is so well communicated and beautiful!",
+        "I love Levin and Kitty! Their relationship is so cute, and it juxtaposes what Anna and Vronsky are up to so well!",
+        "Oblonsky is a sleazebag. He can't keep getting away with this!!!",
     ];
     dinoQuote = dinoWisdom[bookBFlavor];
     bookBFlavor ++;
@@ -1344,7 +1589,11 @@ function bookBPhrase(){
 }
 function bookCPhrase(){
     const dinoWisdom = [
-        "Book C",
+        "Treasure Island by Robert Louis Stevenson",
+        "It's a high-flying adventure on a desert isle! Lots of moving parts, iconic characters, and scary pirates!",
+        "Long John Silver was an interesting character to get to know. Is it respectable to switch sides over and over, just to survive?",
+        "I love how, even though the other pirates are just mobs, they're given tons of respect as the most dangerous thing here!",
+        "I like when Jim goes on a solo adventure, which drastically turns the tides, but upon returning has to catch up with how much has changed!",
     ];
     dinoQuote = dinoWisdom[bookCFlavor];
     bookCFlavor ++;
@@ -1353,7 +1602,11 @@ function bookCPhrase(){
 }
 function bookDPhrase(){
     const dinoWisdom = [
-        "Book D",
+        "The Jungle by Upton Sinclair",
+        "I haven't read this book. I just haven't read it yet.",
+        "On average it takes me 30 minutes to read 10 pages. The 20-page chapters make this less palatable.",
+        "I do plan on reading this soon, but... maybe not SO soon, you know?",
+        "I hear that it's an important book. It's in my backlog!",
     ];
     dinoQuote = dinoWisdom[bookDFlavor];
     bookDFlavor ++;
@@ -1362,7 +1615,12 @@ function bookDPhrase(){
 }
 function bookEPhrase(){
     const dinoWisdom = [
-        "Book E",
+        "The Anti-Ableist Manifesto by Tiffany Yu",
+        "It's like 20% autobiography and 80% advice. It's mostly common sense, but it has lotsa sources, which is SO nice.",
+        "Treat disabled people like regular people. Do research into how to best accommodate them in advance.",
+        "Rather than representing disabled people as a non-disabled person, put disabled people into positions of power themselves.",
+        "Build stuff with disabilities in mind, and those inclusive changes may bring more positives for non-disabled people, too, like ramps!",
+        "Challenge yourself to use less offensive language like Retarded or Lame, and find words that mean what you mean instead.",
     ];
     dinoQuote = dinoWisdom[bookEFlavor];
     bookEFlavor ++;
@@ -1371,7 +1629,11 @@ function bookEPhrase(){
 }
 function bookFPhrase(){
     const dinoWisdom = [
-        "Book F",
+        "The Art of War by Sun Tzu",
+        "It's all about how to WIN in war. It's pretty adaptable to competitive play in fighting games, though, assuming you hate fun.",
+        "Keep a light load when traveling, and rely on local resources, guides, and spoils from raids.",
+        "Terrain is massively important, and to get to different terrain, you need to know what the enemy intends to do, either by vibes or spies.",
+        "The author adores spies, valuing them above all else. They make a strong case, too, as inteligence is everything.",
     ];
     dinoQuote = dinoWisdom[bookFFlavor];
     bookFFlavor ++;
@@ -1380,7 +1642,11 @@ function bookFPhrase(){
 }
 function oatmealPhrase(){
     const dinoWisdom = [
-        "oatmealFlavor",
+        "Boy oh boy, do I love oatmeal.",
+        "1, 2, Oatmeal",
+        "Eins, Zwei, Haferbrei",
+        "Oats are yummy with some cinnamon and salt, topped with whipped cream and rainbow sprinkles!",
+        "You can have plain salted oatmeal with some jam on top and it tastes like biscuits and jam!",
     ];
     dinoQuote = dinoWisdom[oatmealFlavor];
     oatmealFlavor ++;
@@ -1389,7 +1655,11 @@ function oatmealPhrase(){
 }
 function pepperPhrase(){
     const dinoWisdom = [
-        "pepperFlavor",
+        "Boy oh boy, do I dislike bell peppers.",
+        "They're aromatic when raw and they make anything you cook taste like pepper.",
+        "Peppers get wrinkly when you keep them too long. It's better than moldy, but that happens too.",
+        "Different colors of bell pepper cost different amounts. I don't know why.",
+        "They're full of seeds, seeds out the wazoo. You could probably plant a ton more. I don't know how to do that.",
     ];
     dinoQuote = dinoWisdom[pepperFlavor];
     pepperFlavor ++;
@@ -1398,7 +1668,11 @@ function pepperPhrase(){
 }
 function freezerPhrase(){
     const dinoWisdom = [
-        "freezerFlavor",
+        "It's a Freezer. You can buy then store ice in it.",
+        "For something that freezes, it sure does get hot. I bet it costs a lot to run it all hours of the day.",
+        "I'm so pampered! I have a freezer IN MY ROOM! Hehehe!",
+        "You want a cold drink? Maybe an ice cream? Too bad, only ice in here.",
+        "water become ice when it cold too long.",
     ];
     dinoQuote = dinoWisdom[freezerFlavor];
     freezerFlavor ++;
@@ -1407,7 +1681,11 @@ function freezerPhrase(){
 }
 function icePhrase(){
     const dinoWisdom = [
-        "iceFlavor",
+        "Some ice. It's cruncy.",
+        "Ice doesn't fill my belly on its own, but it prevents my hunger from reaching 0.",
+        "It's also fun to crunch some ice!",
+        "It hurts to hold ice too long, so I don't put it in my tail-bowl appendage thingy.",
+        "See this here? It's an ice tray. Molds the dang water into cubes. Coolest thing I didn't see.",
     ];
     dinoQuote = dinoWisdom[iceFlavor];
     iceFlavor ++;
@@ -1416,7 +1694,11 @@ function icePhrase(){
 }
 function fanPhrase(){
     const dinoWisdom = [
-        "Fan",
+        "It's a... ceiling fan. Why is it broken? Because you thrifted it. Do the savings feel good?",
+        "The amount this fan cools the room is very minimal. In fact, it might even heat it up because of the movement!",
+        "There isn't even a light on this thing. It dangles super low, so I can't get up on my hind legs without risking getting bopped on the head.",
+        "Actually it's more likely I'd break the fan by it hitting me. I don't want you telling me I owe you a brand new one.",
+        "How many rotations per minute? I am a very busy dinosaur. You figure it out.",
     ];
     dinoQuote = dinoWisdom[fanFlavor];
     fanFlavor ++;
@@ -1425,7 +1707,11 @@ function fanPhrase(){
 }
 function doghousePhrase(){
     const dinoWisdom = [
-        "Bookcase",
+        "It's the new DogHouse Mk. II! THANK YOU THANK YOU THANK YOU!!!",
+        "This is the hot new toy every kid wants. It generates REAL smoke!",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[bookcaseFlavor];
     bookcaseFlavor ++;
@@ -1435,6 +1721,10 @@ function doghousePhrase(){
 function jugPhrase(){
     const dinoWisdom = [
         "jugFlavor",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[jugFlavor];
     jugFlavor ++;
@@ -1444,6 +1734,10 @@ function jugPhrase(){
 function shirtPhrase(){
     const dinoWisdom = [
         "shirtFlavor",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[shirtFlavor];
     shirtFlavor ++;
@@ -1453,6 +1747,10 @@ function shirtPhrase(){
 function herbsPhrase(){
     const dinoWisdom = [
         "herbsFlavor",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[herbsFlavor];
     herbsFlavor ++;
@@ -1464,6 +1762,10 @@ function herbsPhrase(){
 function bookcasePhraseX(){
     const dinoWisdom = [
         "Bookcase",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[bookcaseFlavorX];
     bookcaseFlavorX ++;
@@ -1473,6 +1775,10 @@ function bookcasePhraseX(){
 function bookAPhraseX(){
     const dinoWisdom = [
         "Book A",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[bookAFlavorX];
     bookAFlavorX ++;
@@ -1482,6 +1788,10 @@ function bookAPhraseX(){
 function bookBPhraseX(){
     const dinoWisdom = [
         "Book B",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[bookBFlavorX];
     bookBFlavorX ++;
@@ -1491,6 +1801,10 @@ function bookBPhraseX(){
 function bookCPhraseX(){
     const dinoWisdom = [
         "Book C",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[bookCFlavorX];
     bookCFlavorX ++;
@@ -1500,6 +1814,10 @@ function bookCPhraseX(){
 function bookDPhraseX(){
     const dinoWisdom = [
         "Book D",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[bookDFlavorX];
     bookDFlavorX ++;
@@ -1509,6 +1827,10 @@ function bookDPhraseX(){
 function bookEPhraseX(){
     const dinoWisdom = [
         "Book E",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[bookEFlavorX];
     bookEFlavorX ++;
@@ -1518,6 +1840,10 @@ function bookEPhraseX(){
 function bookFPhraseX(){
     const dinoWisdom = [
         "Book F",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[bookFFlavorX];
     bookFFlavorX ++;
@@ -1527,6 +1853,10 @@ function bookFPhraseX(){
 function oatmealPhraseX(){
     const dinoWisdom = [
         "oatmealFlavorX",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[oatmealFlavorX];
     oatmealFlavorX ++;
@@ -1536,6 +1866,10 @@ function oatmealPhraseX(){
 function pepperPhraseX(){
     const dinoWisdom = [
         "pepperFlavorX",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[pepperFlavorX];
     pepperFlavorX ++;
@@ -1545,6 +1879,10 @@ function pepperPhraseX(){
 function freezerPhraseX(){
     const dinoWisdom = [
         "freezerFlavorX",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[freezerFlavorX];
     freezerFlavorX ++;
@@ -1554,6 +1892,10 @@ function freezerPhraseX(){
 function icePhraseX(){
     const dinoWisdom = [
         "iceFlavorX",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[iceFlavorX];
     iceFlavorX ++;
@@ -1563,6 +1905,10 @@ function icePhraseX(){
 function fanPhraseX(){
     const dinoWisdom = [
         "iceFlavorX",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[fanFlavorX];
     fanFlavorX ++;
@@ -1572,6 +1918,10 @@ function fanPhraseX(){
 function doghousePhraseX(){
     const dinoWisdom = [
         "Bookcase",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[bookcaseFlavorX];
     bookcaseFlavorX ++;
@@ -1581,6 +1931,10 @@ function doghousePhraseX(){
 function jugPhraseX(){
     const dinoWisdom = [
         "jugFlavorX",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[jugFlavorX];
     jugFlavorX ++;
@@ -1590,6 +1944,10 @@ function jugPhraseX(){
 function shirtPhraseX(){
     const dinoWisdom = [
         "shirtFlavorX",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[shirtFlavorX];
     shirtFlavorX ++;
@@ -1599,6 +1957,10 @@ function shirtPhraseX(){
 function herbsPhraseX(){
     const dinoWisdom = [
         "herbsFlavorX",
+        "",
+        "",
+        "",
+        "",
     ];
     dinoQuote = dinoWisdom[herbsFlavorX];
     herbsFlavorX ++;

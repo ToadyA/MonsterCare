@@ -19,8 +19,8 @@ body{
     display: none;
     background-color: #e8f1fa;
     border-radius: 50px;
-    width: 280px;
-    height: 120px;
+    width: 300px;
+    height: 150px;
     z-index: 12;
 }
 #speechBubble p{
