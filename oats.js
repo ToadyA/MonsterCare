@@ -255,28 +255,32 @@ mark2.addEventListener("click", () =>{
 });
 
 //fan animation
-let roomCool = new KeyframeEffect(
-    document.getElementById("MainFan"), [
-        {transform: "rotate(1turn)"},
-    ], {
-        duration: 1000,
-        easing: "ease-in",
-        iterations: Infinity,
-    },
-);
-let fanning = new Animation(roomCool, document.timeline);
+let blades = document.getElementById("MainFan");
+let bladeAngle = 15;
+let bladeDrop = 642;
+function fanning(){
+    setTimeout(() =>{
+        if(cooly){
+            blades.style.rotate = bladeAngle + "deg";
+            blades.style.top = bladeDrop + "px";
+            bladeAngle += 10;
+            bladeDrop +=2;
+            if(bladeAngle >= 360){
+                bladeAngle = 0;
+                bladeDrop -= 48;
+            }
+            fanning();
+        }
+    }, 30);
+}
 let cooly = false;
-const blades = document.getElementById("MainFan");
 blades.addEventListener("click", ()=>{
     if(!cooly){
         cooly = true;
-        fanning.play();
+        fanning();
     }
-    else{
+    else
         cooly = false;
-        fanning.cancel();
-    }
-    
 });
 
 //shirt animation
@@ -1258,7 +1262,23 @@ let dinoQuote = "Yeah, I default-texted you. What of it?";
 //Right-Clicking the shop wares (Shopkeep yaps)
 //Right-Clicking the Furniture (Dino talks)
 
-let dinoFlavor, bookcaseFlavor, bookAFlavor, bookBFlavor, bookCFlavor, bookDFlavor, bookEFlavor, bookFFlavor, oatmealFlavor, pepperFlavor, freezerFlavor, iceFlavor, fanFlavor, doghouseFlavor, jugFlavor, shirtFlavor, herbsFlavor = 0;
+let dinoFlavor = 0;
+let bookcaseFlavor = 0;
+let bookAFlavor = 0;
+let bookBFlavor = 0;
+let bookCFlavor = 0;
+let bookDFlavor = 0;
+let bookEFlavor = 0;
+let bookFFlavor = 0;
+let oatmealFlavor = 0;
+let pepperFlavor = 0;
+let freezerFlavor = 0;
+let iceFlavor = 0;
+let fanFlavor = 0;
+let doghouseFlavor = 0;
+let jugFlavor = 0;
+let shirtFlavor = 0;
+let herbsFlavor = 0;
 
 //assign clickable objects
 let talking = false;
