@@ -43,13 +43,13 @@ body{
 #cash{
     position: absolute;
     left: 92%;
-    top: 29%;
+    top: 28%;
     z-index: 2;
 }
 #age{
     position: absolute;
     left: 92%;
-    top: 39%;
+    top: 38%;
     z-index: 2;
 }
 

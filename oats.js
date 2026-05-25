@@ -158,9 +158,6 @@ function haveFun(n){
 let boing = new KeyframeEffect(
     document.getElementById("dodgeball"), [
         {transform: "translateX(0%) translateY(0%)"},
-        {transform: "translateX(-100%) translateY(-30%)"},
-        {transform: "translateX(-200%) translateY(0%)"},
-        {transform: "translateX(-300%) translateY(200%)"},
     ], {
         duration: 1000,
         iterations: 45,
@@ -224,8 +221,6 @@ function grub(m){
 let smokeOut = new KeyframeEffect(
     document.getElementById("Smoke"), [
         {transform: "translate(0%, 0%)"},
-        {transform: "translate(0%, 10%)"},
-        {transform: "translate(-100%, 100%)"},
     ], {
         duration: 1000,
         easing: "ease-in",
@@ -239,15 +234,71 @@ mark2.addEventListener("click", () =>{
     if(!puffing){
         puffing = true;
         puff.play();
+        console.log("puffing has begun.");
+        setTimeout(()=>{
+            waving = true;
+            billow();
+            console.log("the shirt shall now billow.");
+        }, 400);
     }
     else{
         puffing = false;
-        puff.stop();
+        puff.cancel();
+        console.log("no more puffing.");
+        setTimeout(()=>{
+            waving = false;
+            billow();
+            console.log("the shirt shall now cease its billowing.");
+        }, 400);
     }
         
 });
+
 //fan animation
+let roomCool = new KeyframeEffect(
+    document.getElementById("MainFan"), [
+        {transform: "rotate(1turn)"},
+    ], {
+        duration: 1000,
+        easing: "ease-in",
+        iterations: Infinity,
+    },
+);
+let fanning = new Animation(roomCool, document.timeline);
+let cooly = false;
+const blades = document.getElementById("MainFan");
+blades.addEventListener("click", ()=>{
+    if(!cooly){
+        cooly = true;
+        fanning.play();
+    }
+    else{
+        cooly = false;
+        fanning.cancel();
+    }
+    
+});
+
 //shirt animation
+let waving = false;
+let wave = 10;
+let billowing = true;
+function billow(){
+    if(waving){
+        setTimeout(() =>{
+            document.getElementById("Shirt").style.rotate = wave + "deg";
+            if(wave >= 30)
+                billowing = false;
+            else if(wave <= 15)
+                billowing = true;
+            if(billowing)
+                wave ++;
+            else
+                wave --;
+            billow();
+        }, 30);
+    }
+}
 
 //jug animation
 let coolIdea = false;   //whether the dino is looking at the water jug, contemplating a certified Cool Idea.
@@ -954,6 +1005,8 @@ buyOatmeal.addEventListener("click", () =>{
         grub(-19);
         oatStock ++;
         document.getElementById("Oatmeal").innerHTML="<img src='images/Bowl.png'><h1>x" + oatStock + "</h1>";
+        if(peckish)
+            document.getElementById("Oatmeal").style.display = "block";
         console.log("Thank you for your purchase of one serving of oats!");
     }
     else
@@ -978,6 +1031,8 @@ buyPepper.addEventListener("click", () =>{
         grub(-99);
         pepperStock ++;
         document.getElementById("Pepper").innerHTML="<img src='images/BellPepper.png'><h1>x" + pepperStock + "</h1>";
+        if(peckish)
+            document.getElementById("Pepper").style.display = "block";
         console.log("Thank you for your purchase of one Orange Bell Pepper!");
     }
     else
@@ -1003,6 +1058,8 @@ buyIce.addEventListener("click", () =>{
         grub(-1);
         iceStock += 10;
         document.getElementById("Ice").innerHTML="<img src='images/IceTray.png'><h1>x" + iceStock + "</h1>";
+        if(peckish)
+            document.getElementById("Ice").style.display = "block";
         console.log("Thank you for your purchase of a buncha ice chunks!");
     }
     else if (!freezy)
@@ -1031,6 +1088,9 @@ buyFreezer.addEventListener("click", () =>{
         grub(-1849);
         document.getElementById("FreezerX").style.display = "none";
         document.getElementById("Freezer").style.display = "block";
+        document.getElementById("IceX").style.display = "block";
+        if(peckish)
+            document.getElementById("iceBank").style.display = "block";
         console.log("Thank you for your purchase of one Freezer!");
     }
     else if(moolah < 1849)
@@ -1198,23 +1258,7 @@ let dinoQuote = "Yeah, I default-texted you. What of it?";
 //Right-Clicking the shop wares (Shopkeep yaps)
 //Right-Clicking the Furniture (Dino talks)
 
-let dinoFlavor = 0;
-let bookcaseFlavor = 0;
-let bookAFlavor = 0;
-let bookBFlavor = 0;
-let bookCFlavor = 0;
-let bookDFlavor = 0;
-let bookEFlavor = 0;
-let bookFFlavor = 0;
-let oatmealFlavor = 0;
-let pepperFlavor = 0;
-let freezerFlavor = 0;
-let iceFlavor = 0;
-let fanFlavor = 0;
-let doghouseFlavor = 0;
-let jugFlavor = 0;
-let shirtFlavor = 0;
-let herbsFlavor = 0;
+let dinoFlavor, bookcaseFlavor, bookAFlavor, bookBFlavor, bookCFlavor, bookDFlavor, bookEFlavor, bookFFlavor, oatmealFlavor, pepperFlavor, freezerFlavor, iceFlavor, fanFlavor, doghouseFlavor, jugFlavor, shirtFlavor, herbsFlavor = 0;
 
 //assign clickable objects
 let talking = false;
@@ -1224,17 +1268,15 @@ funnyDino.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about himself again. Big shocker.");
         if(!sleep)
             dinoPhrase();
         else
             sleepyPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1243,14 +1285,12 @@ bookshelf.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         bookcasePhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1259,14 +1299,13 @@ book1.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
+        document.getElementById("speechBubble").innerHTML="<p></p>";
         console.log("bubble cleared!");
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         bookAPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1275,14 +1314,12 @@ book2.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         bookBPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1291,14 +1328,12 @@ book3.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         bookCPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1307,14 +1342,12 @@ book4.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         bookDPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1323,14 +1356,12 @@ book5.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         bookEPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1339,14 +1370,12 @@ book6.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         bookFPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1355,14 +1384,12 @@ oatBowl.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         oatmealPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1371,14 +1398,12 @@ bellPepper.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         pepperPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1387,14 +1412,12 @@ freezeBox.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         freezerPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1403,14 +1426,12 @@ icy.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         icePhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1419,14 +1440,13 @@ highFan.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
+        document.getElementById("speechBubble").innerHTML="<p></p>";
         console.log("bubble cleared!");
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         fanPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1435,14 +1455,12 @@ doghouse2.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         doghousePhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1451,14 +1469,12 @@ fiveGal.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         jugPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1467,14 +1483,12 @@ teeshirt.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         shirtPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1483,14 +1497,12 @@ trimmedHerbs.addEventListener("contextmenu", (e) => {
     if(talking){
         talking = false;
         document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+        document.getElementById("speechBubble").innerHTML="<p></p>";
     }
     else{
         document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
         herbsPhrase();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
+        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>";
         talking = true;
     }
 });
@@ -1528,7 +1540,7 @@ function bookcasePhrase(){
         "That's my Bookcase. It can hold a whopping SIX books on it. Cool, huh?",
         "It sure is a Bookcase.",
         "I don't have a particular reason for stacking the books in that order.",
-        "I don't like selling my books. I get to brag about what I've read passively this way!",
+        "I don't like selling my books. I get to brag about what I've read this way, like a rich poser, except actually not!",
         "I can't put anything on top of this without exceeding its weight limit. Bummer, I know.",
     ];
     dinoQuote = dinoWisdom[bookcaseFlavor];
@@ -1657,7 +1669,7 @@ function freezerPhrase(){
 }
 function icePhrase(){
     const dinoWisdom = [
-        "Some ice. It's cruncy.",
+        "Some ice. It's crunchy.",
         "Ice doesn't fill my belly on its own, but it prevents my hunger from reaching 0.",
         "It's also fun to crunch some ice!",
         "It hurts to hold ice too long, so I don't put it in my tail-bowl appendage thingy.",
@@ -1686,8 +1698,8 @@ function doghousePhrase(){
         "It's the new DogHouse Mk. II! THANK YOU THANK YOU THANK YOU!!!",
         "This is the hot new toy every kid wants. It generates REAL smoke! Tap it!",
         "Poachers would keep it in a box forever, but that's a mistake: this thing is equipped with a \"Try Me\" button which will cake the inside of the box with soot.",
-        "If you shake the box funny, it will go off. You don't even need to tap it hard. Meaning getting it home in your car or on a bike might kill the resale value.",
-        "Anyway, the real fans know that DogHouses are perfect for smoke signaling your friends! It's the hot new trend for phone-free communications!",
+        "If you shake the box funny, it will go off. You don't even need to tap it hard, meaning getting it home in your car or on a bike might kill the resale value.",
+        "Anyway, the real fans know that DogHouses are perfect for smoke signaling your friends! It's the hot new trend for phone-free communication!",
     ];
     dinoQuote = dinoWisdom[bookcaseFlavor];
     bookcaseFlavor ++;
@@ -1722,9 +1734,9 @@ function shirtPhrase(){
 }
 function herbsPhrase(){
     const dinoWisdom = [
-        "This is a plant replica, but its features are muted so as not to provoke legal action, since it isa product being sold for money.",
-        "The name is a reference to an infamous Super Mario Maker level called \"Trimming the Herbs\".",
-        "It was the last level to be completed, and it was controversial: there was a lot of debate on whether or not it was TAS-only.",
+        "This is a plant replica, but its features are muted so as not to provoke legal action, since it is a product being sold for money.",
+        "Its name is a reference to an infamous Super Mario Maker level called \"Trimming the Herbs\", significant for the Team 0% campaign.",
+        "It was the last non-TAS level to be cleared, and it was controversial: there was a lot of debate on whether or not it was TAS-only.",
         "Eventually the level uploader revealed that, despite being a competition entry when it was first uploaded, the level was indeed TAS'd.",
         "The actual last level became \"The Last Dance\", but that didn't stop streamers from making thousands of attempts, clearing it for closure or clout.",
     ];
@@ -1733,4 +1745,3 @@ function herbsPhrase(){
     if(herbsFlavor >= dinoWisdom.length)
         herbsFlavor = 0;
 }
-
