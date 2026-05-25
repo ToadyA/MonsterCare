@@ -26,7 +26,7 @@ body{
 #speechBubble p{
     position: absolute;
     color: #0a0a0a;
-    left: 10%;
+    left: 6%;
     z-index: 13;
     font-size: 20px;
     font-weight: bold;
@@ -555,6 +555,48 @@ body{
     border: solid 2px #ca2e2e;
     z-index: 4;
 }
+#Shopkeep img{
+    position: absolute;
+    left: 26.5%;
+    top: 59%;
+    width: 10%;
+    z-index: 8;
+}
+#Shopkeep{
+    cursor: pointer;
+    display: none;
+}
+#DogBG{
+    position: absolute;
+    width: 210px;
+    height: 200px;
+    display: none;
+    top: 57%;
+    left: 26%;
+    background-color: #8c1313;
+    border: solid 4px #65371a;
+    z-index: 6;
+}
+#DogBubble{
+    position: absolute;
+    left: 25.5%;
+    top: 43.5%;
+    display: none;
+    background-color: #faece8;
+    border-radius: 50px;
+    width: 260px;
+    height: 150px;
+    z-index: 12;
+}
+#DogBubble p{
+    position: absolute;
+    color: #0a0a0a;
+    left: 6%;
+    z-index: 13;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 #BookcaseX img{
     position: absolute;
     left: 8%;
@@ -888,22 +930,22 @@ body{
 }
 #HerbsX img{
     position: absolute;
-    left: 26%;
-    top: 56%;
-    width: 5%;
+    left: 20%;
+    top: 72%;
+    width: 4.5%;
     z-index: 5;
 }
 #HerbsX h1{
     position: absolute;
-    left: 25.75%;
-    top: 66%;
+    left: 19.75%;
+    top: 80%;
     font-size: 18px;
     z-index: 5;
 }
 #HerbsX p{
     position: absolute;
-    left: 26%;
-    top: 67.5%;
+    left: 20%;
+    top: 81.5%;
     font-size: 18px;
     font-weight: bold;
     z-index: 5;

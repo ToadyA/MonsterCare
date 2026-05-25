@@ -504,6 +504,7 @@ foodIce.addEventListener("click", () => {
         }, 500);
     }
 });
+
 ///Work
 
 //do work to earn money, and to pass the time. This toggles everyting on or off, by a click of the punch card, which also advances the day by 1 Wiggle for every 2 clicks (9 Wiggles per Age).
@@ -649,6 +650,11 @@ document.addEventListener('keydown', (e) =>{
         if(shopping){
             shopping = false;
             document.getElementById("mart").style.display = "none";
+            document.getElementById("Shopkeep").innerHTML="<img src='images/Shopkeep.png'>";
+            document.getElementById("Shopkeep").style.display = "none";
+            document.getElementById("DogBG").style.display = "none";
+            document.getElementById("DogBubble").style.display = "none";
+            yapping = false;
             document.getElementById("BookcaseX").style.display = "none";
             document.getElementById("BookAX").style.display = "none";
             document.getElementById("BookBX").style.display = "none";
@@ -689,9 +695,12 @@ let shopping = false;
 const shop = document.getElementById("Cart");
 shop.addEventListener("click", () =>{
     if(!shopping){
-        console.log("oh memories.");
+        console.log("\"Spend Spend Spend!\" -Moneybags, Spyro A Hero's Tail");
         shopping = true;
         document.getElementById("mart").style.display = "block";
+        document.getElementById("Shopkeep").style.display = "block";
+        document.getElementById("Shopkeep").innerHTML="<img src='images/Shopkeep.png'>";
+        document.getElementById("DogBG").style.display = "block";
         if(!store[0])
             document.getElementById("BookcaseX").style.display = "block";
         if(!store[1])
@@ -726,6 +735,11 @@ shop.addEventListener("click", () =>{
     else{
         shopping = false;
         document.getElementById("mart").style.display = "none";
+        document.getElementById("Shopkeep").innerHTML="<img src='images/Shopkeep.png'>";
+        document.getElementById("Shopkeep").style.display = "none";
+        document.getElementById("DogBG").style.display = "none";
+        document.getElementById("DogBubble").style.display = "none";
+        yapping = false;
         document.getElementById("BookcaseX").style.display = "none";
         document.getElementById("BookAX").style.display = "none";
         document.getElementById("BookBX").style.display = "none";
@@ -760,18 +774,16 @@ buyBookcase.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyBookcase.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        bookcasePhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>Some kind of bento box for giants. Giants with small appetites.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyBookA = document.getElementById("BookAX");
@@ -789,18 +801,16 @@ buyBookA.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyBookA.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        bookAPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>I saw an episode of The Tick where the bad guy confused George Washington Carver with the inventor of peanut butter.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyBookB = document.getElementById("BookBX");
@@ -818,18 +828,16 @@ buyBookB.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyBookB.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        bookBPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>That's a thick book. You probably can't fold that book in half. Probably.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyBookC = document.getElementById("BookCX");
@@ -847,18 +855,16 @@ buyBookC.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyBookC.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        bookCPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>I haven't seen Treasure Planet, but I heard it looks beautiful. Why didn't they keep making more movies like that?</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyBookD = document.getElementById("BookDX");
@@ -876,18 +882,16 @@ buyBookD.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyBookD.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        bookDPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>This book is historically-significant in that it helped illuminate the dire working conditions of factories.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyBookE = document.getElementById("BookEX");
@@ -905,18 +909,16 @@ buyBookE.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyBookE.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        bookEPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>The book cover is orange, but the book itself is white. I like the color combo!</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyBookF = document.getElementById("BookFX");
@@ -934,18 +936,16 @@ buyBookF.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyBookF.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        bookFPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>I don't read books. It's easier and more fun to just watch anime and movies instead.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyOatmeal = document.getElementById("OatmealX");
@@ -960,18 +960,16 @@ buyOatmeal.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyOatmeal.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        oatmealPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>I think oats are good for you, but I would never eat them myself.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyPepper = document.getElementById("PepperX");
@@ -986,18 +984,16 @@ buyPepper.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyPepper.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        pepperPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>What is this strange orange vegetable?</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 let freezy = false;     //you cannot buy ice without a freezer
@@ -1015,18 +1011,16 @@ buyIce.addEventListener("click", () =>{
         console.log("MEGA brokie! Wow! You seriously don't have ONE PENNY?! get lost.");
 });
 buyIce.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        freezerPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>Ice costs us basically nothing, but we aren't running a charity here. Fork over the penny, bub.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyFreezer = document.getElementById("FreezerX");
@@ -1043,18 +1037,16 @@ buyFreezer.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyFreezer.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        icePhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>It's not cold because it's not plugged in. You'll just have to trust me on this one.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyFan = document.getElementById("FanX");
@@ -1071,18 +1063,16 @@ buyFan.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyFan.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        fanPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>Looks fine to me.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyDogHouse = document.getElementById("DogHouseX");
@@ -1099,18 +1089,16 @@ buyDogHouse.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyDogHouse.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        doghousePhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>The newest model, DogHouse Mk.2 features Real Smoke Action. A must-get for enthusiasts and any certified Cool Kid.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyShirt = document.getElementById("ShirtX");
@@ -1126,18 +1114,16 @@ buyShirt.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyShirt.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        shirtPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>This is the coolest shirt I've ever seen. If you don't buy it, I probably will.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyJug = document.getElementById("JugX");
@@ -1153,18 +1139,16 @@ buyJug.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyJug.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        jugPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>Maybe it's not a good idea to get this. I mean, do you see how your kid's looking at it?</p>";
+        yapping = true;
+        yapItUp();
     }
 });
 const buyHerbs = document.getElementById("HerbsX");
@@ -1180,48 +1164,39 @@ buyHerbs.addEventListener("click", () =>{
         console.log("brokie. get lost.");
 });
 buyHerbs.addEventListener("contextmenu", (e) => {
-    if(talking){
-        talking = false;
-        document.getElementById("speechBubble").style.display = "none";
-        document.getElementById("speechBubble").innerHTML="<p></p>"
-        console.log("bubble cleared!");
+    if(yapping){
+        yapping = false;
+        document.getElementById("DogBubble").style.display = "none";
+        document.getElementById("DogBubble").innerHTML="<p></p>";
     }
     else{
-        document.getElementById("speechBubble").style.display = "block";
-        console.log("talking about 101 Uses For Oats, that book he got for being good.");
-        herbsPhraseX();
-        document.getElementById("speechBubble").innerHTML="<p>" + dinoQuote +"</p>"
-        talking = true;
+        document.getElementById("DogBubble").style.display = "block";
+        document.getElementById("DogBubble").innerHTML="<p>\"Trim the Herbs\", so they say.</p>";
+        yapping = true;
+        yapItUp();
     }
 });
+
+function yapItUp(){
+    document.getElementById("Shopkeep").innerHTML="<img src='images/ShopkeepYap.png'>";
+    setTimeout(() =>{
+        document.getElementById("Shopkeep").innerHTML="<img src='images/Shopkeep.png'>";
+        if(yapping){
+            setTimeout(() =>{
+                yapItUp();
+            }, 200);
+        }
+    }, 200);
+}
 
 ///Right-Clicks
 
 document.addEventListener("contextmenu", (e) => {
     event.preventDefault();
 });
-let dinoQuote = "Yeah, I default-texted you. What of it?"
-
-///Right-Clicking the shop wares
-
-let bookcaseFlavorX = 0;
-let bookAFlavorX = 0;
-let bookBFlavorX = 0;
-let bookCFlavorX = 0;
-let bookDFlavorX = 0;
-let bookEFlavorX = 0;
-let bookFFlavorX = 0;
-let oatmealFlavorX = 0;
-let pepperFlavorX = 0;
-let freezerFlavorX = 0;
-let iceFlavorX = 0;
-let fanFlavorX = 0;
-let doghouseFlavorX = 0;
-let jugFlavorX = 0;
-let shirtFlavorX = 0;
-let herbsFlavorX = 0;
-
-///Right-Clicking the Furniture
+let dinoQuote = "Yeah, I default-texted you. What of it?";
+//Right-Clicking the shop wares (Shopkeep yaps)
+//Right-Clicking the Furniture (Dino talks)
 
 let dinoFlavor = 0;
 let bookcaseFlavor = 0;
@@ -1243,6 +1218,7 @@ let herbsFlavor = 0;
 
 //assign clickable objects
 let talking = false;
+let yapping = false;
 const funnyDino = document.getElementById("Oatkylosaurus");
 funnyDino.addEventListener("contextmenu", (e) => {
     if(talking){
@@ -1708,10 +1684,10 @@ function fanPhrase(){
 function doghousePhrase(){
     const dinoWisdom = [
         "It's the new DogHouse Mk. II! THANK YOU THANK YOU THANK YOU!!!",
-        "This is the hot new toy every kid wants. It generates REAL smoke!",
-        "",
-        "",
-        "",
+        "This is the hot new toy every kid wants. It generates REAL smoke! Tap it!",
+        "Poachers would keep it in a box forever, but that's a mistake: this thing is equipped with a \"Try Me\" button which will cake the inside of the box with soot.",
+        "If you shake the box funny, it will go off. You don't even need to tap it hard. Meaning getting it home in your car or on a bike might kill the resale value.",
+        "Anyway, the real fans know that DogHouses are perfect for smoke signaling your friends! It's the hot new trend for phone-free communications!",
     ];
     dinoQuote = dinoWisdom[bookcaseFlavor];
     bookcaseFlavor ++;
@@ -1720,11 +1696,11 @@ function doghousePhrase(){
 }
 function jugPhrase(){
     const dinoWisdom = [
-        "jugFlavor",
-        "",
-        "",
-        "",
-        "",
+        "Look at that 5-gallon water jug right there. I mean--",
+        "It's unwieldy when empty and too heavy when full. You can't really swing it around like a hammer usually.",
+        "If you blow on the top to do the bottle music thing, you'll ruin the water for everyone else.",
+        "It doesn't even roll straight thanks to the bottleneck. Funny skew downhill; do you think it would stop when it swings?",
+        "I kinda wanna stick my head into it... but I'd get stuck and suffocate. hm...",
     ];
     dinoQuote = dinoWisdom[jugFlavor];
     jugFlavor ++;
@@ -1733,11 +1709,11 @@ function jugPhrase(){
 }
 function shirtPhrase(){
     const dinoWisdom = [
-        "shirtFlavor",
-        "",
-        "",
-        "",
-        "",
+        "A Tee Shirt reading \"Oats & Me\".",
+        "It's my size, but I'm a quadroped, so you wouldn't be able to read the text on it if I wore it.",
+        "Not to mention my spines. That would complicate things. Might not be too comfy.",
+        "No, no! I love the shirt. Thank you for the thoughtful gift. I will hang it as a display piece.",
+        "Please don't be mad at me. Pretend I wear it as pajamas.",
     ];
     dinoQuote = dinoWisdom[shirtFlavor];
     shirtFlavor ++;
@@ -1746,11 +1722,11 @@ function shirtPhrase(){
 }
 function herbsPhrase(){
     const dinoWisdom = [
-        "herbsFlavor",
-        "",
-        "",
-        "",
-        "",
+        "This is a plant replica, but its features are muted so as not to provoke legal action, since it isa product being sold for money.",
+        "The name is a reference to an infamous Super Mario Maker level called \"Trimming the Herbs\".",
+        "It was the last level to be completed, and it was controversial: there was a lot of debate on whether or not it was TAS-only.",
+        "Eventually the level uploader revealed that, despite being a competition entry when it was first uploaded, the level was indeed TAS'd.",
+        "The actual last level became \"The Last Dance\", but that didn't stop streamers from making thousands of attempts, clearing it for closure or clout.",
     ];
     dinoQuote = dinoWisdom[herbsFlavor];
     herbsFlavor ++;
@@ -1758,212 +1734,3 @@ function herbsPhrase(){
         herbsFlavor = 0;
 }
 
-
-function bookcasePhraseX(){
-    const dinoWisdom = [
-        "Bookcase",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[bookcaseFlavorX];
-    bookcaseFlavorX ++;
-    if(bookcaseFlavorX >= dinoWisdom.length)
-        bookcaseFlavorX = 0;
-}
-function bookAPhraseX(){
-    const dinoWisdom = [
-        "Book A",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[bookAFlavorX];
-    bookAFlavorX ++;
-    if(bookAFlavorX >= dinoWisdom.length)
-        bookAFlavorX = 0;
-}
-function bookBPhraseX(){
-    const dinoWisdom = [
-        "Book B",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[bookBFlavorX];
-    bookBFlavorX ++;
-    if(bookBFlavorX >= dinoWisdom.length)
-        bookBFlavorX = 0;
-}
-function bookCPhraseX(){
-    const dinoWisdom = [
-        "Book C",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[bookCFlavorX];
-    bookCFlavorX ++;
-    if(bookCFlavorX >= dinoWisdom.length)
-        bookCFlavorX = 0;
-}
-function bookDPhraseX(){
-    const dinoWisdom = [
-        "Book D",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[bookDFlavorX];
-    bookDFlavorX ++;
-    if(bookDFlavorX >= dinoWisdom.length)
-        bookDFlavorX = 0;
-}
-function bookEPhraseX(){
-    const dinoWisdom = [
-        "Book E",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[bookEFlavorX];
-    bookEFlavorX ++;
-    if(bookEFlavorX >= dinoWisdom.length)
-        bookEFlavorX = 0;
-}
-function bookFPhraseX(){
-    const dinoWisdom = [
-        "Book F",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[bookFFlavorX];
-    bookFFlavorX ++;
-    if(bookFFlavorX >= dinoWisdom.length)
-        bookFFlavorX = 0;
-}
-function oatmealPhraseX(){
-    const dinoWisdom = [
-        "oatmealFlavorX",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[oatmealFlavorX];
-    oatmealFlavorX ++;
-    if(oatmealFlavorX >= dinoWisdom.length)
-        oatmealFlavorX = 0;
-}
-function pepperPhraseX(){
-    const dinoWisdom = [
-        "pepperFlavorX",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[pepperFlavorX];
-    pepperFlavorX ++;
-    if(pepperFlavorX >= dinoWisdom.length)
-        pepperFlavorX = 0;
-}
-function freezerPhraseX(){
-    const dinoWisdom = [
-        "freezerFlavorX",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[freezerFlavorX];
-    freezerFlavorX ++;
-    if(freezerFlavorX >= dinoWisdom.length)
-        freezerFlavorX = 0;
-}
-function icePhraseX(){
-    const dinoWisdom = [
-        "iceFlavorX",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[iceFlavorX];
-    iceFlavorX ++;
-    if(iceFlavorX >= dinoWisdom.length)
-        iceFlavorX = 0;
-}
-function fanPhraseX(){
-    const dinoWisdom = [
-        "iceFlavorX",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[fanFlavorX];
-    fanFlavorX ++;
-    if(fanFlavorX >= dinoWisdom.length)
-        fanFlavorX = 0;
-}
-function doghousePhraseX(){
-    const dinoWisdom = [
-        "Bookcase",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[bookcaseFlavorX];
-    bookcaseFlavorX ++;
-    if(bookcaseFlavorX >= dinoWisdom.length)
-        bookcaseFlavorX = 0;
-}
-function jugPhraseX(){
-    const dinoWisdom = [
-        "jugFlavorX",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[jugFlavorX];
-    jugFlavorX ++;
-    if(jugFlavorX >= dinoWisdom.length)
-        jugFlavorX = 0;
-}
-function shirtPhraseX(){
-    const dinoWisdom = [
-        "shirtFlavorX",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[shirtFlavorX];
-    shirtFlavorX ++;
-    if(shirtFlavorX >= dinoWisdom.length)
-        shirtFlavorX = 0;
-}
-function herbsPhraseX(){
-    const dinoWisdom = [
-        "herbsFlavorX",
-        "",
-        "",
-        "",
-        "",
-    ];
-    dinoQuote = dinoWisdom[herbsFlavorX];
-    herbsFlavorX ++;
-    if(herbsFlavorX >= dinoWisdom.length)
-        herbsFlavorX = 0;
-}
