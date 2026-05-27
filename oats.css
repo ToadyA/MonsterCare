@@ -177,13 +177,7 @@ body{
 
 #dodgeball img{
     position: absolute;
-    left: 50%;
-    top: 31%;
-    width: 5%;
-    z-index: 8;
-}
-#dodgeball{
-    display: block;
+    z-index: 3;
 }
 
 #eyebeam1 img{

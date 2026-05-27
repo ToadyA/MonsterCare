@@ -144,61 +144,117 @@ function wiggle(){
         
 }
 
-//decreases boredom because you played with him!
-function haveFun(n){
-    console.log("have this much fun: " + n);
-    boredom -= n;
-    if(boredom < 0){
-        boredom = 0;
+///ball animation
+let ballPhase = 0;              //how far into the animation we are
+let ballClose = 450;             //make the ball smaller as it approaches the dino, before bonking at 10% width.
+                                //borrowing recoilNotes from ricochet1() to use as the ones/tenths place digit but for ballClose for now.
+let ballArc = 180;              //rotation of the ball image in ricochet0(); then the angle of the ball (with its center far to the left) for ricochet2().
+function ricochet0(){
+    console.log("ricochet 0");
+    setTimeout(() =>{
+        if(ballPhase == 0){
+            ballClose -= 5;
+            recoilNotes = ballClose % 10;
+            ballClose = Math.trunc(ballClose / 10);
+            ballArc -= 5;
+            recoilNotes = ballRecoil % 10;
+            ballRecoil = Math.trunc(ballRecoil / 10);
+            document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: block; " + ballClose + "." + recoilNotes + "%left: 47%; top: 31%; rotate: "+ ballArc + "deg; transform-origin: 50% 50%;\">";
+            ballClose = (ballClose * 10) + recoilNotes;
+            ballRecoil = (ballRecoil * 10) + recoilNotes;
+            ricochet0();
+        }
+    }, 20);
+    if(ballClose <= 100){
+        ballClose = 100;
+        document.getElementById("dodgeball").style.width = "10%";
+        ballPhase = 1;
+
+        ballBounce.currentTime = 13.5;
+        ballBounce.play();
+        if(wiggles >= 81)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_hit.png' height='600px' width='600px'>";
+        else if(wiggles >= 36)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloYow.png' height='400px' width='400px'>";
+        else if(wiggles >= 9)
+            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyHit.png' height='250px' width='250px'>";
+        setTimeout(() => {
+            if(wiggles >= 81){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+            }
+            else if(wiggles >= 36){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+            }
+            else if(wiggles >= 9){
+                if(sleep)
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='400px' width='400px'>";
+                else
+                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='400px' width='400px'>";
+            }
+        }, 800);
+        ricochet1();
     }
-    document.getElementById("bored").style.width = boredom + "px";
-    console.log("boredom is currently " + boredom);
 }
-                                                            //fix the ball animation. Why is it like this?
-let boing = new KeyframeEffect(
-    document.getElementById("dodgeball"), [
-        {transform: "translateX(0%) translateY(0%)"},
-    ], {
-        duration: 1000,
-        iterations: 45,
-    }, );
-let ricochet = new Animation(boing, document.timeline);
+
+let ballRecoil = 300;           //31% from the top is the initial ball offset from the top
+let recoilNotes = 0;            //the ones place of ballRecoil is also the tenths place of the top value
+function ricochet1(){
+    console.log("ricochet 1");
+    setTimeout(() =>{
+        if(ballPhase == 1){
+            ballRecoil -= 5;
+            recoilNotes = ballRecoil % 10;
+            ballRecoil = Math.trunc(ballRecoil / 10);
+            document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: block; width: 10%; left: 50%; top: " + ballRecoil + "." + recoilNotes + "%; rotate: 0deg; transform-origin: -350% 50%;\">";
+            ballRecoil = (ballRecoil * 10) + recoilNotes;
+            ricochet1();
+        }
+    }, 10);
+    if(ballRecoil <= 280){
+        ballArc = 0;
+        ballPhase = 2;
+        ricochet2();
+    }
+}
+
+function ricochet2(){
+    console.log("ricochet 2: " + ballPhase);
+    setTimeout(() =>{
+        if(ballPhase == 2){
+            ballArc -= 5;
+            recoilNotes = ballRecoil % 10;
+            ballRecoil = Math.trunc(ballRecoil / 10);
+            document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: block; width: 10%; left: 50%; top: " + ballRecoil + "." + recoilNotes + "%; rotate: " + ballArc + "deg; transform-origin: -350% 50%;\">";
+            ballRecoil = (ballRecoil * 10) + recoilNotes;
+            ricochet2();
+        }
+    }, 10);
+    if(ballArc <= -135){
+        ballPhase = 3;
+        document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: none;\">";
+    }
+}
 
 //play with the boy by hitting him with a ball. He doesn't seem to like it much...
 const ball = document.getElementById("playBall");
 ball.addEventListener("click", () =>{
-    haveFun(8);
-    if(wiggles >= 81)
-        document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_hit.png' height='600px' width='600px'>";
-    else if(wiggles >= 36)
-        document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloYow.png' height='400px' width='400px'>";
-    else if(wiggles >= 9)
-        document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyHit.png' height='250px' width='250px'>";
-    document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' width='100px' height='100px' style=\"display: block; z-index: 15; position: absolute; left: 50%; top: 30%;\">";
-    setTimeout(() => {
-        if(wiggles >= 81){
-            if(sleep)
-                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
-            else
-                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
-        }
-        else if(wiggles >= 36){
-            if(sleep)
-                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
-            else
-                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
-        }
-        else if(wiggles >= 9){
-            if(sleep)
-                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='400px' width='400px'>";
-            else
-                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='400px' width='400px'>";
-        }
-        //document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' width='100px' height='100px' style=\"display: none; z-index: 15; position: absolute; left: 50%; top: 30%;\">";
-    }, 800);
-    ballBounce.currentTime = 13.5;
-    ballBounce.play();
-    ricochet.play();
+    boredom -= 8;
+    if(boredom < 0){
+        boredom = 0;
+    }
+    document.getElementById("bored").style.width = boredom + "px";
+
+    ballPhase = 0;
+    ballClose = 450;
+    ballArc = 180;
+    ballRecoil = 310;
+    ricochet0();
 });
 
 function grub(m){
