@@ -21,6 +21,8 @@ let iceStock = 0;
 let ballBounce = new Audio("audio/dodgeball.mp3");
 let tonk = new Audio("audio/tink.mp3");
 let xylophone = new Audio("audio/xylophone.mp3");
+let munch = new Audio("audio/munch.mp3");
+let crunch = new Audio("audio/crunch.mp3");
 
 //egg wiggle animation
 let billy = new KeyframeEffect(
@@ -170,6 +172,55 @@ function wiggle(){
     wiggles ++;
         
 }
+
+///books
+
+let readsy = [false, false, false, false, false, false];
+function reading(b){
+    if(!readsy[b]){
+        if(!sleep && energy > 0){
+            sleepiness += 10;
+            happiness += 18;
+            energy -= 15;
+            boredom += 3;
+            readsy[b] = true;
+        }
+        if(sleepiness > 100){
+            sleep = true;
+            document.getElementById("sleep").style.backgroundColor = "#0d1ebd";
+        }
+        document.getElementById("sleep").style.width = sleepiness + "px";
+
+        if(happiness > 100)
+            happiness = 100;
+        document.getElementById("happy").style.width = happiness + "px";
+        if(energy < 0)
+            energy = 0;
+        document.getElementById("energy").style.width = energy + "px";
+        if(boredom > 100)
+            boredom = 100;
+        document.getElementById("bored").style.width = boredom + "px";
+    }
+}
+
+document.getElementById("BookA").addEventListener("click", () =>{
+    reading(0);
+});
+document.getElementById("BookB").addEventListener("click", () =>{
+    reading(1);
+});
+document.getElementById("BookC").addEventListener("click", () =>{
+    reading(2);
+});
+document.getElementById("BookD").addEventListener("click", () =>{
+    reading(3);
+});
+document.getElementById("BookE").addEventListener("click", () =>{
+    reading(4);
+});
+document.getElementById("BookF").addEventListener("click", () =>{
+    reading(5);
+});
 
 ///ball animation
 let ballPhase = 0;              //how far into the animation we are
@@ -569,6 +620,8 @@ foodOatmeal.addEventListener("click", () => {
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloThanks.png' height='400px' width='400px'>";
         else if(wiggles >= 9)
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyYum.png' height='250px' width='250px'>";
+        munch.currentTime = 2;
+        munch.play();
         setTimeout(() =>{
             if(wiggles >= 81)
                 document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_chew.png' height='600px' width='600px'>";
@@ -638,6 +691,8 @@ foodPepper.addEventListener("click", () => {
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloEw.png' height='400px' width='400px'>";
         else if(wiggles >= 9)
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyPepper.png' height='250px' width='250px'>";
+        munch.currentTime = 2;
+        munch.play();
         setTimeout(() =>{
             if(wiggles >= 81){
                 if(sleep)
@@ -678,6 +733,8 @@ foodIce.addEventListener("click", () => {
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloThanks.png' height='400px' width='400px'>";
         else if(wiggles >= 9)
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyYum.png' height='250px' width='250px'>";
+        crunch.currentTime = 8.1;
+        crunch.play();
         setTimeout(() =>{
             if(wiggles >= 81)
                 document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_chew.png' height='600px' width='600px'>";
@@ -753,6 +810,12 @@ start.addEventListener("click", () =>{
         document.getElementById("hammer").style.display = "none";
         document.getElementById("oat").style.display = "none";
         document.getElementById("debris").style.display = "none";
+        readsy[0] = false;
+        readsy[1] = false;
+        readsy[2] = false;
+        readsy[3] = false;
+        readsy[4] = false;
+        readsy[5] = false;
     }
 });
 
@@ -902,6 +965,12 @@ document.addEventListener('keydown', (e) =>{
             document.getElementById("hammer").style.display = "none";
             document.getElementById("oat").style.display = "none";
             document.getElementById("debris").style.display = "none";
+            readsy[0] = false;
+            readsy[1] = false;
+            readsy[2] = false;
+            readsy[3] = false;
+            readsy[4] = false;
+            readsy[5] = false;
         }
     }
 });
