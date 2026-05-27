@@ -1,3 +1,4 @@
+let hp = 3;
 let hunger = 50;
 document.getElementById("hunger").style.width = hunger + "px";
 let energy = 20;
@@ -11,7 +12,7 @@ document.getElementById("bored").style.width = boredom + "px";
 let sleep = false;
 let wiggles = 0;
 let year = 0;
-let moolah = 20000;     //200 dollars and 00 cents, which will be split manually later to read as $200.00
+let moolah = 5000;     //200 dollars and 00 cents, which will be split manually later to read as $200.00
 let cents = 0;
 let oatStock = 10;      //starter supply of foodstuffs; if you change these values, you must change them in oats.html separately, too.
 let pepperStock = 0;
@@ -76,6 +77,7 @@ function wiggle(){
     if(hunger >= 100)
         hunger = 100;
     document.getElementById("hunger").style.width = hunger + "px";
+
     if(hunger > 80)
         energy -= 20;
     else
@@ -84,11 +86,13 @@ function wiggle(){
         energy = 0;
     else if(energy >= 110)
         energy = 110;
+
     document.getElementById("energy").style.width = energy + "px";
     happiness -= 15;
     if(happiness <= 0)
         happiness = 0;
     document.getElementById("happy").style.width = happiness + "px";
+
     if(!sleep){
         sleepiness += 10;
     }
@@ -128,6 +132,10 @@ function wiggle(){
         sleep = false;
         sleepiness = 0;
         document.getElementById("sleep").style.backgroundColor = "#3c4ac4";
+        energy += 50;
+        if(energy > 110)
+            energy = 110;
+        document.getElementById("energy").style.width = energy + "px";
         if(wiggles >= 81)
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
         else if(wiggles >= 36)
@@ -136,107 +144,70 @@ function wiggle(){
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
     }
     document.getElementById("sleep").style.width = sleepiness + "px";
-    boredom += 60;
+
+    boredom += 45;
     if(boredom >= 100)
         boredom = 100;
     document.getElementById("bored").style.width = boredom + "px";
+
+    if(happiness == 0 || hunger == 0 || boredom == 100)
+        hp --;
+    else if(happiness >= 80 && hunger < 80 && boredom != 100)
+        hp ++;
+    if(hp > 3)
+        hp = 3;
+    if(hp < 0)
+        hp = 0;
+
+    if(hp <= 0)
+        document.getElementById("profile").innerHTML = "<img src=\"images/icon/OatkyloProfilePlease.png\" id=\"profile\"></img>";
+    else if(hp == 1)
+        document.getElementById("profile").innerHTML = "<img src=\"images/icon/OatkyloProfilePoor.png\" id=\"profile\"></img>";
+    else if(hp == 2)
+        document.getElementById("profile").innerHTML = "<img src=\"images/icon/OatkyloProfileOk.png\" id=\"profile\"></img>";
+    else
+        document.getElementById("profile").innerHTML = "<img src=\"images/icon/OatkyloProfile.png\" id=\"profile\"></img>";
     wiggles ++;
         
 }
 
 ///ball animation
 let ballPhase = 0;              //how far into the animation we are
-let ballClose = 450;             //make the ball smaller as it approaches the dino, before bonking at 10% width.
-                                //borrowing recoilNotes from ricochet1() to use as the ones/tenths place digit but for ballClose for now.
-let ballArc = 180;              //rotation of the ball image in ricochet0(); then the angle of the ball (with its center far to the left) for ricochet2().
-function ricochet0(){
-    console.log("ricochet 0");
-    setTimeout(() =>{
-        if(ballPhase == 0){
-            ballClose -= 5;
-            recoilNotes = ballClose % 10;
-            ballClose = Math.trunc(ballClose / 10);
-            ballArc -= 5;
-            recoilNotes = ballRecoil % 10;
-            ballRecoil = Math.trunc(ballRecoil / 10);
-            document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: block; " + ballClose + "." + recoilNotes + "%left: 47%; top: 31%; rotate: "+ ballArc + "deg; transform-origin: 50% 50%;\">";
-            ballClose = (ballClose * 10) + recoilNotes;
-            ballRecoil = (ballRecoil * 10) + recoilNotes;
-            ricochet0();
-        }
-    }, 20);
-    if(ballClose <= 100){
-        ballClose = 100;
-        document.getElementById("dodgeball").style.width = "10%";
-        ballPhase = 1;
-
-        ballBounce.currentTime = 13.5;
-        ballBounce.play();
-        if(wiggles >= 81)
-            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_hit.png' height='600px' width='600px'>";
-        else if(wiggles >= 36)
-            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloYow.png' height='400px' width='400px'>";
-        else if(wiggles >= 9)
-            document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyHit.png' height='250px' width='250px'>";
-        setTimeout(() => {
-            if(wiggles >= 81){
-                if(sleep)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
-                else
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
-            }
-            else if(wiggles >= 36){
-                if(sleep)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
-                else
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
-            }
-            else if(wiggles >= 9){
-                if(sleep)
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='400px' width='400px'>";
-                else
-                    document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='400px' width='400px'>";
-            }
-        }, 800);
-        ricochet1();
-    }
-}
-
+let ballArc = 0;                //rotation of the ball image in ricochet0(); then the angle of the ball (with its center far to the left) for ricochet2().
 let ballRecoil = 300;           //31% from the top is the initial ball offset from the top
 let recoilNotes = 0;            //the ones place of ballRecoil is also the tenths place of the top value
-function ricochet1(){
+function ricochet0(){
     console.log("ricochet 1");
     setTimeout(() =>{
-        if(ballPhase == 1){
+        if(ballPhase == 0){
             ballRecoil -= 5;
             recoilNotes = ballRecoil % 10;
             ballRecoil = Math.trunc(ballRecoil / 10);
-            document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: block; width: 10%; left: 50%; top: " + ballRecoil + "." + recoilNotes + "%; rotate: 0deg; transform-origin: -350% 50%;\">";
+            document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: block; width: 8%; left: 50%; top: " + ballRecoil + "." + recoilNotes + "%; rotate: 0deg; transform-origin: -350% 50%;\">";
             ballRecoil = (ballRecoil * 10) + recoilNotes;
-            ricochet1();
+            ricochet0();
         }
     }, 10);
     if(ballRecoil <= 280){
         ballArc = 0;
-        ballPhase = 2;
-        ricochet2();
+        ballPhase = 1;
+        ricochet1();
     }
 }
-
-function ricochet2(){
+function ricochet1(){
     console.log("ricochet 2: " + ballPhase);
     setTimeout(() =>{
-        if(ballPhase == 2){
+        if(ballPhase == 1){
             ballArc -= 5;
             recoilNotes = ballRecoil % 10;
             ballRecoil = Math.trunc(ballRecoil / 10);
-            document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: block; width: 10%; left: 50%; top: " + ballRecoil + "." + recoilNotes + "%; rotate: " + ballArc + "deg; transform-origin: -350% 50%;\">";
+            document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: block; width: 8%; left: 50%; top: " + ballRecoil + "." + recoilNotes + "%; rotate: " + ballArc + "deg; transform-origin: -350% 50%;\">";
             ballRecoil = (ballRecoil * 10) + recoilNotes;
-            ricochet2();
+            ricochet1();
         }
     }, 10);
     if(ballArc <= -135){
-        ballPhase = 3;
+        ballPhase = 2;
         document.getElementById("dodgeball").innerHTML = "<img src='images/BigRedBall.png' style=\"display: none;\">";
     }
 }
@@ -250,10 +221,56 @@ ball.addEventListener("click", () =>{
     }
     document.getElementById("bored").style.width = boredom + "px";
 
+    if(sleep){
+        sleepiness -= 10;
+        happiness -= 10;
+        if(sleepiness <= 0){
+            sleepiness = 0;
+            sleep = false;
+            document.getElementById("sleep").style.backgroundColor = "#3c4ac4";
+        }
+    }
+    else{
+        if(sleepiness >= 80)
+            sleepiness -= 10;
+    }
+    document.getElementById("sleep").style.width = sleepiness + "px";
+    document.getElementById("happy").style.width = happiness + "px";
+
+    if(wiggles >= 81)
+        document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_hit.png' height='600px' width='600px'>";
+    else if(wiggles >= 36)
+        document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloYow.png' height='400px' width='400px'>";
+    else if(wiggles >= 9)
+        document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyHit.png' height='250px' width='250px'>";
+
+    setTimeout(() => {
+        if(wiggles >= 81){
+            if(sleep)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_Zzz.png' height='600px' width='600px'>";
+            else
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading.png' height='600px' width='600px'>";
+        }
+        else if(wiggles >= 36){
+            if(sleep)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloZzz.png' height='400px' width='400px'>";
+            else
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkyloFull.png' height='400px' width='400px'>";
+        }
+        else if(wiggles >= 9){
+            if(sleep)
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/OatkylobabyZzz.png' height='250px' width='250px'>";
+            else
+                document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylobaby.png' height='250px' width='250px'>";
+        }
+    }, 800);
+
+    ballBounce.currentTime = 13.5;
+    ballBounce.play();
+
     ballPhase = 0;
-    ballClose = 450;
-    ballArc = 180;
-    ballRecoil = 310;
+    ballArc = 0;
+    ballRecoil = 300;
     ricochet0();
 });
 
@@ -273,12 +290,44 @@ function grub(m){
     moolah += cents;
 }
 
-//smoke cloud eeks out of the chimney, then drifts up and left offscreen, when it will loop again.
+///smoke animation
+
+let cumuloSmoke = 0;
+let signalAble = false;
+function signaling(){
+    if(signalAble){
+        if(cumuloSmoke <= 0){
+            setTimeout(() =>{
+                cumuloSmoke = 1;
+                signaling();
+            }, 500);
+        }
+        else if(cumuloSmoke > 9){ //375ms
+            cumuloSmoke = 0;
+            document.getElementById("Smoke").style.display = "none";
+            document.getElementById("Smoke").style.width = "1%";
+            signaling();
+        }
+        else{
+            setTimeout(() =>{
+                document.getElementById("Smoke").style.display = "block";
+                document.getElementById("Smoke").style.width = cumuloSmoke + "%";
+                cumuloSmoke ++;
+                signaling();
+            }, 100);
+        }
+    }
+       
+}
+
 let smokeOut = new KeyframeEffect(
     document.getElementById("Smoke"), [
         {transform: "translate(0%, 0%)"},
+        {transform: "translate(0%, -150%)"},
+        {transform: "translate(-150%, -250%)"},
+        {transform: "translate(-300%, -500%)"},
     ], {
-        duration: 1000,
+        duration: 1500,
         easing: "ease-in",
         iterations: Infinity,
     },
@@ -307,7 +356,17 @@ mark2.addEventListener("click", () =>{
             console.log("the shirt shall now cease its billowing.");
         }, 400);
     }
-        
+
+    cumuloSmoke = 0;
+    if(!signalAble){
+        document.getElementById("Smoke").style.display = "block";
+        signalAble = true;
+        signaling();
+    }
+    else{
+        document.getElementById("Smoke").style.display = "none";
+        signalAble = false;
+    }
 });
 
 ///fan animation
@@ -501,8 +560,8 @@ foodOatmeal.addEventListener("click", () => {
             happiness = 100;
         document.getElementById("happy").style.width = happiness + "px";
         energy += 25;
-        if(energy > 105)
-            energy = 105;
+        if(energy > 110)
+            energy = 110;
         document.getElementById("energy").style.width = energy + "px";
         if(wiggles >= 81)
             document.getElementById("Oatkylosaurus").innerHTML = "<img src='images/dino/Oatkylo_reading_grateful.png' height='600px' width='600px'>";
@@ -742,7 +801,7 @@ function purgOatory(){
             quickMan = 0;
             quickSort.play();
             setTimeout(() => {
-                grub(2);
+                grub(7);
                 document.getElementById("oat").innerHTML = "<img src='images/work/RollOat.png' width='50px' height='50px'>";
                 sorty = false;
                 document.getElementById("debris").style.display = "block";

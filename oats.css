@@ -18,6 +18,7 @@ body{
     top: 30%;
     display: none;
     background-color: #e8f1fa;
+    border: solid 2px #0b0b0b;
     border-radius: 50px;
     width: 300px;
     height: 150px;
@@ -30,6 +31,24 @@ body{
     z-index: 13;
     font-size: 20px;
     font-weight: bold;
+}
+
+#interview{
+    position: absolute;
+    width: 130px;
+    height: 140px;
+    background-color: #e0ce91;
+    border: solid 4px #11121b;
+    left: 12.9%;
+    bottom: 2%;
+    z-index: 2;
+}
+#profile img{
+    position: absolute;
+    bottom: 0%;
+    left: 13%;
+    z-index: 3;
+    width: 8%;
 }
 
 /*Two ostrasized stats who have nowhere convenient to go thanks to the fancy border art, and so are presently relegated to the right side of the screen*/
@@ -448,12 +467,6 @@ body{
     top: 45%;
     width: 10%;
 }
-#Smoke img{
-    position: absolute;
-    right: 15%;
-    top: 35%;
-    width: 5%;
-}
 #Freezer img{
     position: absolute;
     left: 14%;
@@ -515,7 +528,12 @@ body{
     cursor: pointer;
 }
 #Smoke{
+    position: absolute;
+    width: 1%;
+    right: 17.5%;
+    top: 50%;
     display: none;
+    z-index: -1;
 }
 #Freezer{
     display: none;
@@ -572,6 +590,7 @@ body{
     top: 43.5%;
     display: none;
     background-color: #faece8;
+    border: solid 2px #1f1d1b;
     border-radius: 50px;
     width: 260px;
     height: 150px;
