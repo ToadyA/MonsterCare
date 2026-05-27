@@ -440,10 +440,7 @@ body{
 }
 #MainFan img{
     position: absolute;
-    left: 40%;
-    top: 15%;
-    
-    transform-origin: 40% 40%;
+    width: 8%;
 }
 #FanCord img{
     position: absolute;
@@ -471,10 +468,7 @@ body{
 }
 #Shirt img{
     position: absolute;
-    right: 26%;
-    top: 8%;
     width: 10%;
-    rotate: 15deg;
 }
 #Jug img{
     position: absolute;

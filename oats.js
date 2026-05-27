@@ -254,98 +254,69 @@ mark2.addEventListener("click", () =>{
         
 });
 
-//fan animation
+///fan animation
+
 let blades = document.getElementById("MainFan");
-let bladeAngle = 15;
-let quadrant = 0;
-let bladeDrop = blades.style.top;
-let bladeSlash = blades.style.left;
+let bladeAngle = 0;     //rotate value of MainFan, rotates correctly before being rejected and returning
+let bladeDrop = 170;     //top value of MainFan, shimmies up before dropping down suddenly
+let bladeSin = 410;      //left value of MainFan, moves left and right
+let anglePeak = false;  //false means the angle is increasing (clockwise); true means the angle retraces back to 0.
+let dropNow = 0;        //0 means rising slowly; 10+ will mean the fan drops suddenly. The numbers between are for stalling at the top.
+let sinPeak = false;    //false means headed right, true means headed left; swaps when the peak is reached of either extreme.
+let topHolder = 0;      //the thenths place of bladeDrop
+let leftHolder = 0;     //the thenths place of bladeSin
+
 function fanning(){
     setTimeout(() =>{
         if(cooly){
-            if(quadrant == 0){
-                console.log("quadrant: " + quadrant);
-                bladeDrop +=5;
-                bladeSlash -=5;
-            }
-            else if(quadrant == 1){
-                bladeDrop +=5;
-                bladeSlash +=5;
-                console.log("quadrant: " + quadrant);
-            }
-            else if(quadrant == 2){
-                bladeDrop +=5;
-                console.log("quadrant: " + quadrant);
-            }
-            else if(quadrant == 3){
-                bladeDrop +=5;
-                bladeSlash -=5;
-                console.log("quadrant: " + quadrant);
-            }
-            else if(quadrant == 4){
-                bladeSlash +=5;
-                console.log("quadrant: " + quadrant);
-            }
-            else if(quadrant == 5){
-                bladeDrop -=5;
-                bladeSlash +=5;
-                console.log("quadrant: " + quadrant);
-            }
-            else if(quadrant == 6){
-                bladeDrop -=5;
-                bladeSlash -=5;
-                console.log("quadrant: " + quadrant);
-            }
-            else if(quadrant == 7){
-                bladeDrop +=5;
-                bladeSlash -=5;
-                console.log("quadrant: " + quadrant);
-            }
-            blades.style.rotate = bladeAngle + "deg";
-            blades.style.top = bladeDrop + "px";
-            console.log("will it rise? " + bladeAngle);
-            bladeAngle += 5;
-            console.log("it went up! " + bladeAngle);
-            if(bladeAngle >= 30 && quadrant == 0){//move down and left (+top, -left)
-                quadrant ++;
-                console.log("advancing because of the angle! Angle: " + bladeAngle);
-            }
-            else if(bladeAngle >= 45 && quadrant == 1){//move down and right (+top, +left)
-                bladeAngle = 135;
-                console.log("reset the angle to 135, but at least we know the quadrant is 1, right? it is: " + quadrant);
-                bladeDrop += 100;
-                quadrant ++;
-                console.log("advancing because of the angle! Angle: " + bladeAngle + ", and the new quadrant according to ++ is: " + quadrant);
-            }
-            else if(bladeAngle >= 150 && quadrant == 2){//move super down and right (++top, +left)
-                quadrant ++;
-                console.log("advancing because of the angle! Angle: " + bladeAngle);
-            }
-            else if(bladeAngle >= 165 && quadrant == 3){//move super down and left (++top, -left)
-                bladeAngle = 195;
-                quadrant ++;
-                console.log("advancing because of the angle! Angle: " + bladeAngle);
-            }
-            else if((bladeAngle >= 210 || bladeAngle <= 0) && quadrant == 4){//move super down and super left (++top, --+left)
-                quadrant ++;
-                console.log("advancing because of the angle! Angle: " + bladeAngle);
-            }
-            else if(bladeAngle >= 225 && quadrant == 5){//move super down and super left (++top, --left)
-                bladeAngle = 0;
-                quadrant ++;
-                console.log("advancing because of the angle! Angle: " + bladeAngle);
-            }
-            else if(bladeAngle >= 240 && quadrant == 6){//move down and super left(+top, --left)
-                bladeAngle = 315;
-                quadrant ++;
-                console.log("advancing because of the angle! Angle: " + bladeAngle);
-            }
-            else if((bladeAngle >= 345 || bladeAngle <= 0) && quadrant == 7){//move down and super left (+top, --+left)
-                bladeAngle = 15;
-                quadrant = 0;
-                console.log("advancing because of the angle! Angle: " + bladeAngle);
-            }
-            fanning();
+            setTimeout(() =>{
+                if(!anglePeak)
+                    bladeAngle += 5;
+                else
+                    bladeAngle -= 30;
+
+                if(dropNow == 0)       //for top, + is down and - is up.
+                    bladeDrop --;
+                else if(dropNow >= 10)
+                    bladeDrop += 30;
+                else
+                    dropNow ++;
+                if(dropNow == 3 || dropNow == 9)
+                    bladeDrop -= 2;
+                else if(dropNow == 6)
+                    bladeDrop += 2;
+                
+
+                if(!sinPeak)
+                    bladeSin ++;
+                else
+                    bladeSin --;
+                
+                topHolder = bladeDrop % 10;
+                bladeDrop = Math.trunc(bladeDrop / 10);
+                leftHolder = bladeSin % 10;
+                bladeSin = Math.trunc(bladeSin / 10);
+                document.getElementById("MainFan").innerHTML = "<img src='images/furniture/MainFan.png' style='left: " + bladeSin + "." + leftHolder + "%; top: " + bladeDrop + "." + topHolder + "%; rotate: " + bladeAngle + "deg; transform-origin: 50% 50%;'>" ;
+                bladeDrop = (bladeDrop * 10) + topHolder;
+                bladeSin = (bladeSin * 10) + leftHolder;
+                
+                if(bladeAngle >= 15)
+                    anglePeak = true;
+                else if(bladeAngle <= 0)
+                    anglePeak = false;
+
+                if(bladeDrop > 170 && dropNow >= 10)
+                    dropNow = 0;
+                else if(bladeDrop <= 168 && dropNow == 0)
+                    dropNow = 1;
+                
+                if(bladeSin >= 413)
+                    sinPeak = true;
+                else if(bladeSin <= 407)
+                    sinPeak = false;
+
+                fanning();          //recursion
+            }, 30);
         }
     }, 30);
 }
@@ -355,26 +326,29 @@ blades.addEventListener("click", ()=>{
         cooly = true;
         fanning();
     }
-    else
+    else{
+        console.log("fan is off.");
         cooly = false;
+    }
+        
 });
 
 //shirt animation
 let waving = false;
-let wave = 10;
+let wave = 15;
 let billowing = true;
 function billow(){
     if(waving){
         setTimeout(() =>{
-            document.getElementById("Shirt").style.rotate = wave + "deg";
-            if(wave >= 30)
+            document.getElementById("Shirt").innerHTML = "<img src='images/furniture/Shirt.png' style='right: 25%; top: 8%; rotate: " + wave + "deg; transform-origin: 50% 0%;'>";
+            if(wave >= 35)
                 billowing = false;
             else if(wave <= 15)
                 billowing = true;
             if(billowing)
                 wave ++;
             else
-                wave --;
+                wave -= 4;
             billow();
         }, 30);
     }
